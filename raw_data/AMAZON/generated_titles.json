@@ -1,0 +1,802 @@
+{
+  "summary": {
+    "total_processed": 99,
+    "successful": 98,
+    "failed": 1
+  },
+  "title_mapping": {
+    "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf": "Amazon - Quarterly Report - Q1 2019",
+    "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf": "Amazon - Current Report",
+    "06c52e44-38c4-42b0-90c4-14916435e83e.pdf": "Amazon - Quarterly Report - Q3 2021",
+    "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf": "Amazon - Quarterly Report - Q1 2022",
+    "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf": "Amazon - Current Report",
+    "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf": "Amazon - Current Report",
+    "14b18b98-7b41-4992-b337-92772da3d3c4.pdf": "Amazon - Current Report",
+    "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf": "Amazon - Current Report",
+    "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf": "Amazon - Current Report",
+    "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf": "Amazon - Current Report",
+    "2019-Annual-Report.pdf": "Amazon",
+    "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf": "Amazon - Current Report - 2020",
+    "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf": "Amazon - Current Report",
+    "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf": "Amazon - Quarterly Report - Q3 2020",
+    "31c17ff9-db41-43c1-889e-a2e898c01014.pdf": "Amazon - Current Report",
+    "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf": "Amazon - Annual Report - 2020",
+    "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf": "Amazon - Current Report",
+    "34c62081-b46a-453e-852d-f97f6318472a.pdf": "Amazon - Current Report",
+    "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf": "Amazon - Current Report",
+    "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf": "Amazon - Current Report",
+    "4d39f579-19d8-4119-b087-ee618abf82d6.pdf": "Amazon - Annual Report - 2019",
+    "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf": "Amazon - Current Report",
+    "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf": "Amazon - Current Report",
+    "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf": "Amazon - Current Report",
+    "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf": "Amazon - Current Report",
+    "52868cab-94f2-40aa-800f-a77fb600dffe.pdf": "Amazon - Current Report",
+    "553e7af3-f707-4ef3-9f94-222888725a97.pdf": "Amazon - Quarterly Report - Q1 2021",
+    "565a358c-5d6b-4860-bf83-d3c56726885c.pdf": "Amazon - Current Report",
+    "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf": "Amazon - Quarterly Report - Q2 2022",
+    "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf": "Amazon - Current Report",
+    "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf": "Amazon - Quarterly Report - Q2 2018",
+    "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf": "Amazon - Current Report",
+    "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf": "Amazon - Current Report",
+    "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf": "Amazon - Current Report",
+    "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf": "Amazon - Quarterly Report - Q1 2020",
+    "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf": "Amazon - Quarterly Report - Q2 2019",
+    "71652610-1289-4954-a507-54fea0e73120.pdf": "Amazon - Current Report",
+    "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf": "Amazon - Current Report",
+    "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf": "Amazon - Current Report",
+    "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf": "Amazon - Quarterly Report - Q1 2018",
+    "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf": "Amazon - Current Report",
+    "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf": "Amazon - Quarterly Report - Q3 2022",
+    "913084b6-695f-4a17-b78a-ea6001bc8563.pdf": "Amazon - Current Report",
+    "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf": "Amazon - Quarterly Report - Q3 2019",
+    "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf": "Amazon - Current Report",
+    "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf": "Amazon - Current Report",
+    "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf": "Amazon - Current Report",
+    "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf": "Amazon - Current Report",
+    "AMZN-Q1-2020-Earnings-Release.pdf": "Amazon - First Quarter 2019",
+    "AMZN-Q2-2021-Earnings-Release.pdf": "Amazon - Second Quarter 2020",
+    "AMZN-Q3-2020-Earnings-Release.pdf": "Amazon - Third Quarter 2019",
+    "Amazon-2020-Annual-Report.pdf": "Amazon",
+    "Amazon-2021-Annual-Report.pdf": "Amazon - Q1 2021",
+    "Amazon-2022-Annual-Report.pdf": "Amazon.com",
+    "Amazon-Q1-2021-Earnings-Release.pdf": "Amazon - First Quarter 2020",
+    "Amazon-Q4-2020-Earnings-Release.pdf": "Amazon - Fourth Quarter 2020",
+    "Q1-2022-Amazon-Earnings-Release.pdf": "Amazon - First Quarter 2021",
+    "Q2-2020-Amazon-Earnings-Release.pdf": "Amazon - Second Quarter 2019",
+    "Q2-2022-Amazon-Earnings-Release.pdf": "Amazon - Second Quarter 2021",
+    "Q3-2021-Earnings-Release.pdf": "Amazon - Third Quarter 2020",
+    "Q3-2022-Amazon-Earnings-Release.pdf": "Amazon - Third Quarter 2021",
+    "Q4-2022-Amazon-Earnings-Release.pdf": "Amazon - Fourth Quarter 2022",
+    "Webslides_Q120_4.28.20_Final.pdf": "Amazon - Annual Report - Q1 2020",
+    "Webslides_Q121_Final.pdf": "Amazon - Annual Report - Q1 2021",
+    "Webslides_Q122_Final.pdf": "Amazon - Annual Report - Q1 2022",
+    "Webslides_Q220_Final.pdf": "Amazon - Annual Report - Q2 2020",
+    "Webslides_Q221_Final.pdf": "Amazon - Annual Report - Q2 2021",
+    "Webslides_Q222_Final.pdf": "Amazon - Annual Report - Q2 2022",
+    "Webslides_Q320_Final.pdf": "Amazon - Annual Report - Q3 2020",
+    "Webslides_Q321_Final.pdf": "Amazon - Annual Report - Q3 2021",
+    "Webslides_Q322_Final.pdf": "Amazon - Annual Report - Q3 2022",
+    "Webslides_Q420_Final.pdf": "Amazon - Annual Report - Q4 2020",
+    "Webslides_Q421_Final.pdf": "Amazon - Annual Report - Q4 2021",
+    "Webslides_Q422_Final.pdf": "Amazon - Annual Report - Q4 2022",
+    "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf": "Amazon - Current Report",
+    "a5687b24-a117-430f-982c-050072f78482.pdf": "Amazon - Current Report",
+    "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf": "Amazon - Quarterly Report - Q2 2020",
+    "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf": "Amazon - Current Report",
+    "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf": "Amazon - Current Report",
+    "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf": "Amazon - Current Report",
+    "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf": "Amazon - Current Report",
+    "bed19367-fa6b-41ff-a973-df19510b0bba.pdf": "Amazon - Annual Report - 2018",
+    "business_and_financial_update.pdf": "Amazon - Fourth Quarter 2021",
+    "c52f1c77-a622-484c-9e53-397bde0409a3.pdf": "Amazon - Current Report - 2022",
+    "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf": "Amazon - Quarterly Report - Q2 2021",
+    "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf": "Amazon - Quarterly Report - Q3 2018",
+    "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf": "Amazon - Current Report",
+    "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf": "Amazon - Current Report",
+    "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf": "Amazon - Annual Report - 2022",
+    "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf": "Amazon - Current Report",
+    "e404e206-f905-48e1-9d66-625cae6034a4.pdf": "Amazon - Current Report",
+    "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf": "Amazon - Current Report",
+    "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf": "Amazon - Current Report",
+    "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf": "Amazon - Current Report",
+    "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf": "Amazon - Current Report",
+    "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf": "Amazon - Current Report - 2020",
+    "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf": "Amazon - Annual Report - 2021",
+    "fdf2620f-0d70-496b-9150-39fd9a605487.pdf": "Amazon - Current Report"
+  },
+  "detailed_results": {
+    "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf": {
+      "original_filename": "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q1 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q1_2019.pdf"
+    },
+    "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf": {
+      "original_filename": "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report.pdf"
+    },
+    "06c52e44-38c4-42b0-90c4-14916435e83e.pdf": {
+      "original_filename": "06c52e44-38c4-42b0-90c4-14916435e83e.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q3 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q3_2021.pdf"
+    },
+    "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf": {
+      "original_filename": "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q1 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q1_2022.pdf"
+    },
+    "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf": {
+      "original_filename": "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_1.pdf"
+    },
+    "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf": {
+      "original_filename": "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_2.pdf"
+    },
+    "14b18b98-7b41-4992-b337-92772da3d3c4.pdf": {
+      "original_filename": "14b18b98-7b41-4992-b337-92772da3d3c4.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_3.pdf"
+    },
+    "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf": {
+      "original_filename": "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_4.pdf"
+    },
+    "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf": {
+      "original_filename": "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_5.pdf"
+    },
+    "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf": {
+      "original_filename": "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_6.pdf"
+    },
+    "2018-Annual-Report.pdf": {
+      "original_filename": "2018-Annual-Report.pdf",
+      "generated_title": null,
+      "status": "Model failed to generate title",
+      "copy_status": "Skipped - no title generated",
+      "new_path": null
+    },
+    "2019-Annual-Report.pdf": {
+      "original_filename": "2019-Annual-Report.pdf",
+      "generated_title": "Amazon",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon.pdf"
+    },
+    "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf": {
+      "original_filename": "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf",
+      "generated_title": "Amazon - Current Report - 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_-_2020.pdf"
+    },
+    "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf": {
+      "original_filename": "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_7.pdf"
+    },
+    "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf": {
+      "original_filename": "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q3 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q3_2020.pdf"
+    },
+    "31c17ff9-db41-43c1-889e-a2e898c01014.pdf": {
+      "original_filename": "31c17ff9-db41-43c1-889e-a2e898c01014.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_8.pdf"
+    },
+    "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf": {
+      "original_filename": "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf",
+      "generated_title": "Amazon - Annual Report - 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_2020.pdf"
+    },
+    "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf": {
+      "original_filename": "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_9.pdf"
+    },
+    "34c62081-b46a-453e-852d-f97f6318472a.pdf": {
+      "original_filename": "34c62081-b46a-453e-852d-f97f6318472a.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_10.pdf"
+    },
+    "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf": {
+      "original_filename": "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_11.pdf"
+    },
+    "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf": {
+      "original_filename": "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_12.pdf"
+    },
+    "4d39f579-19d8-4119-b087-ee618abf82d6.pdf": {
+      "original_filename": "4d39f579-19d8-4119-b087-ee618abf82d6.pdf",
+      "generated_title": "Amazon - Annual Report - 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_2019.pdf"
+    },
+    "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf": {
+      "original_filename": "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_13.pdf"
+    },
+    "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf": {
+      "original_filename": "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_14.pdf"
+    },
+    "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf": {
+      "original_filename": "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_15.pdf"
+    },
+    "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf": {
+      "original_filename": "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_16.pdf"
+    },
+    "52868cab-94f2-40aa-800f-a77fb600dffe.pdf": {
+      "original_filename": "52868cab-94f2-40aa-800f-a77fb600dffe.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_17.pdf"
+    },
+    "553e7af3-f707-4ef3-9f94-222888725a97.pdf": {
+      "original_filename": "553e7af3-f707-4ef3-9f94-222888725a97.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q1 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q1_2021.pdf"
+    },
+    "565a358c-5d6b-4860-bf83-d3c56726885c.pdf": {
+      "original_filename": "565a358c-5d6b-4860-bf83-d3c56726885c.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_18.pdf"
+    },
+    "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf": {
+      "original_filename": "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q2 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q2_2022.pdf"
+    },
+    "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf": {
+      "original_filename": "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_19.pdf"
+    },
+    "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf": {
+      "original_filename": "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q2 2018",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q2_2018.pdf"
+    },
+    "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf": {
+      "original_filename": "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_20.pdf"
+    },
+    "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf": {
+      "original_filename": "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_21.pdf"
+    },
+    "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf": {
+      "original_filename": "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_22.pdf"
+    },
+    "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf": {
+      "original_filename": "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q1 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q1_2020.pdf"
+    },
+    "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf": {
+      "original_filename": "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q2 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q2_2019.pdf"
+    },
+    "71652610-1289-4954-a507-54fea0e73120.pdf": {
+      "original_filename": "71652610-1289-4954-a507-54fea0e73120.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_23.pdf"
+    },
+    "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf": {
+      "original_filename": "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_24.pdf"
+    },
+    "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf": {
+      "original_filename": "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_25.pdf"
+    },
+    "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf": {
+      "original_filename": "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q1 2018",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q1_2018.pdf"
+    },
+    "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf": {
+      "original_filename": "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_26.pdf"
+    },
+    "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf": {
+      "original_filename": "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q3 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q3_2022.pdf"
+    },
+    "913084b6-695f-4a17-b78a-ea6001bc8563.pdf": {
+      "original_filename": "913084b6-695f-4a17-b78a-ea6001bc8563.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_27.pdf"
+    },
+    "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf": {
+      "original_filename": "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q3 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q3_2019.pdf"
+    },
+    "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf": {
+      "original_filename": "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_28.pdf"
+    },
+    "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf": {
+      "original_filename": "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_29.pdf"
+    },
+    "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf": {
+      "original_filename": "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_30.pdf"
+    },
+    "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf": {
+      "original_filename": "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_31.pdf"
+    },
+    "AMZN-Q1-2020-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q1-2020-Earnings-Release.pdf",
+      "generated_title": "Amazon - First Quarter 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_First_Quarter_2019.pdf"
+    },
+    "AMZN-Q2-2021-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q2-2021-Earnings-Release.pdf",
+      "generated_title": "Amazon - Second Quarter 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Second_Quarter_2020.pdf"
+    },
+    "AMZN-Q3-2020-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q3-2020-Earnings-Release.pdf",
+      "generated_title": "Amazon - Third Quarter 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Third_Quarter_2019.pdf"
+    },
+    "Amazon-2020-Annual-Report.pdf": {
+      "original_filename": "Amazon-2020-Annual-Report.pdf",
+      "generated_title": "Amazon",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_1.pdf"
+    },
+    "Amazon-2021-Annual-Report.pdf": {
+      "original_filename": "Amazon-2021-Annual-Report.pdf",
+      "generated_title": "Amazon - Q1 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Q1_2021.pdf"
+    },
+    "Amazon-2022-Annual-Report.pdf": {
+      "original_filename": "Amazon-2022-Annual-Report.pdf",
+      "generated_title": "Amazon.com",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon.com.pdf"
+    },
+    "Amazon-Q1-2021-Earnings-Release.pdf": {
+      "original_filename": "Amazon-Q1-2021-Earnings-Release.pdf",
+      "generated_title": "Amazon - First Quarter 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_First_Quarter_2020.pdf"
+    },
+    "Amazon-Q4-2020-Earnings-Release.pdf": {
+      "original_filename": "Amazon-Q4-2020-Earnings-Release.pdf",
+      "generated_title": "Amazon - Fourth Quarter 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Fourth_Quarter_2020.pdf"
+    },
+    "Q1-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q1-2022-Amazon-Earnings-Release.pdf",
+      "generated_title": "Amazon - First Quarter 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_First_Quarter_2021.pdf"
+    },
+    "Q2-2020-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q2-2020-Amazon-Earnings-Release.pdf",
+      "generated_title": "Amazon - Second Quarter 2019",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Second_Quarter_2019.pdf"
+    },
+    "Q2-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q2-2022-Amazon-Earnings-Release.pdf",
+      "generated_title": "Amazon - Second Quarter 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Second_Quarter_2021.pdf"
+    },
+    "Q3-2021-Earnings-Release.pdf": {
+      "original_filename": "Q3-2021-Earnings-Release.pdf",
+      "generated_title": "Amazon - Third Quarter 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Third_Quarter_2020.pdf"
+    },
+    "Q3-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q3-2022-Amazon-Earnings-Release.pdf",
+      "generated_title": "Amazon - Third Quarter 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Third_Quarter_2021.pdf"
+    },
+    "Q4-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q4-2022-Amazon-Earnings-Release.pdf",
+      "generated_title": "Amazon - Fourth Quarter 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Fourth_Quarter_2022.pdf"
+    },
+    "Webslides_Q120_4.28.20_Final.pdf": {
+      "original_filename": "Webslides_Q120_4.28.20_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q1 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q1_2020.pdf"
+    },
+    "Webslides_Q121_Final.pdf": {
+      "original_filename": "Webslides_Q121_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q1 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q1_2021.pdf"
+    },
+    "Webslides_Q122_Final.pdf": {
+      "original_filename": "Webslides_Q122_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q1 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q1_2022.pdf"
+    },
+    "Webslides_Q220_Final.pdf": {
+      "original_filename": "Webslides_Q220_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q2 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q2_2020.pdf"
+    },
+    "Webslides_Q221_Final.pdf": {
+      "original_filename": "Webslides_Q221_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q2 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q2_2021.pdf"
+    },
+    "Webslides_Q222_Final.pdf": {
+      "original_filename": "Webslides_Q222_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q2 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q2_2022.pdf"
+    },
+    "Webslides_Q320_Final.pdf": {
+      "original_filename": "Webslides_Q320_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q3 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q3_2020.pdf"
+    },
+    "Webslides_Q321_Final.pdf": {
+      "original_filename": "Webslides_Q321_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q3 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q3_2021.pdf"
+    },
+    "Webslides_Q322_Final.pdf": {
+      "original_filename": "Webslides_Q322_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q3 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q3_2022.pdf"
+    },
+    "Webslides_Q420_Final.pdf": {
+      "original_filename": "Webslides_Q420_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q4 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q4_2020.pdf"
+    },
+    "Webslides_Q421_Final.pdf": {
+      "original_filename": "Webslides_Q421_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q4 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q4_2021.pdf"
+    },
+    "Webslides_Q422_Final.pdf": {
+      "original_filename": "Webslides_Q422_Final.pdf",
+      "generated_title": "Amazon - Annual Report - Q4 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_Q4_2022.pdf"
+    },
+    "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf": {
+      "original_filename": "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_32.pdf"
+    },
+    "a5687b24-a117-430f-982c-050072f78482.pdf": {
+      "original_filename": "a5687b24-a117-430f-982c-050072f78482.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_33.pdf"
+    },
+    "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf": {
+      "original_filename": "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q2 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q2_2020.pdf"
+    },
+    "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf": {
+      "original_filename": "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_34.pdf"
+    },
+    "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf": {
+      "original_filename": "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_35.pdf"
+    },
+    "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf": {
+      "original_filename": "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_36.pdf"
+    },
+    "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf": {
+      "original_filename": "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_37.pdf"
+    },
+    "bed19367-fa6b-41ff-a973-df19510b0bba.pdf": {
+      "original_filename": "bed19367-fa6b-41ff-a973-df19510b0bba.pdf",
+      "generated_title": "Amazon - Annual Report - 2018",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_2018.pdf"
+    },
+    "business_and_financial_update.pdf": {
+      "original_filename": "business_and_financial_update.pdf",
+      "generated_title": "Amazon - Fourth Quarter 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Fourth_Quarter_2021.pdf"
+    },
+    "c52f1c77-a622-484c-9e53-397bde0409a3.pdf": {
+      "original_filename": "c52f1c77-a622-484c-9e53-397bde0409a3.pdf",
+      "generated_title": "Amazon - Current Report - 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_-_2022.pdf"
+    },
+    "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf": {
+      "original_filename": "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q2 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q2_2021.pdf"
+    },
+    "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf": {
+      "original_filename": "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf",
+      "generated_title": "Amazon - Quarterly Report - Q3 2018",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Quarterly_Report_-_Q3_2018.pdf"
+    },
+    "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf": {
+      "original_filename": "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_38.pdf"
+    },
+    "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf": {
+      "original_filename": "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_39.pdf"
+    },
+    "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf": {
+      "original_filename": "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf",
+      "generated_title": "Amazon - Annual Report - 2022",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_2022.pdf"
+    },
+    "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf": {
+      "original_filename": "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_40.pdf"
+    },
+    "e404e206-f905-48e1-9d66-625cae6034a4.pdf": {
+      "original_filename": "e404e206-f905-48e1-9d66-625cae6034a4.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_41.pdf"
+    },
+    "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf": {
+      "original_filename": "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_42.pdf"
+    },
+    "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf": {
+      "original_filename": "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_43.pdf"
+    },
+    "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf": {
+      "original_filename": "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_44.pdf"
+    },
+    "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf": {
+      "original_filename": "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_45.pdf"
+    },
+    "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf": {
+      "original_filename": "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf",
+      "generated_title": "Amazon - Current Report - 2020",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_-_2020_1.pdf"
+    },
+    "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf": {
+      "original_filename": "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf",
+      "generated_title": "Amazon - Annual Report - 2021",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Annual_Report_-_2021.pdf"
+    },
+    "fdf2620f-0d70-496b-9150-39fd9a605487.pdf": {
+      "original_filename": "fdf2620f-0d70-496b-9150-39fd9a605487.pdf",
+      "generated_title": "Amazon - Current Report",
+      "status": "Success",
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/Downloads/02-EA/ex02-programmatic_file_management/raw_data/AMAZON/revised_titles/Amazon_-_Current_Report_46.pdf"
+    }
+  }
+}
