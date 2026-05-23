@@ -6,6 +6,38 @@ import { pageMeta } from "@/lib/nav";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { useBackendStatus } from "@/lib/backend-status";
+
+function ConnectionPill() {
+  const { mode, base } = useBackendStatus();
+  if (mode === "checking") {
+    return (
+      <Badge variant="muted" size="sm" className="ml-1">
+        <span className="inline-block h-1 w-1 rounded-full bg-current" />
+        Connecting
+      </Badge>
+    );
+  }
+  if (mode === "live") {
+    return (
+      <Badge variant="success" size="sm" className="ml-1" title={`Connected to ${base}`}>
+        <span className="pulse-dot inline-block h-1 w-1 rounded-full bg-current" />
+        Live
+      </Badge>
+    );
+  }
+  return (
+    <Badge
+      variant="warning"
+      size="sm"
+      className="ml-1"
+      title={`Backend unreachable at ${base} — showing demo data`}
+    >
+      <span className="inline-block h-1 w-1 rounded-full bg-current" />
+      Demo
+    </Badge>
+  );
+}
 
 export function Topbar({ onCommand }: { onCommand: () => void }) {
   const pathname = usePathname();
@@ -18,10 +50,7 @@ export function Topbar({ onCommand }: { onCommand: () => void }) {
           <h1 className="truncate text-[15px] font-semibold tracking-tight text-foreground">
             {meta.title}
           </h1>
-          <Badge variant="success" size="sm" className="ml-1">
-            <span className="pulse-dot inline-block h-1 w-1 rounded-full bg-current" />
-            Live
-          </Badge>
+          <ConnectionPill />
         </div>
         <p className="truncate text-[11.5px] text-muted-foreground">
           {meta.description}

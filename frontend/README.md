@@ -53,6 +53,8 @@ frontend/
 
 ## Run
 
+### Frontend only (demo data)
+
 ```bash
 cd frontend
 npm install
@@ -60,7 +62,48 @@ npm run dev
 # open http://localhost:3000
 ```
 
-Useful scripts:
+In demo mode every page renders realistic mock data — useful for design review and
+screenshots. The connection pill in the topbar shows **DEMO**.
+
+### Live mode (wired to the Python pipeline)
+
+Three pages — Upload Center, AI Analysis, and File Explorer — bind to the Flask
+backend in `../raw_data/AMAZON/web_app.py`. To enable:
+
+```bash
+# 1. Install backend deps (one-time)
+cd ../raw_data/AMAZON
+pip install -r requirements.txt   # now includes flask-cors
+
+# 2. Start the backend (port 5001 by default)
+PORT=5001 FLASK_DEBUG=0 python web_app.py
+
+# 3. Start the frontend in another shell
+cd ../../frontend
+npm run dev
+```
+
+The topbar pill switches to **LIVE** automatically when `/api/config` responds.
+Override the API base by setting `NEXT_PUBLIC_AEGIS_API` in `.env.local`:
+
+```env
+NEXT_PUBLIC_AEGIS_API=http://127.0.0.1:5001
+```
+
+What live mode does:
+
+- `/upload` — picks an input folder via `/api/browse`, submits the job to
+  `/api/run-async`, polls `/api/jobs/<id>` every 800 ms, and renders real
+  pipeline events (rename → group → copy → archive → encrypt → manifest).
+- `/files` — reads `/api/manifest` and renders the `quickfinder_groups` with
+  parsed metadata (ticker, doc type, year/quarter, date) and per-group archive
+  encryption state.
+- `/analysis` — shows real archive integrity (status, compression level,
+  AES-256-GCM, archive sha256, encrypted sha256) plus parsed naming fields.
+  The "Detected entities" panel honestly reports "not yet computed" — the
+  Python pipeline doesn't perform PII / PHI extraction yet.
+
+### Useful scripts
 
 ```bash
 npm run typecheck   # tsc --noEmit
@@ -105,15 +148,36 @@ Dark by default. The product is designed to feel like cybersecurity software a F
 
 Use `⌘ + K` for the global command palette.
 
+## Live vs. demo: what's wired
+
+| Page             | Live data source                                       |
+| ---------------- | ------------------------------------------------------ |
+| Upload Center    | `/api/config` defaults · `/api/run-async` + polling    |
+| AI Analysis      | `/api/manifest` (with parsed naming + archive sha256)  |
+| File Explorer    | `/api/manifest` quickfinder_groups                     |
+| Dashboard        | mock data — no backend equivalent yet                  |
+| Compliance       | mock data — no backend equivalent yet                  |
+| Encryption       | mock data — no backend equivalent yet (archives are)   |
+| Policies         | mock data — no backend equivalent yet                  |
+| Audit Logs       | mock data — no immutable audit log yet                 |
+| Team / API Keys  | mock data — no auth/identity backend yet               |
+| Storage          | mock data — only local Vault is real                   |
+| Billing          | mock data                                              |
+| Settings         | mock data                                              |
+
+The live pages fall back to demo data automatically when the backend is not
+reachable, so the dashboard is always presentable.
+
 ## Notes for next steps
 
-- All data lives in `lib/data.ts` and uses a fixed `NOW` plus deterministic PRNG so
-  SSR and CSR HTML always match. Replace with real API calls when wiring the backend.
-- Recharts components are mounted client-only behind a `useMounted` guard to avoid
-  ResponsiveContainer hydration drift.
-- Auth, multi-tenant scoping, and websocket live updates are stubbed but the layout
-  is ready for them — `Topbar` already shows a "Live" pulse, threat feed already
-  uses motion deltas, command palette is keyboard-driven.
+- Mock data lives in `lib/data.ts` and uses a fixed `NOW` plus deterministic PRNG
+  so SSR and CSR HTML always match.
+- Recharts components are mounted client-only behind a `useMounted` guard to
+  avoid `ResponsiveContainer` hydration drift.
+- Auth, multi-tenant scoping, and websocket live updates are stubbed but the
+  layout is ready for them.
+- Adding entity-level PII / PHI detection to the Python pipeline will let
+  `/analysis` populate its currently-disabled "Detected entities" panel.
 
 ## License
 
