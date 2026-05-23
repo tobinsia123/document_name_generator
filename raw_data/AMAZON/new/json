@@ -1,0 +1,3236 @@
+{
+  "manifest_version": "1.0",
+  "job_id": "abb91dbb-becb-4f37-93c1-ad6f3efd6091",
+  "created_at": "2026-05-23T18:32:29.802048+00:00",
+  "dry_run": false,
+  "input_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/sec_filings",
+  "ticker": "AMZN",
+  "group_by": [
+    "ticker",
+    "doc_category",
+    "year_quarter",
+    "report_type",
+    "publisher"
+  ],
+  "copy_to_dir": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new",
+  "archive_dir": null,
+  "summary": {
+    "total_processed": 99,
+    "successful": 99,
+    "failed": 0,
+    "groups": 72,
+    "archives_created": 0
+  },
+  "quickfinder_groups": {
+    "AMZN_sec_filing_2017Q4_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf",
+          "new_filename": "AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf"
+        },
+        {
+          "original": "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf",
+          "new_filename": "AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q0_10-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "bed19367-fa6b-41ff-a973-df19510b0bba.pdf",
+          "new_filename": "AMZN_SEC_10-K_2018Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2018Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q0_ANNUAL_REPORT_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "2018-Annual-Report.pdf",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q1_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q1_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf"
+        },
+        {
+          "original": "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q2_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q2_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf"
+        },
+        {
+          "original": "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q3_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q3_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2018Q4_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf",
+          "new_filename": "AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q0_10-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "4d39f579-19d8-4119-b087-ee618abf82d6.pdf",
+          "new_filename": "AMZN_SEC_10-K_2019Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2019Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q0_ANNUAL_REPORT_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "2019-Annual-Report.pdf",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q1_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q1_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf"
+        },
+        {
+          "original": "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q2_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q2_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "913084b6-695f-4a17-b78a-ea6001bc8563.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf"
+        },
+        {
+          "original": "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q3_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q3_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2019Q4_8-K_SEC": {
+      "file_count": 5,
+      "files": [
+        {
+          "original": "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf"
+        },
+        {
+          "original": "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf"
+        },
+        {
+          "original": "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf"
+        },
+        {
+          "original": "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf"
+        },
+        {
+          "original": "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf",
+          "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q0_10-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf",
+          "new_filename": "AMZN_SEC_10-K_2020Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2020Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q0_ANNUAL_REPORT_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon-2020-Annual-Report.pdf",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q1_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q1_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf"
+        },
+        {
+          "original": "fdf2620f-0d70-496b-9150-39fd9a605487.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q1_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q120_4.28.20_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q1_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "AMZN-Q1-2020-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q2_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q2_8-K_SEC": {
+      "file_count": 4,
+      "files": [
+        {
+          "original": "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf"
+        },
+        {
+          "original": "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf"
+        },
+        {
+          "original": "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf"
+        },
+        {
+          "original": "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q2_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q220_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q2_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q2-2020-Amazon-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q3_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q3_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "e404e206-f905-48e1-9d66-625cae6034a4.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf"
+        },
+        {
+          "original": "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q3_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q320_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q3_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "AMZN-Q3-2020-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q4_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "a5687b24-a117-430f-982c-050072f78482.pdf",
+          "new_filename": "AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q4_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q420_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2020Q4_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon-Q4-2020-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q0_10-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf",
+          "new_filename": "AMZN_SEC_10-K_2021Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2021Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q0_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q0_ANNUAL_REPORT_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon-2021-Annual-Report.pdf",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q1_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "553e7af3-f707-4ef3-9f94-222888725a97.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q1_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "71652610-1289-4954-a507-54fea0e73120.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf"
+        },
+        {
+          "original": "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q1_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q121_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q1_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon-Q1-2021-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q2_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q2_8-K_SEC": {
+      "file_count": 3,
+      "files": [
+        {
+          "original": "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf"
+        },
+        {
+          "original": "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf"
+        },
+        {
+          "original": "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q2_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q221_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q2_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "AMZN-Q2-2021-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q3_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "06c52e44-38c4-42b0-90c4-14916435e83e.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q3_8-K_SEC": {
+      "file_count": 3,
+      "files": [
+        {
+          "original": "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf"
+        },
+        {
+          "original": "52868cab-94f2-40aa-800f-a77fb600dffe.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf"
+        },
+        {
+          "original": "31c17ff9-db41-43c1-889e-a2e898c01014.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q3_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q321_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q3_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q3-2021-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q4_8-K_SEC": {
+      "file_count": 4,
+      "files": [
+        {
+          "original": "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf"
+        },
+        {
+          "original": "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf"
+        },
+        {
+          "original": "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf"
+        },
+        {
+          "original": "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf",
+          "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q4_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q421_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2021Q4_SEC_FILING_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "business_and_financial_update.pdf",
+          "new_filename": "AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q0_10-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf",
+          "new_filename": "AMZN_SEC_10-K_2022Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2022Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q0_ANNUAL_REPORT_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon-2022-Annual-Report.pdf",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q1_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q1_8-K_SEC": {
+      "file_count": 3,
+      "files": [
+        {
+          "original": "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf"
+        },
+        {
+          "original": "c52f1c77-a622-484c-9e53-397bde0409a3.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf"
+        },
+        {
+          "original": "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q1_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q122_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q1_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q1-2022-Amazon-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q2_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q2_8-K_SEC": {
+      "file_count": 3,
+      "files": [
+        {
+          "original": "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf"
+        },
+        {
+          "original": "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf"
+        },
+        {
+          "original": "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q2_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q222_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q2_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q2-2022-Amazon-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q3_10-Q_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf",
+          "new_filename": "AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q3_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "565a358c-5d6b-4860-bf83-d3c56726885c.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q3_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q322_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q3_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q3-2022-Amazon-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q4_8-K_SEC": {
+      "file_count": 2,
+      "files": [
+        {
+          "original": "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf"
+        },
+        {
+          "original": "14b18b98-7b41-4992-b337-92772da3d3c4.pdf",
+          "new_filename": "AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q4_EARNINGS_PRESENTATION_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Webslides_Q422_Final.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2022Q4_EARNINGS_RELEASE_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Q4-2022-Amazon-Earnings-Release.pdf",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf"
+        }
+      ],
+      "archive": null
+    },
+    "AMZN_sec_filing_2081Q0_8-K_SEC": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "34c62081-b46a-453e-852d-f97f6318472a.pdf",
+          "new_filename": "AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf"
+        }
+      ],
+      "archive": null
+    }
+  },
+  "artifacts": [
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf",
+      "original": "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf",
+      "original": "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf",
+      "original": "34c62081-b46a-453e-852d-f97f6318472a.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf",
+      "original": "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf",
+      "original": "Webslides_Q222_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf",
+      "original": "565a358c-5d6b-4860-bf83-d3c56726885c.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf",
+      "original": "Amazon-Q4-2020-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf",
+      "original": "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf",
+      "original": "14b18b98-7b41-4992-b337-92772da3d3c4.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf",
+      "original": "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf",
+      "original": "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf",
+      "original": "Q4-2022-Amazon-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf",
+      "original": "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf",
+      "original": "Amazon-Q1-2021-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf",
+      "original": "AMZN-Q3-2020-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf",
+      "original": "913084b6-695f-4a17-b78a-ea6001bc8563.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf",
+      "original": "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf",
+      "original": "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf",
+      "original": "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf",
+      "original": "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf",
+      "original": "553e7af3-f707-4ef3-9f94-222888725a97.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf",
+      "original": "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf",
+      "original": "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf",
+      "original": "Webslides_Q320_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf",
+      "original": "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf",
+      "original": "a5687b24-a117-430f-982c-050072f78482.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf",
+      "original": "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf",
+      "original": "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf",
+      "original": "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf",
+      "original": "Q3-2021-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf",
+      "original": "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q0_EN_NA.pdf",
+      "original": "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf",
+      "original": "Webslides_Q422_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf",
+      "original": "e404e206-f905-48e1-9d66-625cae6034a4.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf",
+      "original": "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf",
+      "original": "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf",
+      "original": "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2020Q0_EN_NA.pdf",
+      "original": "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2021Q0_EN_NA.pdf",
+      "original": "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf",
+      "original": "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf",
+      "original": "AMZN-Q1-2020-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf",
+      "original": "71652610-1289-4954-a507-54fea0e73120.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf",
+      "original": "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf",
+      "original": "Q3-2022-Amazon-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf",
+      "original": "52868cab-94f2-40aa-800f-a77fb600dffe.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2019Q0_EN_NA.pdf",
+      "original": "4d39f579-19d8-4119-b087-ee618abf82d6.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf",
+      "original": "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf",
+      "original": "Webslides_Q321_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf",
+      "original": "31c17ff9-db41-43c1-889e-a2e898c01014.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf",
+      "original": "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf",
+      "original": "Q2-2020-Amazon-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf",
+      "original": "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf",
+      "original": "Webslides_Q122_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf",
+      "original": "Webslides_Q421_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf",
+      "original": "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf",
+      "original": "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf",
+      "original": "AMZN-Q2-2021-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf",
+      "original": "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf",
+      "original": "Webslides_Q220_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf",
+      "original": "Amazon-2022-Annual-Report.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf",
+      "original": "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf",
+      "original": "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf",
+      "original": "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf",
+      "original": "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf",
+      "original": "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf",
+      "original": "c52f1c77-a622-484c-9e53-397bde0409a3.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf",
+      "original": "Q1-2022-Amazon-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf",
+      "original": "Webslides_Q121_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf",
+      "original": "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf",
+      "original": "06c52e44-38c4-42b0-90c4-14916435e83e.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf",
+      "original": "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf",
+      "original": "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf",
+      "original": "Webslides_Q322_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf",
+      "original": "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf",
+      "original": "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf",
+      "original": "Webslides_Q420_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf",
+      "original": "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf",
+      "original": "Webslides_Q221_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf",
+      "original": "2019-Annual-Report.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf",
+      "original": "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf",
+      "original": "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf",
+      "original": "Q2-2022-Amazon-Earnings-Release.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf",
+      "original": "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf",
+      "original": "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf",
+      "original": "Amazon-2020-Annual-Report.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf",
+      "original": "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf",
+      "original": "fdf2620f-0d70-496b-9150-39fd9a605487.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf",
+      "original": "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2018Q0_EN_NA.pdf",
+      "original": "bed19367-fa6b-41ff-a973-df19510b0bba.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf",
+      "original": "2018-Annual-Report.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2022Q0_EN_NA.pdf",
+      "original": "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf",
+      "original": "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf",
+      "original": "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf",
+      "original": "business_and_financial_update.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf",
+      "original": "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf",
+      "original": "Webslides_Q120_4.28.20_Final.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf",
+      "original": "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf",
+      "original": "Amazon-2021-Annual-Report.pdf"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf",
+      "original": "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf"
+    }
+  ],
+  "filename_mapping": {
+    "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf": "AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf",
+    "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf": "AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf",
+    "34c62081-b46a-453e-852d-f97f6318472a.pdf": "AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf",
+    "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf": "AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf",
+    "Webslides_Q222_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf",
+    "565a358c-5d6b-4860-bf83-d3c56726885c.pdf": "AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf",
+    "Amazon-Q4-2020-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf",
+    "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf": "AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf",
+    "14b18b98-7b41-4992-b337-92772da3d3c4.pdf": "AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf",
+    "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf": "AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf",
+    "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf": "AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf",
+    "Q4-2022-Amazon-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf",
+    "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf": "AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf",
+    "Amazon-Q1-2021-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf",
+    "AMZN-Q3-2020-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf",
+    "913084b6-695f-4a17-b78a-ea6001bc8563.pdf": "AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf",
+    "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf": "AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf",
+    "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf": "AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf",
+    "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf": "AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf",
+    "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf": "AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf",
+    "553e7af3-f707-4ef3-9f94-222888725a97.pdf": "AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf",
+    "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf": "AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf",
+    "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf": "AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf",
+    "Webslides_Q320_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf",
+    "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf": "AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf",
+    "a5687b24-a117-430f-982c-050072f78482.pdf": "AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf",
+    "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf": "AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf",
+    "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf": "AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf",
+    "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf": "AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf",
+    "Q3-2021-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf",
+    "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf": "AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf",
+    "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf": "AMZN_SEC_8-K_2021Q0_EN_NA.pdf",
+    "Webslides_Q422_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf",
+    "e404e206-f905-48e1-9d66-625cae6034a4.pdf": "AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf",
+    "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf": "AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf",
+    "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf": "AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf",
+    "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf": "AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf",
+    "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf": "AMZN_SEC_10-K_2020Q0_EN_NA.pdf",
+    "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf": "AMZN_SEC_10-K_2021Q0_EN_NA.pdf",
+    "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf": "AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf",
+    "AMZN-Q1-2020-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf",
+    "71652610-1289-4954-a507-54fea0e73120.pdf": "AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf",
+    "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf": "AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf",
+    "Q3-2022-Amazon-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf",
+    "52868cab-94f2-40aa-800f-a77fb600dffe.pdf": "AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf",
+    "4d39f579-19d8-4119-b087-ee618abf82d6.pdf": "AMZN_SEC_10-K_2019Q0_EN_NA.pdf",
+    "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf": "AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf",
+    "Webslides_Q321_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf",
+    "31c17ff9-db41-43c1-889e-a2e898c01014.pdf": "AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf",
+    "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf": "AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf",
+    "Q2-2020-Amazon-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf",
+    "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf": "AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf",
+    "Webslides_Q122_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf",
+    "Webslides_Q421_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf",
+    "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf": "AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf",
+    "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf": "AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf",
+    "AMZN-Q2-2021-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf",
+    "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf": "AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf",
+    "Webslides_Q220_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf",
+    "Amazon-2022-Annual-Report.pdf": "AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf",
+    "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf": "AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf",
+    "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf": "AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf",
+    "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf": "AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf",
+    "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf": "AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf",
+    "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf": "AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf",
+    "c52f1c77-a622-484c-9e53-397bde0409a3.pdf": "AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf",
+    "Q1-2022-Amazon-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf",
+    "Webslides_Q121_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf",
+    "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf": "AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf",
+    "06c52e44-38c4-42b0-90c4-14916435e83e.pdf": "AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf",
+    "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf": "AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf",
+    "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf": "AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf",
+    "Webslides_Q322_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf",
+    "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf": "AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf",
+    "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf": "AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf",
+    "Webslides_Q420_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf",
+    "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf": "AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf",
+    "Webslides_Q221_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf",
+    "2019-Annual-Report.pdf": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf",
+    "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf": "AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf",
+    "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf": "AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf",
+    "Q2-2022-Amazon-Earnings-Release.pdf": "AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf",
+    "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf": "AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf",
+    "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf": "AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf",
+    "Amazon-2020-Annual-Report.pdf": "AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf",
+    "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf": "AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf",
+    "fdf2620f-0d70-496b-9150-39fd9a605487.pdf": "AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf",
+    "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf": "AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf",
+    "bed19367-fa6b-41ff-a973-df19510b0bba.pdf": "AMZN_SEC_10-K_2018Q0_EN_NA.pdf",
+    "2018-Annual-Report.pdf": "AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf",
+    "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf": "AMZN_SEC_10-K_2022Q0_EN_NA.pdf",
+    "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf": "AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf",
+    "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf": "AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf",
+    "business_and_financial_update.pdf": "AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf",
+    "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf": "AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf",
+    "Webslides_Q120_4.28.20_Final.pdf": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf",
+    "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf": "AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf",
+    "Amazon-2021-Annual-Report.pdf": "AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf",
+    "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf": "AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf"
+  },
+  "detailed_results": {
+    "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf": {
+      "original_filename": "d0beb529-c3dc-4cad-96a6-bd1cad50dece.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-07-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-07-30.pdf",
+      "checksum_sha256": "773b77a2ab8182641937af397178674b6758aff39c11a68f9ccc1d5a037c98e8"
+    },
+    "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf": {
+      "original_filename": "5190b8f4-68ff-46f4-b1db-cfa7c2313d09.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q4",
+        "language": "EN",
+        "publication_date": "2022-11-18",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-11-18.pdf",
+      "checksum_sha256": "bdedf41d83c2744ac335c153d87555e11e5dc2c1e2d08150895fddb2bbb38d62"
+    },
+    "34c62081-b46a-453e-852d-f97f6318472a.pdf": {
+      "original_filename": "34c62081-b46a-453e-852d-f97f6318472a.pdf",
+      "new_filename": "AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2081Q0",
+        "language": "EN",
+        "publication_date": "2019-01-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2081Q0_EN_2019-01-31.pdf",
+      "checksum_sha256": "17ad928eb03e396a931d7a6d28fe4c6e9ae2f67a6d7fef01f7c3ce66f1d9b23b"
+    },
+    "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf": {
+      "original_filename": "f07212f7-f853-4056-9a19-aafcd13d4baf.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q4",
+        "language": "EN",
+        "publication_date": "2019-11-15",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-11-15.pdf",
+      "checksum_sha256": "3501de7227389a295ab0cb02fdc64c630dbb50c8f647b1cefad563b3d7f2e309"
+    },
+    "Webslides_Q222_Final.pdf": {
+      "original_filename": "Webslides_Q222_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q2_EN_NA.pdf",
+      "checksum_sha256": "c2a0247d5159858e0c8fe05fbfee38ea6552a9f77233ba98658b31f9420afe74"
+    },
+    "565a358c-5d6b-4860-bf83-d3c56726885c.pdf": {
+      "original_filename": "565a358c-5d6b-4860-bf83-d3c56726885c.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q3",
+        "language": "EN",
+        "publication_date": "2022-10-27",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q3_EN_2022-10-27.pdf",
+      "checksum_sha256": "2bd2c584b4b1e713d902dc83031652e803d83ab9c1c2d8831a759318383d0d7f"
+    },
+    "Amazon-Q4-2020-Earnings-Release.pdf": {
+      "original_filename": "Amazon-Q4-2020-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2020Q4",
+        "language": "EN",
+        "publication_date": "2020-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q4_EN_2020-12-31.pdf",
+      "checksum_sha256": "5144a47c0240a8e919a82dc835db5d90b1790ee71d8201989891b95837122751"
+    },
+    "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf": {
+      "original_filename": "96cf5724-d8f6-41ee-b7e0-cf5791ad7de2.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2019Q3",
+        "language": "EN",
+        "publication_date": "2019-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q3_EN_2019-09-30.pdf",
+      "checksum_sha256": "1f8d27a4aaa004ef2b576a7e4f880cb30ede714913ec07b78430699eb3053eb3"
+    },
+    "14b18b98-7b41-4992-b337-92772da3d3c4.pdf": {
+      "original_filename": "14b18b98-7b41-4992-b337-92772da3d3c4.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q4",
+        "language": "EN",
+        "publication_date": "2022-12-01",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q4_EN_2022-12-01.pdf",
+      "checksum_sha256": "767f2a2ca0fb05bb41cd0f8b72e0cd6955c87848ad90f797144322d365f33356"
+    },
+    "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf": {
+      "original_filename": "5d3782d8-ab75-4914-8f27-a40b68ffe604.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2018Q2",
+        "language": "EN",
+        "publication_date": "2018-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q2_EN_2018-06-30.pdf",
+      "checksum_sha256": "9f05ce0d6cdb73c0a94b30060ec50b65f6ed566fc2a379ba180947b35e258303"
+    },
+    "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf": {
+      "original_filename": "404c1c5d-f9b0-4007-9cf5-d98c9980bbdc.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-05-26",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-26.pdf",
+      "checksum_sha256": "1473a7e325aa994904feb53349a52fe905b32bf978986631c89d7b1d72e76e84"
+    },
+    "Q4-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q4-2022-Amazon-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2022Q4",
+        "language": "EN",
+        "publication_date": "2022-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q4_EN_2022-12-31.pdf",
+      "checksum_sha256": "839e79b3aa699baab10c7f53062973cb7a0d409fd70c0b55f9ab7585816f7c30"
+    },
+    "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf": {
+      "original_filename": "d12301fd-0a65-4663-a65e-4803d0d5a230.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q2",
+        "language": "EN",
+        "publication_date": "2018-07-26",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-07-26.pdf",
+      "checksum_sha256": "5e0d3b15d06f59443cd189696831f94170648cbd66432063673a3a438e9cb5bd"
+    },
+    "Amazon-Q1-2021-Earnings-Release.pdf": {
+      "original_filename": "Amazon-Q1-2021-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2021Q1",
+        "language": "EN",
+        "publication_date": "2021-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q1_EN_2021-03-31.pdf",
+      "checksum_sha256": "adcf089f4d476751eaa871dae1c7eb19318c464e0cee31371ba1592fa185e8c5"
+    },
+    "AMZN-Q3-2020-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q3-2020-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2020Q3",
+        "language": "EN",
+        "publication_date": "2020-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q3_EN_2020-09-30.pdf",
+      "checksum_sha256": "109040102fcd118b8ae6df2a2bb8a1db1c3dab3131ab74d9dca6463faeadfe99"
+    },
+    "913084b6-695f-4a17-b78a-ea6001bc8563.pdf": {
+      "original_filename": "913084b6-695f-4a17-b78a-ea6001bc8563.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q2",
+        "language": "EN",
+        "publication_date": "2019-07-25",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-07-25.pdf",
+      "checksum_sha256": "2120b025da1b802993c7a8ebf257784c68e271e756bb1b38fa9644608525d8c0"
+    },
+    "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf": {
+      "original_filename": "9d8ff4a1-af79-4aa1-8aac-5c4990d64948.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q4",
+        "language": "EN",
+        "publication_date": "2020-01-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2020-01-30.pdf",
+      "checksum_sha256": "00d68d48114c28dbfd2ffc7de5d8a7dc971235a83e5143a6c3d41deda88c3b6f"
+    },
+    "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf": {
+      "original_filename": "4ed1c161-c844-4d68-9d67-099f0c81f863.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "2021-11-10",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-11-10.pdf",
+      "checksum_sha256": "4b780ed9b0a57699756c18b6981d00e1cd482bd0c48e29b51d094b26df45de6e"
+    },
+    "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf": {
+      "original_filename": "6ae98c6e-3c9a-47ab-9647-5bac8555fe61.pdf",
+      "new_filename": "AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2017Q4",
+        "language": "EN",
+        "publication_date": "2018-02-01",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2018-02-01.pdf",
+      "checksum_sha256": "6c5932fa10caad36618ef227b2863b1d1f8be32c98239c2b750f2133f01ddac5"
+    },
+    "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf": {
+      "original_filename": "43ad1005-44ac-4393-a960-3a0c34f003ee.pdf",
+      "new_filename": "AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2017Q4",
+        "language": "EN",
+        "publication_date": "2017-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2017Q4_EN_2017-12-31.pdf",
+      "checksum_sha256": "22f8daeb0a8f9fa6c0891ff6efb54331f58c0c09ce634edb88cb5bc7aa8babc0"
+    },
+    "553e7af3-f707-4ef3-9f94-222888725a97.pdf": {
+      "original_filename": "553e7af3-f707-4ef3-9f94-222888725a97.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2021Q1",
+        "language": "EN",
+        "publication_date": "2021-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q1_EN_2021-03-31.pdf",
+      "checksum_sha256": "1947eacbc229372ad4c6c3dd0f8799b287c8846cab1dcc12862f549633449535"
+    },
+    "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf": {
+      "original_filename": "7171ee4d-274c-4ab0-97e0-8ce5a5f76cb1.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q1",
+        "language": "EN",
+        "publication_date": "2019-04-25",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-25.pdf",
+      "checksum_sha256": "097a890db6afe57b54d79e8dfa6b64cf5d33b3ddfa10a1805548dc06004bea2c"
+    },
+    "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf": {
+      "original_filename": "8ee63b0f-5406-44c6-aaf2-8964e93f4c9f.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2022Q3",
+        "language": "EN",
+        "publication_date": "2022-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q3_EN_2022-09-30.pdf",
+      "checksum_sha256": "ad3c4a5006bbb5419556d9166995cc470a8960a154e64db3b403125d3ac2735d"
+    },
+    "Webslides_Q320_Final.pdf": {
+      "original_filename": "Webslides_Q320_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2020Q3",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q3_EN_NA.pdf",
+      "checksum_sha256": "f23de9b28755a7496853f6203903e11daee7e4927f7e5211ab492739ca2a5f1b"
+    },
+    "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf": {
+      "original_filename": "105ca2e5-1440-4fb5-815f-44f87165ee9a.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "2021-10-28",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-10-28.pdf",
+      "checksum_sha256": "1999987d3a458d3ee6bf16ab687f8f42758b63742b66142d68dd953b2bdcd3ac"
+    },
+    "a5687b24-a117-430f-982c-050072f78482.pdf": {
+      "original_filename": "a5687b24-a117-430f-982c-050072f78482.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q4",
+        "language": "EN",
+        "publication_date": "2020-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q4_EN_2020-12-31.pdf",
+      "checksum_sha256": "41d7541c29283c846179449277260d62d46e38fe151aaf21072518e79cf726bc"
+    },
+    "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf": {
+      "original_filename": "9d58aed2-b312-4a00-a747-26c350ce1af3.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q2",
+        "language": "EN",
+        "publication_date": "2019-05-22",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q2_EN_2019-05-22.pdf",
+      "checksum_sha256": "d27fb0e2080edc12d22a63fdd3f8f17c3912533e9c33532655456e79d64d7718"
+    },
+    "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf": {
+      "original_filename": "89da3ef4-f2ec-419f-b63c-339cb43f189b.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q4",
+        "language": "EN",
+        "publication_date": "2019-02-25",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-25.pdf",
+      "checksum_sha256": "fd89d9a208267b62834935a7ff0396e6de7aec7a22bd8e15477f6eb482c731e0"
+    },
+    "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf": {
+      "original_filename": "02a9f9b9-942a-4ec3-a581-2a148c12f15e.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2019Q1",
+        "language": "EN",
+        "publication_date": "2019-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q1_EN_2019-03-31.pdf",
+      "checksum_sha256": "f1d1d8ccb82c44b534a99b9ee0b6eba3904f27e11b2ba33bb30294762b8c6679"
+    },
+    "Q3-2021-Earnings-Release.pdf": {
+      "original_filename": "Q3-2021-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "2021-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q3_EN_2021-09-30.pdf",
+      "checksum_sha256": "ece546c0206fa2b85e6823df36e976baf867271409c1f69245e6fa0badfa22d2"
+    },
+    "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf": {
+      "original_filename": "5213b2be-7f4f-4500-b5f4-1f9838378eb5.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "2021-01-26",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-01-26.pdf",
+      "checksum_sha256": "f2a1aec46c690cd20420a93ad64f9e12aae10a9027ed31cffb141834b4db4c7f"
+    },
+    "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf": {
+      "original_filename": "f0cf735c-695c-4aca-8226-452ec3e54c96.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q0_EN_NA.pdf",
+      "checksum_sha256": "dad546d75546307f6e34ab5a01de099d2f789504e8869436d2827612b3e79e95"
+    },
+    "Webslides_Q422_Final.pdf": {
+      "original_filename": "Webslides_Q422_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2022Q4",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q4_EN_NA.pdf",
+      "checksum_sha256": "09eaa6b7cc705d0dbf2175bf707bbbaebcf9049b907c34afdc2df4a1b3bd9acd"
+    },
+    "e404e206-f905-48e1-9d66-625cae6034a4.pdf": {
+      "original_filename": "e404e206-f905-48e1-9d66-625cae6034a4.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q3",
+        "language": "EN",
+        "publication_date": "2020-10-29",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-10-29.pdf",
+      "checksum_sha256": "640902bd24d1432d57eecdc372e3e3e5e77b480d5b510f353288e76ab46a90f4"
+    },
+    "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf": {
+      "original_filename": "f93c90a6-78f5-4a7f-b92d-fd26a77ac811.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-06-03",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-03.pdf",
+      "checksum_sha256": "be4e08f1c900d05c34950e1f08edaf0bbfa14f257eb3bffcc6253313d2ce5f7b"
+    },
+    "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf": {
+      "original_filename": "8161a35b-95f1-4ae9-a3b0-3eb213433290.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2018Q1",
+        "language": "EN",
+        "publication_date": "2018-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q1_EN_2018-03-31.pdf",
+      "checksum_sha256": "0629fa284e9bdc7402ebca7fe276f8ebeac66b7efdb3aee74867a1a9b5fa2e04"
+    },
+    "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf": {
+      "original_filename": "51826b3d-98cb-4cac-a49b-80b580e2a8a6.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-07-29",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-07-29.pdf",
+      "checksum_sha256": "39a1fb74890abb7df42a099be53617a36c1c7c91094e477a688b5a377a259949"
+    },
+    "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf": {
+      "original_filename": "336d8745-ea82-40a5-9acc-1a89df23d0f3.pdf",
+      "new_filename": "AMZN_SEC_10-K_2020Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-K",
+        "year_quarter": "2020Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2020Q0_EN_NA.pdf",
+      "checksum_sha256": "d5ee9892f7fe5295ffa6a3a110649030b631acf5ad54cc23964505492028e4b0"
+    },
+    "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf": {
+      "original_filename": "f965e5c3-fded-45d3-bbdb-f750f156dcc9.pdf",
+      "new_filename": "AMZN_SEC_10-K_2021Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-K",
+        "year_quarter": "2021Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2021Q0_EN_NA.pdf",
+      "checksum_sha256": "75d71a60e49bc60d69f6b2a79e38bd73c124ab18ed9f3f3657860614b8404d7a"
+    },
+    "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf": {
+      "original_filename": "25e9e81d-26ab-49dc-8c27-8aa57826fb02.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q3",
+        "language": "EN",
+        "publication_date": "2020-09-09",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q3_EN_2020-09-09.pdf",
+      "checksum_sha256": "78ef52910c86d57502ea45e933279982d39a44e3aea8de81da4e3483240db173"
+    },
+    "AMZN-Q1-2020-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q1-2020-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "2020-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.pdf",
+      "checksum_sha256": "769d46c5230b53ed95037d758ceec667b77635d9c73dfd078197c97fe84def08"
+    },
+    "71652610-1289-4954-a507-54fea0e73120.pdf": {
+      "original_filename": "71652610-1289-4954-a507-54fea0e73120.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q1",
+        "language": "EN",
+        "publication_date": "2020-08-21",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2020-08-21.pdf",
+      "checksum_sha256": "af245ea79e676cb174a918877a4bfa958e004260c2d6653e9912ac8e552bad09"
+    },
+    "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf": {
+      "original_filename": "70ecbdb6-8466-4c9d-b6ff-84b616ff2993.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2019Q2",
+        "language": "EN",
+        "publication_date": "2019-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2019Q2_EN_2019-06-30.pdf",
+      "checksum_sha256": "96fd66d1f33b826de971e4060d1bc629f6f2b0ef67da0200078f7a95f3f656f5"
+    },
+    "Q3-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q3-2022-Amazon-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2022Q3",
+        "language": "EN",
+        "publication_date": "2022-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q3_EN_2022-09-30.pdf",
+      "checksum_sha256": "f324dc2e330830e96014662343c01c12bc1b2316ba1647249dece0fb85e3efdf"
+    },
+    "52868cab-94f2-40aa-800f-a77fb600dffe.pdf": {
+      "original_filename": "52868cab-94f2-40aa-800f-a77fb600dffe.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "2021-09-20",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-09-20.pdf",
+      "checksum_sha256": "55ccad1e340394f3b3bb0281616052e1a991f549836c66ddf60c75fcb3543481"
+    },
+    "4d39f579-19d8-4119-b087-ee618abf82d6.pdf": {
+      "original_filename": "4d39f579-19d8-4119-b087-ee618abf82d6.pdf",
+      "new_filename": "AMZN_SEC_10-K_2019Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-K",
+        "year_quarter": "2019Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2019Q0_EN_NA.pdf",
+      "checksum_sha256": "d7df8c6cf3e351a8d68c7473be4159723d545260a32dbc82a8dd11c254c5584a"
+    },
+    "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf": {
+      "original_filename": "f6c12bbc-aa86-4f1a-8d28-f790dab31a24.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "2022-03-09",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-03-09.pdf",
+      "checksum_sha256": "26a2499983c76f41f62bd1d462004caec3dc0fc59e877426e1ca8b114745c8c5"
+    },
+    "Webslides_Q321_Final.pdf": {
+      "original_filename": "Webslides_Q321_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q3_EN_NA.pdf",
+      "checksum_sha256": "851d29751af1c081909afeae832360f8705f23467d51f9c879a477e82edfc1b6"
+    },
+    "31c17ff9-db41-43c1-889e-a2e898c01014.pdf": {
+      "original_filename": "31c17ff9-db41-43c1-889e-a2e898c01014.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "2021-02-02",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q3_EN_2021-02-02.pdf",
+      "checksum_sha256": "caeb28db37f8d40079b0f3fa714179b09a9e64d5ec13f58fee4a4912b8851bfb"
+    },
+    "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf": {
+      "original_filename": "f03312b8-5e58-4cf8-872a-851c5072ff44.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q3",
+        "language": "EN",
+        "publication_date": "2019-10-24",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q3_EN_2019-10-24.pdf",
+      "checksum_sha256": "332224f81c045906c35bf2f3b803de07d0168c6c1947f4c8dbc1464e7c8caf84"
+    },
+    "Q2-2020-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q2-2020-Amazon-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2020Q2_EN_2020-06-30.pdf",
+      "checksum_sha256": "02e9b33fb387f352cf462d07cd4be7cf5b89fe94bc8f803e8710fca226f833b8"
+    },
+    "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf": {
+      "original_filename": "5af6f7bf-9319-4744-a54d-40cfe348a6d1.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q4",
+        "language": "EN",
+        "publication_date": "2019-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-12-31.pdf",
+      "checksum_sha256": "e87ee30f5975c4a4babc6e941cb6850d42952ee9f02a28646bdf5c7c271311f3"
+    },
+    "Webslides_Q122_Final.pdf": {
+      "original_filename": "Webslides_Q122_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q1_EN_NA.pdf",
+      "checksum_sha256": "f698487df9c32e26831f1527fb7dcb9fecc46c36f7baadb188d38dd73d21e233"
+    },
+    "Webslides_Q421_Final.pdf": {
+      "original_filename": "Webslides_Q421_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q4_EN_NA.pdf",
+      "checksum_sha256": "13a9b75618d1a685135374ce3093ced9f635ebfe6f0d1530fbd24c0a4ba589d4"
+    },
+    "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf": {
+      "original_filename": "77bfa756-6578-4188-b40b-73d981b2a5c5.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "2019-07-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2019-07-31.pdf",
+      "checksum_sha256": "9c7c54e38d7102a89bdb1c4a0f1f5c5a4651c4ebc14e1bf388604bf16f0a3302"
+    },
+    "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf": {
+      "original_filename": "0fcecec8-0ae1-4c23-904c-a5392f63685e.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "2022-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q1_EN_2022-03-31.pdf",
+      "checksum_sha256": "d8f8d7c444e6b8509f185749b4444ca9e5ec1616edd78c6818d005c718bc6e89"
+    },
+    "AMZN-Q2-2021-Earnings-Release.pdf": {
+      "original_filename": "AMZN-Q2-2021-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2021Q2_EN_2021-06-30.pdf",
+      "checksum_sha256": "2f115397c6eeb2982a5a88e63d10974f8b521575792daf4cc7d1fd715f3e1038"
+    },
+    "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf": {
+      "original_filename": "1fa7b6fe-5a32-4fd7-8429-317d06b34e6c.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-05-25",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-05-25.pdf",
+      "checksum_sha256": "4514a5b21f0053706ae6a5d59c642b9547a6e94138d1240fb9654caa01962125"
+    },
+    "Webslides_Q220_Final.pdf": {
+      "original_filename": "Webslides_Q220_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q2_EN_NA.pdf",
+      "checksum_sha256": "a40a1a07e5cedf8e904f5fa22f9a59df3b1f09faff1cfa2447034947694803f0"
+    },
+    "Amazon-2022-Annual-Report.pdf": {
+      "original_filename": "Amazon-2022-Annual-Report.pdf",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2022Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2022Q0_EN_NA.pdf",
+      "checksum_sha256": "03401abb4272daad181f08878a2aef0382616accf4c9c8852b417b8558bae329"
+    },
+    "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf": {
+      "original_filename": "bcbe1eb8-395f-4ab4-ab7e-0323922d8625.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q1",
+        "language": "EN",
+        "publication_date": "2021-04-29",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q1_EN_2021-04-29.pdf",
+      "checksum_sha256": "e654103faa1f1b35bd167b5b3502407db2a0cedc44a4f2788130de8e92b7021a"
+    },
+    "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf": {
+      "original_filename": "04dded27-ad4b-4cb0-90f7-9a057a60ea22.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-06-03",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-06-03.pdf",
+      "checksum_sha256": "00969b31216ed441277c061253584bd25ecf07634b14f8eb716d3d96cf763291"
+    },
+    "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf": {
+      "original_filename": "6bf2127a-5fe4-4735-9adc-c8e1c92d2f22.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q3",
+        "language": "EN",
+        "publication_date": "2018-10-25",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q3_EN_2018-10-25.pdf",
+      "checksum_sha256": "16f0fe88dc13c5f31d7d63a2a410618c5431ca72d72b9d15c6029d6367b04ca2"
+    },
+    "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf": {
+      "original_filename": "be4a4c89-a004-40e3-b7a2-151dab00ffe6.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q2",
+        "language": "EN",
+        "publication_date": "2018-05-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q2_EN_2018-05-30.pdf",
+      "checksum_sha256": "b553df856c95b04d7646e8bcbcfb06ac1adaed267e60f5ae65e35fd1376e2842"
+    },
+    "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf": {
+      "original_filename": "10dd632a-b6c6-4ea9-954f-24edd07c4698.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-05-12",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q2_EN_2021-05-12.pdf",
+      "checksum_sha256": "75f112b982177cdd21f633e1a12924ae8b73040fc74bdfe6b801092858a7d2a1"
+    },
+    "c52f1c77-a622-484c-9e53-397bde0409a3.pdf": {
+      "original_filename": "c52f1c77-a622-484c-9e53-397bde0409a3.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "2022-04-13",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-13.pdf",
+      "checksum_sha256": "fe5c7e1f9671dc26a5e478496c491ef837bc82af1a2837eaf3f8b87f7c37f740"
+    },
+    "Q1-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q1-2022-Amazon-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "2022-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q1_EN_2022-03-31.pdf",
+      "checksum_sha256": "11c5a5a6a51b25ef005caa8f1808cd5c030cb1560179f51429ddbcff5cd30760"
+    },
+    "Webslides_Q121_Final.pdf": {
+      "original_filename": "Webslides_Q121_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2021Q1",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q1_EN_NA.pdf",
+      "checksum_sha256": "a3da25f4e29c70e40ae825d04b4176a23d122a495723a046d9be467d0819b20e"
+    },
+    "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf": {
+      "original_filename": "708a19c5-7d8c-4fc9-ab37-bfaa7a31629b.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "2020-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q1_EN_2020-03-31.pdf",
+      "checksum_sha256": "4f955b3449c7e2ff84b983cc2fe3fe1e5f81995e6fe9044e18762bcbfb9753a6"
+    },
+    "06c52e44-38c4-42b0-90c4-14916435e83e.pdf": {
+      "original_filename": "06c52e44-38c4-42b0-90c4-14916435e83e.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2021Q3",
+        "language": "EN",
+        "publication_date": "2021-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q3_EN_2021-09-30.pdf",
+      "checksum_sha256": "89f9a126e72fddf1b4b851c38a3350ca660b36a07b551b514b5e83d6dfc77bf0"
+    },
+    "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf": {
+      "original_filename": "cc632bf0-fa99-4efd-a0cf-fce235e45116.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2018Q3",
+        "language": "EN",
+        "publication_date": "2018-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2018Q3_EN_2018-09-30.pdf",
+      "checksum_sha256": "20ae923f199c4b61d6c12a5e6c32b77cd4a107f5d9d684608a83a77ff067148f"
+    },
+    "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf": {
+      "original_filename": "b2b54d4e-38e4-4f6d-a3f6-1bbcdee47a09.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q1",
+        "language": "EN",
+        "publication_date": "2022-04-28",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q1_EN_2022-04-28.pdf",
+      "checksum_sha256": "9491e932b9c5f15116e488a54c87c93552e384ab543a133f04735d0d9adb57d7"
+    },
+    "Webslides_Q322_Final.pdf": {
+      "original_filename": "Webslides_Q322_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2022Q3",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2022Q3_EN_NA.pdf",
+      "checksum_sha256": "36d06ae0d24870fb26fa01599c1ab578c333c37bb9cf2d1dd52f431065dc6084"
+    },
+    "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf": {
+      "original_filename": "ab0ecae2-afd2-4bef-924c-d3655b4849ce.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q4",
+        "language": "EN",
+        "publication_date": "2018-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q4_EN_2018-12-31.pdf",
+      "checksum_sha256": "ff435aa698eca8d3ac1db6f354fd0541f61563dc3ae07e61b07034ef95e28bad"
+    },
+    "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf": {
+      "original_filename": "9a5282d4-3bfb-4b58-af7e-1aad047c6b6a.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "2021-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2021-12-31.pdf",
+      "checksum_sha256": "4f69457e8ef94e11da8c04f15d7f5599f5e6779b28b080a0020a266cc31e123a"
+    },
+    "Webslides_Q420_Final.pdf": {
+      "original_filename": "Webslides_Q420_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2020Q4",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q4_EN_NA.pdf",
+      "checksum_sha256": "f6123d1b20c0b2ae72580f24c0dc9f3617671cdb824d790567098fdc12e09b54"
+    },
+    "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf": {
+      "original_filename": "2ee5455d-dee2-495f-8dcf-b3c0a9fbdf55.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2020Q3",
+        "language": "EN",
+        "publication_date": "2020-09-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q3_EN_2020-09-30.pdf",
+      "checksum_sha256": "a54d525b36b4cd868e28acc41fabafbe5ee97efffa0329f140ff0312a2f239ec"
+    },
+    "Webslides_Q221_Final.pdf": {
+      "original_filename": "Webslides_Q221_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2021Q2_EN_NA.pdf",
+      "checksum_sha256": "2f87ce4dbe03cc2e22749b4367bcabb23a39f37fc561c037dedb4db95794153a"
+    },
+    "2019-Annual-Report.pdf": {
+      "original_filename": "2019-Annual-Report.pdf",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2019Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_NA.pdf",
+      "checksum_sha256": "b91eea48417c0263f89d2c1fc89c506ab65c87d889cf9f531533e2bc6033d4f1"
+    },
+    "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf": {
+      "original_filename": "9cd9f564-42c2-46a7-856e-7880f5e54bf6.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q1",
+        "language": "EN",
+        "publication_date": "2018-04-27",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-27.pdf",
+      "checksum_sha256": "cedfcb3480490492e8eabf4a402fad956ce17538b436738495bae6015102153d"
+    },
+    "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf": {
+      "original_filename": "1be91eeb-8ca9-4fd0-911c-6cf16fb9ac18.pdf",
+      "new_filename": "AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2018Q1",
+        "language": "EN",
+        "publication_date": "2018-04-26",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2018Q1_EN_2018-04-26.pdf",
+      "checksum_sha256": "63a084b1575d8605d0a7563b13c73651c3e1a5eb6e7559fa87dcf01ff6d358c2"
+    },
+    "Q2-2022-Amazon-Earnings-Release.pdf": {
+      "original_filename": "Q2-2022-Amazon-Earnings-Release.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_RELEASE_2022Q2_EN_2022-06-30.pdf",
+      "checksum_sha256": "22ca529119a5a891b00b1b8d24f60a4b1b6821fa7fe80dbd6400dcbf3cbb973d"
+    },
+    "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf": {
+      "original_filename": "34bc6b9b-884c-4f1a-a264-90174aebf4c3.pdf",
+      "new_filename": "AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "2022-02-03",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2021Q4_EN_2022-02-03.pdf",
+      "checksum_sha256": "f6d396dca81dcb658832842358a70de2170cfcd8d6f20da14c058d20c812c9ca"
+    },
+    "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf": {
+      "original_filename": "a77b5839-99b8-4851-8f37-0b012f9292b9.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2020Q2_EN_2020-06-30.pdf",
+      "checksum_sha256": "482b6bc58eb5a37da4d95d7e761f0ad928b83a956a8c537acbb1546808ebc918"
+    },
+    "Amazon-2020-Annual-Report.pdf": {
+      "original_filename": "Amazon-2020-Annual-Report.pdf",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2020Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2020Q0_EN_NA.pdf",
+      "checksum_sha256": "520f0766603b9384cadc97fc5b0dbbb92c5e189c56f2030c2d6a1d2d5640973b"
+    },
+    "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf": {
+      "original_filename": "cbae1abf-eddb-4451-9186-6753b02cc4eb.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2021Q2_EN_2021-06-30.pdf",
+      "checksum_sha256": "e3c9c23416bf216cb9cf8cf4764dc3e51c1f5e3d160530e65d4d5a060a2b438e"
+    },
+    "fdf2620f-0d70-496b-9150-39fd9a605487.pdf": {
+      "original_filename": "fdf2620f-0d70-496b-9150-39fd9a605487.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "2020-04-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q1_EN_2020-04-30.pdf",
+      "checksum_sha256": "e254760f782a31bd7b261ee29992fa4e2f8045c527414a93480481273f52f829"
+    },
+    "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf": {
+      "original_filename": "56f9e4fc-22e2-46e8-9a3d-8112bacd7568.pdf",
+      "new_filename": "AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-Q",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-06-30",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-Q_2022Q2_EN_2022-06-30.pdf",
+      "checksum_sha256": "68c564ad8ca9cdfea433385e9a5350aca1f2df3b3a22e963b0f0c7d6b67c7e85"
+    },
+    "bed19367-fa6b-41ff-a973-df19510b0bba.pdf": {
+      "original_filename": "bed19367-fa6b-41ff-a973-df19510b0bba.pdf",
+      "new_filename": "AMZN_SEC_10-K_2018Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-K",
+        "year_quarter": "2018Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2018Q0_EN_NA.pdf",
+      "checksum_sha256": "d7dc1d663a423a54a5a865a2374ed7334e875f632515848ebab8fcbca2432c7a"
+    },
+    "2018-Annual-Report.pdf": {
+      "original_filename": "2018-Annual-Report.pdf",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2018Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2018Q0_EN_NA.pdf",
+      "checksum_sha256": "489fbf0ba75c2cbd61f03f567dbadf179130f15cc73a40301f4338d299165fac"
+    },
+    "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf": {
+      "original_filename": "d2fde7ee-05f7-419d-9ce8-186de4c96e25.pdf",
+      "new_filename": "AMZN_SEC_10-K_2022Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "10-K",
+        "year_quarter": "2022Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_10-K_2022Q0_EN_NA.pdf",
+      "checksum_sha256": "084ef3d6031c4b57169b32ae6a878a86ebbcbc7bb868030e3170d04392b4096e"
+    },
+    "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf": {
+      "original_filename": "1b556ad1-0c9e-4e7e-bd8b-3c7a70f378f9.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q1",
+        "language": "EN",
+        "publication_date": "2019-04-04",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q1_EN_2019-04-04.pdf",
+      "checksum_sha256": "414ed539db729b5860a7567d07cf8c0f91ee530e225eb31bc91043f8234c1a64"
+    },
+    "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf": {
+      "original_filename": "22b53a01-dd55-4b72-8a2e-1a909ed25bcd.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-06-23",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-06-23.pdf",
+      "checksum_sha256": "443284a22f367e6bf01765d64e29ef6ac4cb1b35c9b3568b8bcb9d561170c111"
+    },
+    "business_and_financial_update.pdf": {
+      "original_filename": "business_and_financial_update.pdf",
+      "new_filename": "AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "SEC_FILING",
+        "year_quarter": "2021Q4",
+        "language": "EN",
+        "publication_date": "2021-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_SEC_FILING_2021Q4_EN_2021-12-31.pdf",
+      "checksum_sha256": "b3a841007f158a00f3d81da7ea17f4fb9e158b183d3b9ca158fb42b4ee2d3e86"
+    },
+    "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf": {
+      "original_filename": "7082ef14-c744-44e6-964f-532fd4ce7e2e.pdf",
+      "new_filename": "AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2020Q2",
+        "language": "EN",
+        "publication_date": "2020-05-27",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2020Q2_EN_2020-05-27.pdf",
+      "checksum_sha256": "07e5a83b05bb6ced8e8503671189a25da956f0003d2fadc04ca40250f12ef074"
+    },
+    "Webslides_Q120_4.28.20_Final.pdf": {
+      "original_filename": "Webslides_Q120_4.28.20_Final.pdf",
+      "new_filename": "AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_PRESENTATION",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_EARNINGS_PRESENTATION_2020Q1_EN_NA.pdf",
+      "checksum_sha256": "5cd5373c3d6a4bf1249777d82a6463a3593ba5464b71527d397351256c5aaea1"
+    },
+    "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf": {
+      "original_filename": "d70ea3ed-f919-43fe-82aa-6633ae22ae9d.pdf",
+      "new_filename": "AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2019Q4",
+        "language": "EN",
+        "publication_date": "2019-02-04",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2019Q4_EN_2019-02-04.pdf",
+      "checksum_sha256": "39ab1dd941fc9389b4c6e3ae33190a7c0940a0574b4f384223620314acb0f46a"
+    },
+    "Amazon-2021-Annual-Report.pdf": {
+      "original_filename": "Amazon-2021-Annual-Report.pdf",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2021Q0",
+        "language": "EN",
+        "publication_date": "NA",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_ANNUAL_REPORT_2021Q0_EN_NA.pdf",
+      "checksum_sha256": "9d6f8429cb68fdce50545bd50b1a684eeba0a74362d7f811a7df0368fd7bde7b"
+    },
+    "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf": {
+      "original_filename": "a4268c51-0bbe-4d3c-916e-caadda9ffc62.pdf",
+      "new_filename": "AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "8-K",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-07-28",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Success",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/new/AMZN_SEC_8-K_2022Q2_EN_2022-07-28.pdf",
+      "checksum_sha256": "ee893cf8135c148f9263f01658f959e66b48edd73a5ebcffbf878d63ab03ba77"
+    }
+  }
+}
