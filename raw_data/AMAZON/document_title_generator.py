@@ -19,11 +19,20 @@ import os
 import re
 import json
 import shutil
+import tarfile
 import argparse
 import logging
+import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Dict, Tuple, List
 from dataclasses import dataclass, asdict
+from uuid import uuid4
+
+try:
+    import zstandard as zstd
+except ImportError:
+    zstd = None  # type: ignore
 
 # Document processing libraries
 import pdfplumber
@@ -50,6 +59,18 @@ SUPPORTED_EXTENSIONS = {".txt", ".pdf", ".docx"}
 # Default values
 DEFAULT_TICKER = "AMZN"
 DEFAULT_LANGUAGE = "EN"
+
+# Quickfinder grouping fields (metadata keys)
+GROUP_BY_FIELDS = (
+    "ticker",
+    "doc_category",
+    "publisher",
+    "report_type",
+    "year_quarter",
+)
+
+DEFAULT_GROUP_BY = ("ticker", "doc_category", "year_quarter")
+MANIFEST_VERSION = "1.0"
 
 # =============================================================================
 # PUBLISHER MAPPINGS
@@ -933,7 +954,8 @@ class DocumentRenamer:
 def copy_files_with_new_names(
     results: Dict[str, dict],
     source_dir: Path,
-    dest_dir: Path
+    dest_dir: Path,
+    dry_run: bool = False,
 ) -> Dict[str, dict]:
     """
     Copy all successfully processed files to destination with standardized names.
@@ -942,28 +964,27 @@ def copy_files_with_new_names(
         results: Dictionary of processing results from process_directory
         source_dir: Source directory containing original files
         dest_dir: Destination directory for renamed copies
+        dry_run: If True, plan copies without writing files
         
     Returns:
         Updated results dictionary with copy status
     """
-    logger.info(f"Copying files to: {dest_dir}")
+    action = "Planning copies for" if dry_run else "Copying files to"
+    logger.info(f"{action}: {dest_dir}")
     
-    # Create destination directory
-    dest_dir.mkdir(parents=True, exist_ok=True)
+    if not dry_run:
+        dest_dir.mkdir(parents=True, exist_ok=True)
     
     copy_count = 0
     
     for filename, data in results.items():
-        # Only copy files that have new filenames
         if not data.get("new_filename"):
             data["copy_status"] = "Skipped - no filename generated"
             data["new_path"] = None
             continue
         
-        # Determine source path
         source_path = source_dir / filename
         if not source_path.exists():
-            # Try with full relative path (for recursive processing)
             source_path = source_dir / Path(filename)
         
         if not source_path.exists():
@@ -971,35 +992,324 @@ def copy_files_with_new_names(
             data["new_path"] = None
             continue
         
-        # Construct destination path
         new_filename = data["new_filename"]
         dest_path = dest_dir / new_filename
         
-        # Handle filename conflicts by appending a counter
         counter = 1
         base_name = dest_path.stem
         extension = dest_path.suffix
-        while dest_path.exists():
+        while dest_path.exists() and not dry_run:
             dest_path = dest_dir / f"{base_name}_{counter}{extension}"
             counter += 1
             if counter > 1000:
                 data["copy_status"] = "Too many filename conflicts"
                 data["new_path"] = None
-                continue
+                break
+        else:
+            try:
+                if dry_run:
+                    data["copy_status"] = "Dry run - would copy"
+                    data["new_path"] = str(dest_path)
+                    copy_count += 1
+                    logger.info(f"  [dry-run] {filename} -> {dest_path.name}")
+                else:
+                    shutil.copy2(source_path, dest_path)
+                    data["copy_status"] = "Success"
+                    data["new_path"] = str(dest_path)
+                    data["checksum_sha256"] = file_sha256(dest_path)
+                    copy_count += 1
+                    logger.info(f"Copied: {filename} -> {dest_path.name}")
+            except Exception as e:
+                data["copy_status"] = f"Copy failed: {str(e)}"
+                data["new_path"] = None
+    
+    logger.info(f"{'Planned' if dry_run else 'Successfully copied'} {copy_count} files")
+    return results
+
+
+# =============================================================================
+# QUICKFINDER, ARCHIVES, MANIFEST, ROLLBACK
+# =============================================================================
+
+def file_sha256(path: Path) -> str:
+    """Compute SHA-256 hex digest for a file."""
+    digest = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def parse_group_by(group_by_arg: Optional[str]) -> Tuple[str, ...]:
+    """Parse comma-separated group-by field names."""
+    if not group_by_arg:
+        return DEFAULT_GROUP_BY
+    fields = tuple(f.strip() for f in group_by_arg.split(",") if f.strip())
+    invalid = [f for f in fields if f not in GROUP_BY_FIELDS]
+    if invalid:
+        raise ValueError(
+            f"Invalid group-by field(s): {invalid}. "
+            f"Choose from: {', '.join(GROUP_BY_FIELDS)}"
+        )
+    return fields
+
+
+def quickfinder_group_key(metadata: Optional[dict], group_by: Tuple[str, ...]) -> str:
+    """Build a stable group id from document metadata."""
+    if not metadata:
+        return "UNGROUPED"
+    parts = []
+    for field in group_by:
+        value = metadata.get(field) or "UNKNOWN"
+        safe = re.sub(r"[^\w\-]+", "_", str(value).strip())
+        parts.append(safe)
+    return "_".join(parts)
+
+
+def quickfinder_group_results(
+    results: Dict[str, dict],
+    group_by: Tuple[str, ...],
+) -> Dict[str, List[str]]:
+    """
+    Group processed files by metadata (Quickfinder).
+    
+    Returns:
+        Map of group_id -> list of result keys (original paths/filenames)
+    """
+    groups: Dict[str, List[str]] = {}
+    for key, data in results.items():
+        if not data.get("new_filename"):
+            continue
+        group_id = quickfinder_group_key(data.get("metadata"), group_by)
+        groups.setdefault(group_id, []).append(key)
+    return dict(sorted(groups.items()))
+
+
+def create_tar_zst_archive(
+    file_paths: List[Path],
+    archive_path: Path,
+    dry_run: bool = False,
+) -> Optional[str]:
+    """
+    Create a .tar.zst archive from the given files.
+    
+    Returns:
+        SHA-256 of archive, or None if dry-run / failure
+    """
+    if zstd is None:
+        raise ImportError(
+            "zstandard is required for .tar.zst archives. "
+            "Install with: pip install zstandard"
+        )
+    if not file_paths:
+        return None
+    
+    if dry_run:
+        logger.info(f"  [dry-run] Would create archive: {archive_path} ({len(file_paths)} files)")
+        return None
+    
+    archive_path.parent.mkdir(parents=True, exist_ok=True)
+    cctx = zstd.ZstdCompressor(level=3)
+    
+    with open(archive_path, "wb") as out_f:
+        with cctx.stream_writer(out_f) as compressor:
+            with tarfile.open(fileobj=compressor, mode="w|") as tar:
+                for path in sorted(file_paths):
+                    tar.add(path, arcname=path.name)
+    
+    return file_sha256(archive_path)
+
+
+def create_group_archives(
+    results: Dict[str, dict],
+    groups: Dict[str, List[str]],
+    archive_dir: Path,
+    dry_run: bool = False,
+) -> Dict[str, dict]:
+    """
+    Create one .tar.zst archive per Quickfinder group from renamed copies.
+    
+    Returns:
+        Per-group archive metadata keyed by group_id
+    """
+    archive_meta: Dict[str, dict] = {}
+    archive_dir = archive_dir.resolve()
+    
+    if not dry_run:
+        archive_dir.mkdir(parents=True, exist_ok=True)
+    
+    for group_id, keys in groups.items():
+        file_paths: List[Path] = []
+        for key in keys:
+            new_path = results[key].get("new_path")
+            if new_path and Path(new_path).exists():
+                file_paths.append(Path(new_path))
+            elif dry_run and results[key].get("new_filename"):
+                # Dry-run: archive path may not exist yet; use planned path
+                planned = results[key].get("new_path")
+                if planned:
+                    file_paths.append(Path(planned))
+        
+        if not file_paths and not dry_run:
+            archive_meta[group_id] = {
+                "archive_path": None,
+                "status": "Skipped - no files on disk",
+                "file_count": 0,
+            }
+            continue
+        
+        archive_name = f"{group_id}.tar.zst"
+        archive_path = archive_dir / archive_name
         
         try:
-            # Copy the file
-            shutil.copy2(source_path, dest_path)
-            data["copy_status"] = "Success"
-            data["new_path"] = str(dest_path)
-            copy_count += 1
-            logger.info(f"Copied: {filename} -> {dest_path.name}")
+            checksum = create_tar_zst_archive(file_paths, archive_path, dry_run=dry_run)
+            archive_meta[group_id] = {
+                "archive_path": str(archive_path),
+                "status": "Dry run - would create" if dry_run else "Success",
+                "file_count": len(keys),
+                "checksum_sha256": checksum,
+            }
+            if not dry_run:
+                logger.info(f"Archive: {archive_path.name} ({len(file_paths)} files)")
         except Exception as e:
-            data["copy_status"] = f"Copy failed: {str(e)}"
-            data["new_path"] = None
+            logger.error(f"Archive failed for {group_id}: {e}")
+            archive_meta[group_id] = {
+                "archive_path": None,
+                "status": f"Failed: {e}",
+                "file_count": len(keys),
+            }
     
-    logger.info(f"Successfully copied {copy_count} files to {dest_dir}")
-    return results
+    return archive_meta
+
+
+def build_job_manifest(
+    job_id: str,
+    input_path: Path,
+    ticker: str,
+    results: Dict[str, dict],
+    group_by: Tuple[str, ...],
+    groups: Dict[str, List[str]],
+    archive_meta: Optional[Dict[str, dict]] = None,
+    dry_run: bool = False,
+    copy_to_dir: Optional[Path] = None,
+    archive_dir: Optional[Path] = None,
+) -> dict:
+    """Build full audit manifest for a rename/compress job."""
+    artifacts: List[dict] = []
+    
+    for _key, data in results.items():
+        if data.get("new_path") and data.get("copy_status", "").startswith(("Success", "Dry run")):
+            artifacts.append({
+                "type": "renamed_copy",
+                "path": data["new_path"],
+                "original": data.get("original_filename"),
+            })
+    
+    if archive_meta:
+        for group_id, meta in archive_meta.items():
+            if meta.get("archive_path"):
+                artifacts.append({
+                    "type": "archive",
+                    "path": meta["archive_path"],
+                    "group_id": group_id,
+                })
+    
+    return {
+        "manifest_version": MANIFEST_VERSION,
+        "job_id": job_id,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "dry_run": dry_run,
+        "input_path": str(input_path.resolve()),
+        "ticker": ticker,
+        "group_by": list(group_by),
+        "copy_to_dir": str(copy_to_dir.resolve()) if copy_to_dir else None,
+        "archive_dir": str(archive_dir.resolve()) if archive_dir else None,
+        "summary": {
+            "total_processed": len(results),
+            "successful": sum(1 for r in results.values() if r.get("new_filename")),
+            "failed": sum(1 for r in results.values() if not r.get("new_filename")),
+            "groups": len(groups),
+            "archives_created": sum(
+                1 for m in (archive_meta or {}).values()
+                if m.get("archive_path") and "Success" in m.get("status", "")
+            ),
+        },
+        "quickfinder_groups": {
+            gid: {
+                "file_count": len(keys),
+                "files": [
+                    {
+                        "original": results[k].get("original_filename"),
+                        "new_filename": results[k].get("new_filename"),
+                        "new_path": results[k].get("new_path"),
+                    }
+                    for k in keys
+                ],
+                "archive": (archive_meta or {}).get(gid),
+            }
+            for gid, keys in groups.items()
+        },
+        "artifacts": artifacts,
+        "filename_mapping": {
+            k: v["new_filename"]
+            for k, v in results.items()
+            if v.get("new_filename")
+        },
+        "detailed_results": results,
+    }
+
+
+def save_job_manifest(manifest: dict, output_file: Path) -> None:
+    """Write job manifest JSON to disk."""
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    logger.info(f"Job manifest saved to: {output_file}")
+
+
+def rollback_from_manifest(manifest_path: Path) -> int:
+    """
+    Roll back a previous job by removing artifacts listed in the manifest.
+    
+    Original source files are never deleted (only copies and archives).
+    
+    Returns:
+        Number of artifacts removed
+    """
+    manifest_path = manifest_path.resolve()
+    if not manifest_path.exists():
+        raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+    
+    with open(manifest_path, encoding="utf-8") as f:
+        manifest = json.load(f)
+    
+    if manifest.get("dry_run"):
+        logger.warning("Manifest is from a dry-run job; nothing to remove.")
+        return 0
+    
+    removed = 0
+    for artifact in manifest.get("artifacts", []):
+        path = Path(artifact["path"])
+        if path.exists():
+            if path.is_file():
+                path.unlink()
+                logger.info(f"Removed: {path}")
+                removed += 1
+            elif path.is_dir():
+                shutil.rmtree(path)
+                logger.info(f"Removed directory: {path}")
+                removed += 1
+    
+    # Remove empty archive directory if applicable
+    archive_dir = manifest.get("archive_dir")
+    if archive_dir:
+        ad = Path(archive_dir)
+        if ad.exists() and ad.is_dir() and not any(ad.iterdir()):
+            ad.rmdir()
+            logger.info(f"Removed empty archive dir: {ad}")
+    
+    logger.info(f"Rollback complete: {removed} artifact(s) removed")
+    return removed
 
 
 # =============================================================================
@@ -1130,35 +1440,28 @@ def process_directory(
 
 def save_results(results: Dict[str, dict], output_file: Optional[Path]):
     """
-    Save the results to a JSON file.
+    Save the results to a JSON file (legacy format).
     
-    Creates a mapping of original filenames to new standardized filenames,
-    along with detailed metadata information.
-    
-    Args:
-        results: Dictionary of processing results
-        output_file: Path to output JSON file (if None, skip saving)
+    Prefer save_job_manifest() for full audit trails.
     """
     if output_file is None:
         return
-    
-    # Create output directory if needed
-    output_file.parent.mkdir(parents=True, exist_ok=True)
     
     output_data = {
         "summary": {
             "total_processed": len(results),
             "successful": sum(1 for r in results.values() if r.get("new_filename")),
-            "failed": sum(1 for r in results.values() if not r.get("new_filename"))
+            "failed": sum(1 for r in results.values() if not r.get("new_filename")),
         },
         "filename_mapping": {
-            k: v["new_filename"] 
-            for k, v in results.items() 
+            k: v["new_filename"]
+            for k, v in results.items()
             if v.get("new_filename")
         },
-        "detailed_results": results
+        "detailed_results": results,
     }
     
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     
@@ -1230,11 +1533,11 @@ def parse_arguments():
         epilog="""
 Examples:
   %(prog)s ./documents                              # Process all files in directory
-  %(prog)s ./document.pdf                           # Process a single file
-  %(prog)s ./documents -o results.json              # Custom output file
-  %(prog)s ./document.pdf --copy-to ./renamed       # Copy with new filename
-  %(prog)s ./documents --copy-to ./renamed --recursive  # Process and copy all
-  %(prog)s ./documents --ticker AMD                 # Use different ticker
+  %(prog)s ./documents --copy-to ./renamed          # Copy with standardized names
+  %(prog)s ./documents --copy-to ./renamed --archive --archive-dir ./archives
+  %(prog)s ./documents --dry-run --copy-to ./out    # Preview without writing files
+  %(prog)s ./documents --group-by ticker,year_quarter,publisher
+  %(prog)s --rollback job_manifest.json             # Remove outputs from a prior job
 
 Output filename format:
   {ticker}_{publisher}_{report_type}_{year_quarter}_{language}_{publication_date}.{ext}
@@ -1246,6 +1549,8 @@ Output filename format:
     parser.add_argument(
         "input_path",
         type=str,
+        nargs="?",
+        default=None,
         help="Path to a document file OR directory containing documents"
     )
     
@@ -1282,91 +1587,246 @@ Output filename format:
         help="Copy files with standardized names to this directory"
     )
     
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview renames, copies, and archives without writing files"
+    )
+    
+    parser.add_argument(
+        "--group-by",
+        type=str,
+        default=None,
+        help=(
+            "Quickfinder: comma-separated metadata fields to group files "
+            f"(default: {','.join(DEFAULT_GROUP_BY)}). "
+            f"Options: {', '.join(GROUP_BY_FIELDS)}"
+        ),
+    )
+    
+    parser.add_argument(
+        "--archive",
+        action="store_true",
+        help="Create .tar.zst archive per Quickfinder group (requires --copy-to)"
+    )
+    
+    parser.add_argument(
+        "--archive-dir",
+        type=str,
+        default="archives",
+        help="Directory for group archives (default: ./archives)"
+    )
+    
+    parser.add_argument(
+        "--rollback",
+        type=str,
+        metavar="MANIFEST",
+        help="Remove copies/archives created by a previous job (from manifest JSON)"
+    )
+    
     return parser.parse_args()
+
+
+@dataclass
+class JobConfig:
+    """Configuration for a rename / archive job."""
+    input_path: Path
+    output_file: Path
+    ticker: str = DEFAULT_TICKER
+    recursive: bool = True
+    copy_to_dir: Optional[Path] = None
+    archive: bool = False
+    archive_dir: Optional[Path] = None
+    dry_run: bool = False
+    group_by: Optional[str] = None
+
+
+def run_job(config: JobConfig) -> dict:
+    """
+    Run the full rename pipeline (metadata, copy, group, archive, manifest).
+    
+    Returns:
+        Job manifest dictionary
+        
+    Raises:
+        FileNotFoundError, ValueError, NotADirectoryError
+    """
+    input_path = config.input_path.resolve()
+    output_file = config.output_file.resolve()
+    copy_to_dir = config.copy_to_dir.resolve() if config.copy_to_dir else None
+    archive_dir = (
+        config.archive_dir.resolve()
+        if config.archive and config.archive_dir
+        else (Path("archives").resolve() if config.archive else None)
+    )
+    group_by = parse_group_by(config.group_by)
+    job_id = str(uuid4())
+
+    if config.archive and not copy_to_dir:
+        raise ValueError("--archive requires copy-to (archives are built from renamed copies)")
+
+    if not input_path.exists():
+        raise FileNotFoundError(f"Input not found: {input_path}")
+
+    if input_path.is_file():
+        results = process_single_file(
+            file_path=input_path,
+            output_file=None,
+            ticker=config.ticker,
+        )
+        source_dir = input_path.parent
+    elif input_path.is_dir():
+        results = process_directory(
+            input_dir=input_path,
+            output_file=None,
+            ticker=config.ticker,
+            recursive=config.recursive,
+        )
+        source_dir = input_path
+    else:
+        raise FileNotFoundError(f"Input not found: {input_path}")
+
+    groups = quickfinder_group_results(results, group_by)
+
+    if copy_to_dir:
+        results = copy_files_with_new_names(
+            results=results,
+            source_dir=source_dir,
+            dest_dir=copy_to_dir,
+            dry_run=config.dry_run,
+        )
+
+    archive_meta: Optional[Dict[str, dict]] = None
+    if config.archive and archive_dir:
+        archive_meta = create_group_archives(
+            results=results,
+            groups=groups,
+            archive_dir=archive_dir,
+            dry_run=config.dry_run,
+        )
+
+    manifest = build_job_manifest(
+        job_id=job_id,
+        input_path=input_path,
+        ticker=config.ticker,
+        results=results,
+        group_by=group_by,
+        groups=groups,
+        archive_meta=archive_meta,
+        dry_run=config.dry_run,
+        copy_to_dir=copy_to_dir,
+        archive_dir=archive_dir,
+    )
+    save_job_manifest(manifest, output_file)
+    return manifest
+
+
+def print_quickfinder_summary(groups: Dict[str, List[str]], results: Dict[str, dict]) -> None:
+    """Print Quickfinder group summary to console."""
+    print("\n" + "=" * 70)
+    print("Quickfinder Groups:")
+    print("=" * 70)
+    for group_id, keys in groups.items():
+        print(f"\n  [{group_id}] ({len(keys)} files)")
+        for key in keys[:5]:
+            nf = results[key].get("new_filename", "?")
+            print(f"    - {key} -> {nf}")
+        if len(keys) > 5:
+            print(f"    ... and {len(keys) - 5} more")
 
 
 def main():
     """
     Main entry point for the document renamer.
     """
-    # Parse command line arguments
     args = parse_arguments()
     
-    # Set logging level
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
     
-    # Convert paths to Path objects
+    if args.rollback:
+        try:
+            n = rollback_from_manifest(Path(args.rollback))
+            print(f"\nRollback finished: removed {n} artifact(s).")
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            logger.error(str(e))
+            exit(1)
+        return
+    
+    if not args.input_path:
+        logger.error("input_path is required unless using --rollback")
+        exit(1)
+
     input_path = Path(args.input_path).resolve()
     output_file = Path(args.output).resolve()
     copy_to_dir = Path(args.copy_to).resolve() if args.copy_to else None
-    
-    # Determine if input is a file or directory
-    is_single_file = input_path.is_file()
-    
+    archive_dir = Path(args.archive_dir).resolve() if args.archive else None
+    group_by = parse_group_by(args.group_by)
+
     logger.info("=" * 70)
     logger.info("Document Renamer")
     logger.info("=" * 70)
-    logger.info(f"Input {'file' if is_single_file else 'directory'}: {input_path}")
-    logger.info(f"Output file: {output_file}")
+    if args.dry_run:
+        logger.info("MODE: DRY RUN (no files will be written)")
+    logger.info(f"Input: {input_path}")
+    logger.info(f"Manifest: {output_file}")
     logger.info(f"Ticker: {args.ticker}")
-    if not is_single_file:
-        logger.info(f"Recursive: {args.recursive}")
-    if copy_to_dir:
-        logger.info(f"Copy to: {copy_to_dir}")
+    logger.info(f"Quickfinder group-by: {', '.join(group_by)}")
     logger.info("=" * 70)
-    
+
     try:
-        if is_single_file:
-            # Process single file
-            results = process_single_file(
-                file_path=input_path,
-                output_file=None,
-                ticker=args.ticker
-            )
-            source_dir = input_path.parent
-        else:
-            # Process directory
-            results = process_directory(
-                input_dir=input_path,
-                output_file=None,
+        manifest = run_job(
+            JobConfig(
+                input_path=input_path,
+                output_file=output_file,
                 ticker=args.ticker,
-                recursive=args.recursive
+                recursive=args.recursive,
+                copy_to_dir=copy_to_dir,
+                archive=args.archive,
+                archive_dir=archive_dir,
+                dry_run=args.dry_run,
+                group_by=args.group_by,
             )
-            source_dir = input_path
-        
-        # Copy files if --copy-to was specified
-        if copy_to_dir:
-            results = copy_files_with_new_names(
-                results=results,
-                source_dir=source_dir,
-                dest_dir=copy_to_dir
-            )
-        
-        # Now save results
-        save_results(results, output_file)
-        
-        # Print summary to console
+        )
+        results = manifest["detailed_results"]
+        groups_by_key = quickfinder_group_results(results, group_by)
+
         print("\n" + "=" * 70)
         print("Renamed Files:")
         print("=" * 70)
-        
         for filename, data in results.items():
             if data.get("new_filename"):
                 print(f"\n{filename}")
                 print(f"  -> {data['new_filename']}")
-                if copy_to_dir and data.get("new_path"):
-                    print(f"     Copied to: {data['new_path']}")
+                if data.get("new_path"):
+                    prefix = "[dry-run] " if args.dry_run else ""
+                    print(f"     {prefix}{data['new_path']}")
             else:
                 print(f"\n{filename}")
                 print(f"  -> [FAILED: {data['status']}]")
-        
+
+        print_quickfinder_summary(groups_by_key, results)
+
+        archive_meta = {
+            gid: info.get("archive") or {}
+            for gid, info in manifest.get("quickfinder_groups", {}).items()
+        }
+        if any(m.get("archive_path") for m in archive_meta.values()):
+            print("\n" + "=" * 70)
+            print("Archives:")
+            print("=" * 70)
+            for gid, meta in archive_meta.items():
+                if meta:
+                    print(f"  {gid}: {meta.get('status')} ({meta.get('file_count')} files)")
+                    if meta.get("archive_path"):
+                        print(f"    -> {meta['archive_path']}")
+
         print("\n" + "=" * 70)
-        print(f"Results saved to: {output_file}")
-        if copy_to_dir:
-            print(f"Files copied to: {copy_to_dir}")
+        print(f"Job manifest: {output_file}")
+        if args.dry_run:
+            print("Dry run complete — re-run without --dry-run to apply changes.")
         print("=" * 70)
-        
+
     except FileNotFoundError as e:
         logger.error(f"Path not found: {e}")
         exit(1)

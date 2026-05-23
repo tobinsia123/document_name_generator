@@ -1,0 +1,202 @@
+{
+  "manifest_version": "1.0",
+  "job_id": "94f4b3ec-2747-44e3-b09f-94083787dd71",
+  "created_at": "2026-05-23T17:47:47.457588+00:00",
+  "dry_run": true,
+  "input_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_sample",
+  "ticker": "AMZN",
+  "group_by": [
+    "ticker",
+    "doc_category",
+    "year_quarter"
+  ],
+  "copy_to_dir": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed",
+  "archive_dir": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives",
+  "summary": {
+    "total_processed": 4,
+    "successful": 4,
+    "failed": 0,
+    "groups": 4,
+    "archives_created": 0
+  },
+  "quickfinder_groups": {
+    "AMZN_analyst_report_2022Q2": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Evercore_Q2_2022_Jun_04_2022.txt",
+          "new_filename": "AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt"
+        }
+      ],
+      "archive": {
+        "archive_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_analyst_report_2022Q2.tar.zst",
+        "status": "Dry run - would create",
+        "file_count": 1,
+        "checksum_sha256": null
+      }
+    },
+    "AMZN_earnings_call_2021Q2": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "Amazon_Q2_2021_Earnings_Call.txt",
+          "new_filename": "AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt"
+        }
+      ],
+      "archive": {
+        "archive_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_earnings_call_2021Q2.tar.zst",
+        "status": "Dry run - would create",
+        "file_count": 1,
+        "checksum_sha256": null
+      }
+    },
+    "AMZN_sec_filing_2019Q0": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "2019-Annual-Report.txt",
+          "new_filename": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt"
+        }
+      ],
+      "archive": {
+        "archive_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_sec_filing_2019Q0.tar.zst",
+        "status": "Dry run - would create",
+        "file_count": 1,
+        "checksum_sha256": null
+      }
+    },
+    "AMZN_sec_filing_2020Q1": {
+      "file_count": 1,
+      "files": [
+        {
+          "original": "AMZN-Q1-2020-Earnings-Release.txt",
+          "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt",
+          "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt"
+        }
+      ],
+      "archive": {
+        "archive_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_sec_filing_2020Q1.tar.zst",
+        "status": "Dry run - would create",
+        "file_count": 1,
+        "checksum_sha256": null
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt",
+      "original": "AMZN-Q1-2020-Earnings-Release.txt"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt",
+      "original": "2019-Annual-Report.txt"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt",
+      "original": "Amazon_Q2_2021_Earnings_Call.txt"
+    },
+    {
+      "type": "renamed_copy",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt",
+      "original": "Evercore_Q2_2022_Jun_04_2022.txt"
+    },
+    {
+      "type": "archive",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_analyst_report_2022Q2.tar.zst",
+      "group_id": "AMZN_analyst_report_2022Q2"
+    },
+    {
+      "type": "archive",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_earnings_call_2021Q2.tar.zst",
+      "group_id": "AMZN_earnings_call_2021Q2"
+    },
+    {
+      "type": "archive",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_sec_filing_2019Q0.tar.zst",
+      "group_id": "AMZN_sec_filing_2019Q0"
+    },
+    {
+      "type": "archive",
+      "path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/archives/AMZN_sec_filing_2020Q1.tar.zst",
+      "group_id": "AMZN_sec_filing_2020Q1"
+    }
+  ],
+  "filename_mapping": {
+    "sec_filings/AMZN-Q1-2020-Earnings-Release.txt": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt",
+    "sec_filings/2019-Annual-Report.txt": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt",
+    "earnings_calls/Amazon_Q2_2021_Earnings_Call.txt": "AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt",
+    "analyst_reports/Evercore_Q2_2022_Jun_04_2022.txt": "AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt"
+  },
+  "detailed_results": {
+    "sec_filings/AMZN-Q1-2020-Earnings-Release.txt": {
+      "original_filename": "AMZN-Q1-2020-Earnings-Release.txt",
+      "new_filename": "AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "EARNINGS_RELEASE",
+        "year_quarter": "2020Q1",
+        "language": "EN",
+        "publication_date": "2020-03-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Dry run - would copy",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_EARNINGS_RELEASE_2020Q1_EN_2020-03-31.txt"
+    },
+    "sec_filings/2019-Annual-Report.txt": {
+      "original_filename": "2019-Annual-Report.txt",
+      "new_filename": "AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "SEC",
+        "report_type": "ANNUAL_REPORT",
+        "year_quarter": "2019Q0",
+        "language": "EN",
+        "publication_date": "2019-12-31",
+        "doc_category": "sec_filing"
+      },
+      "copy_status": "Dry run - would copy",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_SEC_ANNUAL_REPORT_2019Q0_EN_2019-12-31.txt"
+    },
+    "earnings_calls/Amazon_Q2_2021_Earnings_Call.txt": {
+      "original_filename": "Amazon_Q2_2021_Earnings_Call.txt",
+      "new_filename": "AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "AMAZON",
+        "report_type": "EARNINGS_CALL",
+        "year_quarter": "2021Q2",
+        "language": "EN",
+        "publication_date": "2021-07-29",
+        "doc_category": "earnings_call"
+      },
+      "copy_status": "Dry run - would copy",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_AMAZON_EARNINGS_CALL_2021Q2_EN_2021-07-29.txt"
+    },
+    "analyst_reports/Evercore_Q2_2022_Jun_04_2022.txt": {
+      "original_filename": "Evercore_Q2_2022_Jun_04_2022.txt",
+      "new_filename": "AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt",
+      "status": "Success",
+      "metadata": {
+        "ticker": "AMZN",
+        "publisher": "EVERCORE",
+        "report_type": "ANALYSTREPORT",
+        "year_quarter": "2022Q2",
+        "language": "EN",
+        "publication_date": "2022-06-04",
+        "doc_category": "analyst_report"
+      },
+      "copy_status": "Dry run - would copy",
+      "new_path": "/Users/tobin/projects/document_name_generator/raw_data/AMAZON/test_output/renamed/AMZN_EVERCORE_ANALYSTREPORT_2022Q2_EN_2022-06-04.txt"
+    }
+  }
+}

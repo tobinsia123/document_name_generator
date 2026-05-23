@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Renamer</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">DR</div>
+        <div>
+          <h1>Document Renamer</h1>
+          <p>Financial research file pipeline</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <button type="button" class="nav-item active" data-tab="job">New job</button>
+        <button type="button" class="nav-item" data-tab="results">Results</button>
+        <button type="button" class="nav-item" data-tab="rollback">Rollback</button>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="badge" id="status-badge">Ready</span>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- Job tab -->
+      <section id="tab-job" class="panel active">
+        <header class="panel-head">
+          <h2>Configure job</h2>
+          <p>Rename, group (Quickfinder), and compress documents into archives.</p>
+        </header>
+
+        <form id="job-form" class="form-grid">
+          <fieldset class="card span-2">
+            <legend>Source</legend>
+            <label>
+              Input folder or file
+              <input type="text" id="input_path" name="input_path" required placeholder="/path/to/documents" />
+            </label>
+            <label class="check">
+              <input type="checkbox" id="recursive" name="recursive" checked />
+              Include subfolders
+            </label>
+            <label>
+              Stock ticker
+              <input type="text" id="ticker" name="ticker" value="AMZN" maxlength="10" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card span-2">
+            <legend>Output</legend>
+            <label>
+              Renamed copies folder
+              <input type="text" id="copy_to" name="copy_to" placeholder="/path/to/renamed" />
+            </label>
+            <label>
+              Job manifest (audit log)
+              <input type="text" id="manifest" name="manifest" placeholder="/path/to/job_manifest.json" />
+            </label>
+            <label class="check">
+              <input type="checkbox" id="archive" name="archive" />
+              Create .tar.zst archive per group
+            </label>
+            <label id="archive-dir-wrap">
+              Archives folder
+              <input type="text" id="archive_dir" name="archive_dir" placeholder="/path/to/archives" />
+            </label>
+          </fieldset>
+
+          <fieldset class="card span-2">
+            <legend>Quickfinder grouping</legend>
+            <p class="hint">Select metadata fields used to group files before archiving.</p>
+            <div id="group-by-fields" class="chips"></div>
+          </fieldset>
+
+          <div class="actions span-2">
+            <label class="check dry-run">
+              <input type="checkbox" id="dry_run" name="dry_run" />
+              Dry run (preview only)
+            </label>
+            <div class="btn-row">
+              <button type="button" class="btn ghost" id="btn-reset">Reset defaults</button>
+              <button type="submit" class="btn primary" id="btn-run">Run job</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Results tab -->
+      <section id="tab-results" class="panel">
+        <header class="panel-head">
+          <h2>Job results</h2>
+          <p id="results-subtitle">Run a job to see renames, groups, and archives.</p>
+        </header>
+        <div id="results-empty" class="empty-state">
+          <p>No results yet. Configure and run a job from the <strong>New job</strong> tab.</p>
+        </div>
+        <div id="results-content" class="hidden">
+          <div class="stats" id="stats-row"></div>
+          <div class="results-columns">
+            <div class="card">
+              <h3>Renamed files</h3>
+              <div class="table-wrap">
+                <table id="files-table">
+                  <thead>
+                    <tr>
+                      <th>Original</th>
+                      <th>New name</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Quickfinder groups</h3>
+              <div id="groups-list" class="groups-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rollback tab -->
+      <section id="tab-rollback" class="panel">
+        <header class="panel-head">
+          <h2>Rollback job</h2>
+          <p>Remove renamed copies and archives listed in a job manifest. Original source files are never deleted.</p>
+        </header>
+        <form id="rollback-form" class="card rollback-card">
+          <label>
+            Manifest path
+            <input type="text" id="rollback_manifest" required />
+          </label>
+          <button type="submit" class="btn danger">Rollback artifacts</button>
+        </form>
+        <div id="rollback-result" class="hidden card result-banner"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
