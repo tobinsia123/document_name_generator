@@ -10,5 +10,8 @@ python-docx>=0.8.11
 # Compressed archives (.tar.zst)
 zstandard>=0.22.0
 
+# Archive encryption
+cryptography>=43.0.0
+
 # Web UI
 flask>=3.0.0

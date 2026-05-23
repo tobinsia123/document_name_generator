@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document Renamer</title>
   <link rel="stylesheet" href="/static/app.css" />
 </head>
+
 <body>
   <div class="layout">
     <aside class="sidebar">
@@ -13,7 +15,7 @@
         <div class="brand-mark">DR</div>
         <div>
           <h1>Document Renamer</h1>
-          <p>Financial research file pipeline</p>
+          <p>Financial document pipeline</p>
         </div>
       </div>
       <nav class="nav">
@@ -27,48 +29,74 @@
     </aside>
 
     <main class="main">
-      <!-- Job tab -->
       <section id="tab-job" class="panel active">
         <header class="panel-head">
           <h2>Configure job</h2>
-          <p>Rename, group (Quickfinder), and compress documents into archives.</p>
+          <p>Rename documents, group by metadata, and optionally archive + encrypt outputs.</p>
         </header>
 
         <form id="job-form" class="form-grid">
-          <fieldset class="card span-2">
+          <fieldset class="card">
             <legend>Source</legend>
             <label>
               Input folder or file
-              <input type="text" id="input_path" name="input_path" required placeholder="/path/to/documents" />
+              <div class="path-input-row">
+                <input type="text" id="input_path" name="input_path" required placeholder="/path/to/documents" />
+                <button type="button" class="btn ghost small" data-browse-target="input_path"
+                  data-browse-kind="any">Browse</button>
+              </div>
+              <small class="hint">Supported input types: .txt, .pdf, .docx</small>
             </label>
             <label class="check">
               <input type="checkbox" id="recursive" name="recursive" checked />
               Include subfolders
             </label>
-            <label>
-              Stock ticker
-              <input type="text" id="ticker" name="ticker" value="AMZN" maxlength="10" />
-            </label>
           </fieldset>
 
-          <fieldset class="card span-2">
+          <fieldset class="card">
             <legend>Output</legend>
             <label>
               Renamed copies folder
-              <input type="text" id="copy_to" name="copy_to" placeholder="/path/to/renamed" />
+              <div class="path-input-row">
+                <input type="text" id="copy_to" name="copy_to" placeholder="/path/to/renamed" />
+                <button type="button" class="btn ghost small" data-browse-target="copy_to"
+                  data-browse-kind="dir">Browse</button>
+              </div>
             </label>
             <label>
-              Job manifest (audit log)
-              <input type="text" id="manifest" name="manifest" placeholder="/path/to/job_manifest.json" />
+              Archives folder
+              <div class="path-input-row">
+                <input type="text" id="archive_dir" name="archive_dir" placeholder="/path/to/archives" />
+                <button type="button" class="btn ghost small" data-browse-target="archive_dir"
+                  data-browse-kind="dir">Browse</button>
+              </div>
             </label>
+          </fieldset>
+
+          <fieldset class="card">
+            <legend>Archive</legend>
             <label class="check">
               <input type="checkbox" id="archive" name="archive" />
               Create .tar.zst archive per group
             </label>
-            <label id="archive-dir-wrap">
-              Archives folder
-              <input type="text" id="archive_dir" name="archive_dir" placeholder="/path/to/archives" />
+            <label>
+              Compression level
+              <select id="compression_level" name="compression_level">
+                <option value="fast">Fast</option>
+                <option value="balanced" selected>Balanced</option>
+                <option value="best">Best compression</option>
+              </select>
             </label>
+            <label class="check">
+              <input type="checkbox" id="encrypt_archives" name="encrypt_archives" />
+              Encrypt archives (AES-256-GCM)
+            </label>
+            <label id="passphrase-wrap" class="hidden">
+              Encryption passphrase
+              <input type="password" id="encryption_passphrase" name="encryption_passphrase"
+                autocomplete="new-password" />
+            </label>
+            <small class="hint" id="archive-hint">Enable archive mode to use compression or encryption options.</small>
           </fieldset>
 
           <fieldset class="card span-2">
@@ -77,11 +105,44 @@
             <div id="group-by-fields" class="chips"></div>
           </fieldset>
 
+          <details class="card span-2 advanced">
+            <summary>Advanced options</summary>
+            <div class="advanced-grid">
+              <label>
+                Stock ticker
+                <input type="text" id="ticker" name="ticker" value="AMZN" maxlength="10" />
+              </label>
+              <label>
+                Job manifest (audit log)
+                <div class="path-input-row">
+                  <input type="text" id="manifest" name="manifest" placeholder="/path/to/job_manifest.json" />
+                  <button type="button" class="btn ghost small" data-browse-target="manifest"
+                    data-browse-kind="file">Browse</button>
+                </div>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="remove_plaintext_archive" name="remove_plaintext_archive" checked />
+                Remove plaintext archives after encryption
+              </label>
+              <label class="check dry-run">
+                <input type="checkbox" id="dry_run" name="dry_run" />
+                Dry run (preview only)
+              </label>
+            </div>
+          </details>
+
+          <section class="card span-2 progress-card hidden" id="progress-card">
+            <div class="progress-head">
+              <h3>Job progress</h3>
+              <p id="progress-stage">Waiting to start...</p>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p class="progress-meta" id="progress-meta">No activity yet.</p>
+          </section>
+
           <div class="actions span-2">
-            <label class="check dry-run">
-              <input type="checkbox" id="dry_run" name="dry_run" />
-              Dry run (preview only)
-            </label>
             <div class="btn-row">
               <button type="button" class="btn ghost" id="btn-reset">Reset defaults</button>
               <button type="submit" class="btn primary" id="btn-run">Run job</button>
@@ -90,7 +151,6 @@
         </form>
       </section>
 
-      <!-- Results tab -->
       <section id="tab-results" class="panel">
         <header class="panel-head">
           <h2>Job results</h2>
@@ -125,7 +185,6 @@
         </div>
       </section>
 
-      <!-- Rollback tab -->
       <section id="tab-rollback" class="panel">
         <header class="panel-head">
           <h2>Rollback job</h2>
@@ -134,7 +193,11 @@
         <form id="rollback-form" class="card rollback-card">
           <label>
             Manifest path
-            <input type="text" id="rollback_manifest" required />
+            <div class="path-input-row">
+              <input type="text" id="rollback_manifest" required />
+              <button type="button" class="btn ghost small" data-browse-target="rollback_manifest"
+                data-browse-kind="file">Browse</button>
+            </div>
           </label>
           <button type="submit" class="btn danger">Rollback artifacts</button>
         </form>
@@ -143,7 +206,35 @@
     </main>
   </div>
 
+  <div id="path-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Select path</h3>
+        <button type="button" class="btn ghost small" id="path-modal-close">Close</button>
+      </div>
+      <div class="path-browser-actions">
+        <button type="button" class="btn ghost small" id="path-up">Up</button>
+        <code id="path-current"></code>
+      </div>
+      <div id="path-list" class="path-list"></div>
+      <div class="path-browser-foot">
+        <button type="button" class="btn primary" id="path-select-current">Use current folder</button>
+      </div>
+    </div>
+  </div>
+
   <div id="toast" class="toast hidden"></div>
+  <div id="loading-overlay" class="loading-overlay hidden" aria-hidden="true">
+    <div class="loading-card">
+      <h3>Processing files</h3>
+      <p id="loading-stage">Initializing job...</p>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="loading-progress-bar"></div>
+      </div>
+      <p id="loading-meta">Preparing…</p>
+    </div>
+  </div>
   <script src="/static/app.js"></script>
 </body>
+
 </html>
