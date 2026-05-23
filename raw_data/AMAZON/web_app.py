@@ -8,6 +8,7 @@ Open: http://127.0.0.1:5001  (or set PORT=...)
 
 from __future__ import annotations
 
+import json
 import os
 import threading
 from datetime import datetime, timezone
@@ -15,6 +16,11 @@ from pathlib import Path
 from uuid import uuid4
 
 from flask import Flask, jsonify, render_template, request
+
+try:
+    from flask_cors import CORS  # type: ignore
+except ImportError:  # pragma: no cover - optional dep, keeps backward compat
+    CORS = None  # type: ignore
 
 from document_title_generator import (
     DEFAULT_GROUP_BY,
@@ -36,6 +42,19 @@ app = Flask(
     template_folder=str(APP_DIR / "templates"),
     static_folder=str(APP_DIR / "static"),
 )
+
+# Enable CORS so the Next.js dashboard (localhost:3000) can call the API.
+# Falls back gracefully if flask-cors isn't installed.
+if CORS is not None:
+    _allowed_origins = os.environ.get(
+        "AEGIS_CORS_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000",
+    )
+    CORS(
+        app,
+        resources={r"/api/*": {"origins": [o.strip() for o in _allowed_origins.split(",") if o.strip()]}},
+        supports_credentials=False,
+    )
 
 
 def _default_paths() -> dict:
@@ -221,6 +240,52 @@ def api_job_status(job_id: str):
         return jsonify({"ok": True, "job": job})
 
 
+@app.get("/api/jobs")
+def api_jobs_list():
+    """Lightweight listing of in-memory jobs, newest first."""
+    with JOB_LOCK:
+        jobs = list(JOB_STORE.values())
+    jobs.sort(key=lambda j: j.get("created_at") or "", reverse=True)
+    summaries = [
+        {
+            "job_id": j["job_id"],
+            "status": j["status"],
+            "created_at": j["created_at"],
+            "started_at": j["started_at"],
+            "completed_at": j["completed_at"],
+            "current_stage": j.get("current_stage"),
+            "summary": j.get("summary"),
+            "error": j.get("error"),
+        }
+        for j in jobs
+    ]
+    return jsonify({"ok": True, "jobs": summaries})
+
+
+@app.get("/api/manifest")
+def api_manifest():
+    """Read a job manifest JSON from disk (default: WORKSPACE/job_manifest.json)."""
+    path_text = (request.args.get("path") or "").strip()
+    if not path_text:
+        manifest_path = WORKSPACE / "job_manifest.json"
+    else:
+        try:
+            manifest_path = _safe_resolve(path_text)
+        except ValueError as e:
+            return jsonify({"ok": False, "error": str(e)}), 400
+
+    if not manifest_path.exists() or not manifest_path.is_file():
+        return jsonify({"ok": False, "error": "Manifest not found", "path": str(manifest_path)}), 404
+
+    try:
+        with manifest_path.open("r", encoding="utf-8") as fh:
+            manifest = json.load(fh)
+    except (json.JSONDecodeError, OSError) as e:
+        return jsonify({"ok": False, "error": f"Failed to read manifest: {e}"}), 500
+
+    return jsonify({"ok": True, "manifest": manifest, "path": str(manifest_path)})
+
+
 @app.get("/api/browse")
 def api_browse():
     path_text = (request.args.get("path") or "").strip()
@@ -306,5 +371,6 @@ if __name__ == "__main__":
     port = _pick_port(preferred)
     if port != preferred:
         print(f"  Note: port {preferred} busy, using {port} instead.")
+    debug = os.environ.get("FLASK_DEBUG", "1") not in ("0", "false", "False", "")
     print(f"\n  Document Renamer UI -> http://127.0.0.1:{port}\n")
-    app.run(host="127.0.0.1", port=port, debug=True)
+    app.run(host="127.0.0.1", port=port, debug=debug, use_reloader=debug)
