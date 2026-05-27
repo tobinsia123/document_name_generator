@@ -15,9 +15,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AEGIS — AI File Governance Platform",
+  title: "Project Z.",
   description:
-    "AI-powered enterprise file governance, sensitivity analysis, encryption, and compliance automation.",
+    "From Messy Files to Market Insights.",
 };
 
 export default function RootLayout({

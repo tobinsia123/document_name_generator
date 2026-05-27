@@ -18,7 +18,7 @@ const badgeVariants = cva(
           "border-[color:oklch(0.7_0.22_22/0.35)] bg-[color:oklch(0.7_0.22_22/0.12)] text-[color:oklch(0.85_0.18_22)]",
         info: "border-[color:oklch(0.74_0.14_232/0.3)] bg-[color:oklch(0.74_0.14_232/0.12)] text-[color:oklch(0.86_0.12_232)]",
         primary:
-          "border-[color:oklch(0.72_0.16_264/0.35)] bg-[color:oklch(0.72_0.16_264/0.14)] text-[color:oklch(0.86_0.13_264)]",
+          "border-[color:rgb(0_200_83/0.35)] bg-[color:rgb(0_200_83/0.14)] text-[color:rgb(0_200_83)]",
         muted: "border-border bg-muted/40 text-muted-foreground",
       },
       size: {

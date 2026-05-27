@@ -19,7 +19,7 @@ function FileIcon({ mime }: { mime: string }) {
   if (mime.includes("image"))
     return <FileImage className={cn(cls, "text-[color:oklch(0.86_0.16_78)]")} />;
   if (mime.includes("plain") || mime.includes("env"))
-    return <FileCode className={cn(cls, "text-[color:oklch(0.86_0.13_264)]")} />;
+    return <FileCode className={cn(cls, "text-[color:rgb(0_200_83)]")} />;
   if (mime.includes("word"))
     return <FileText className={cn(cls, "text-[color:oklch(0.86_0.12_232)]")} />;
   return <File className={cls} />;
@@ -80,7 +80,7 @@ export function FileRow({
           <div className="mt-0.5 truncate text-[10.5px] text-muted-foreground">
             <span className="line-through opacity-60">{file.originalName}</span>
             <span className="mx-1.5 opacity-50">→</span>
-            <span className="text-[color:oklch(0.86_0.13_264)]">renamed</span>
+            <span className="text-[color:rgb(0_200_83)]">renamed</span>
           </div>
         )}
         <div className="mt-1 flex flex-wrap items-center gap-1.5">

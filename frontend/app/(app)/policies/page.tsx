@@ -73,7 +73,7 @@ export default function PoliciesPage() {
                 >
                   <div
                     className="mt-1 h-2 w-2 shrink-0 rounded-full"
-                    style={{ background: sevColor[p.severity] }}
+                    style={{ backgroundColor: sevColor[p.severity] }}
                   />
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">

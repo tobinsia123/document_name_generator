@@ -16,7 +16,7 @@ export interface KpiCardProps {
 }
 
 const accentMap: Record<NonNullable<KpiCardProps["accent"]>, string> = {
-  primary: "from-[oklch(0.72_0.16_264/0.18)] to-transparent text-primary",
+  primary: "from-[rgb(0_200_83/0.2)] to-transparent text-primary",
   success: "from-[oklch(0.74_0.17_158/0.18)] to-transparent text-[color:oklch(0.84_0.15_158)]",
   warning: "from-[oklch(0.82_0.17_78/0.18)] to-transparent text-[color:oklch(0.9_0.15_78)]",
   destructive:
@@ -39,10 +39,10 @@ export function KpiCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="group relative overflow-hidden rounded-xl border border-border bg-card/80 p-4 shadow-[0_1px_0_0_oklch(1_0_0/0.04)_inset,0_24px_60px_-30px_oklch(0_0_0/0.6)] backdrop-blur-sm"
+      className="group relative overflow-hidden rounded-lg border border-white/10 bg-[oklch(0.15_0.014_172/0.9)] p-4 shadow-[0_1px_0_0_oklch(1_0_0/0.055)_inset,0_22px_56px_-34px_oklch(0_0_0/0.72)] backdrop-blur-md"
     >
       <div
         className={cn(
@@ -106,7 +106,7 @@ function Sparkline({ values, accent }: { values: number[]; accent: KpiCardProps[
     .map((v, i) => `${i === 0 ? "M" : "L"} ${i * step},${norm(v)}`)
     .join(" ");
   const colors: Record<NonNullable<KpiCardProps["accent"]>, string> = {
-    primary: "oklch(0.78 0.16 264)",
+    primary: "rgb(0 200 83)",
     success: "oklch(0.78 0.17 158)",
     warning: "oklch(0.86 0.16 78)",
     destructive: "oklch(0.78 0.22 22)",

@@ -5,11 +5,12 @@ import {
   Activity,
   AlertTriangle,
   ArrowRight,
+  FileCheck2,
   Files,
-  Lock,
   ShieldCheck,
   Sparkles,
   TrendingUp,
+  UploadCloud,
 } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,6 +39,37 @@ import { TimeAgo } from "@/components/shared/time-ago";
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
+      <section className="glass-strong relative overflow-hidden rounded-lg px-5 py-6 shadow-[0_30px_100px_-55px_rgb(0_200_83/0.55)] md:px-7 lg:px-8">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_80%_at_82%_14%,rgb(0_200_83/0.24),transparent_68%)]" />
+        <div className="relative">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+              Project <span className="text-primary">Z.</span>
+            </h2>
+            <p className="mt-3 max-w-2xl text-xl font-medium tracking-tight text-foreground md:text-2xl">
+              From Messy Files to Market Insights.
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+              Rename, score, encrypt, and route document sets into a clean research workflow without adding noise to the workbench.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Button asChild>
+                <Link href="/upload">
+                  <UploadCloud className="h-4 w-4" />
+                  Upload files
+                </Link>
+              </Button>
+              <Button asChild variant="glass">
+                <Link href="/analysis">
+                  View analysis
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
         <KpiCard
           label="Files governed"
@@ -49,13 +81,13 @@ export default function DashboardPage() {
           hint="+12,481 vs last week"
         />
         <KpiCard
-          label="Encryption coverage"
+          label="Market-ready reports"
           value="74%"
           delta={2.4}
-          icon={Lock}
+          icon={FileCheck2}
           accent="success"
           trend={ingestSeries.map((d) => d.encrypted)}
-          hint="Target: 90% by Q3"
+          hint="Named, checked, and ready"
         />
         <KpiCard
           label="Sensitive exposure"
@@ -91,7 +123,7 @@ export default function DashboardPage() {
               </CardDescription>
             </div>
             <div className="flex items-center gap-3 text-[11px]">
-              <LegendDot color="oklch(0.72 0.18 264)" label="Uploads" />
+              <LegendDot color="rgb(0 200 83)" label="Uploads" />
               <LegendDot color="oklch(0.78 0.17 158)" label="Encrypted" />
               <LegendDot color="oklch(0.78 0.22 22)" label="Blocked" />
             </div>
@@ -101,7 +133,7 @@ export default function DashboardPage() {
               data={ingestSeries}
               xKey="day"
               series={[
-                { key: "uploads", label: "Uploads", color: "oklch(0.72 0.18 264)" },
+                { key: "uploads", label: "Uploads", color: "rgb(0 200 83)" },
                 { key: "encrypted", label: "Encrypted", color: "oklch(0.78 0.17 158)" },
                 { key: "blocked", label: "Blocked", color: "oklch(0.78 0.22 22)" },
               ]}
@@ -144,7 +176,7 @@ export default function DashboardPage() {
                     <div className="flex items-center gap-1.5">
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: colors[i] }}
+                        style={{ backgroundColor: colors[i] }}
                       />
                       <span className="text-muted-foreground">{s.name}</span>
                     </div>
@@ -207,7 +239,7 @@ export default function DashboardPage() {
                 Recent AI Activity
               </CardTitle>
               <CardDescription>
-                Latest files renamed, scored, and routed by the AEGIS engine
+                Latest files renamed, scored, and routed by Project Z
               </CardDescription>
             </div>
             <Button asChild variant="ghost" size="sm">
@@ -249,7 +281,7 @@ export default function DashboardPage() {
                   <div
                     className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
                     style={{
-                      background:
+                      backgroundColor:
                         t.severity === "critical"
                           ? "oklch(0.78 0.22 22)"
                           : t.severity === "high"
@@ -361,7 +393,7 @@ function LegendDot({ color, label }: { color: string; label: string }) {
     <span className="inline-flex items-center gap-1.5 text-muted-foreground">
       <span
         className="h-1.5 w-1.5 rounded-full"
-        style={{ background: color }}
+        style={{ backgroundColor: color }}
       />
       {label}
     </span>

@@ -59,7 +59,7 @@ export function ComplianceBars({ data, height = 220 }: Props) {
                 d.value >= 95
                   ? "oklch(0.78 0.17 158)"
                   : d.value >= 85
-                  ? "oklch(0.72 0.18 264)"
+                  ? "rgb(0 200 83)"
                   : d.value >= 75
                   ? "oklch(0.86 0.16 78)"
                   : "oklch(0.78 0.22 22)";

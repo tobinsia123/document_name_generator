@@ -3,13 +3,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* AEGIS Design System
- * Enterprise file governance platform.
- * Dark by default. Premium, sophisticated, low-contrast outside content.
+/* Project Z Design System
+ * Document intelligence and market-insights platform.
+ * Dark by default with mint glass, quiet surfaces, and compact controls.
  */
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.5rem;
+  --brand-green: #00c853;
+  --brand-green-soft: #5df09d;
+  --brand-green-dark: #008f3a;
 
   /* Light mode (kept high-quality but secondary; the product is dark-first) */
   --background: oklch(0.99 0.002 240);
@@ -18,8 +21,8 @@
   --card-foreground: oklch(0.18 0.02 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 250);
-  --primary: oklch(0.55 0.18 264);
-  --primary-foreground: oklch(0.98 0.01 240);
+  --primary: var(--brand-green);
+  --primary-foreground: #001a0b;
   --secondary: oklch(0.96 0.005 240);
   --secondary-foreground: oklch(0.22 0.02 250);
   --muted: oklch(0.96 0.005 240);
@@ -29,14 +32,14 @@
   --destructive: oklch(0.6 0.22 27);
   --border: oklch(0.92 0.005 240);
   --input: oklch(0.94 0.005 240);
-  --ring: oklch(0.55 0.18 264);
+  --ring: var(--brand-green);
 
   --success: oklch(0.66 0.16 158);
   --warning: oklch(0.78 0.16 78);
   --info: oklch(0.65 0.15 232);
   --critical: oklch(0.6 0.24 18);
 
-  --chart-1: oklch(0.62 0.2 264);
+  --chart-1: var(--brand-green);
   --chart-2: oklch(0.7 0.16 195);
   --chart-3: oklch(0.72 0.16 158);
   --chart-4: oklch(0.78 0.16 78);
@@ -44,48 +47,48 @@
 }
 
 .dark {
-  /* Dark, near-black with cool blue undertone (Linear / Vanta feel) */
-  --background: oklch(0.16 0.012 250);
+  /* Near-black with a subtle green undertone */
+  --background: oklch(0.105 0.014 172);
   --foreground: oklch(0.96 0.005 240);
 
-  --card: oklch(0.19 0.013 250);
+  --card: oklch(0.16 0.014 172);
   --card-foreground: oklch(0.96 0.005 240);
-  --popover: oklch(0.18 0.013 250);
+  --popover: oklch(0.14 0.014 172);
   --popover-foreground: oklch(0.96 0.005 240);
 
-  --primary: oklch(0.72 0.16 264);
-  --primary-foreground: oklch(0.14 0.012 250);
+  --primary: var(--brand-green);
+  --primary-foreground: #001a0b;
 
-  --secondary: oklch(0.24 0.014 250);
+  --secondary: oklch(0.2 0.015 172);
   --secondary-foreground: oklch(0.94 0.005 240);
 
-  --muted: oklch(0.24 0.014 250);
-  --muted-foreground: oklch(0.66 0.012 250);
+  --muted: oklch(0.2 0.015 172);
+  --muted-foreground: oklch(0.72 0.018 176);
 
-  --accent: oklch(0.26 0.018 254);
+  --accent: oklch(0.23 0.03 166);
   --accent-foreground: oklch(0.96 0.005 240);
 
   --destructive: oklch(0.66 0.22 22);
 
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.72 0.16 264);
+  --ring: var(--brand-green);
 
   --success: oklch(0.74 0.17 158);
   --warning: oklch(0.82 0.17 78);
   --info: oklch(0.74 0.14 232);
   --critical: oklch(0.7 0.22 22);
 
-  --chart-1: oklch(0.72 0.18 264);
+  --chart-1: var(--brand-green);
   --chart-2: oklch(0.78 0.14 195);
   --chart-3: oklch(0.78 0.16 158);
   --chart-4: oklch(0.82 0.16 78);
   --chart-5: oklch(0.72 0.22 18);
 
-  --sidebar: oklch(0.14 0.012 252);
+  --sidebar: oklch(0.12 0.014 172 / 82%);
   --sidebar-foreground: oklch(0.92 0.005 240);
-  --sidebar-border: oklch(1 0 0 / 6%);
-  --sidebar-accent: oklch(0.22 0.014 252);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-accent: oklch(0.2 0.026 166 / 75%);
   --sidebar-accent-foreground: oklch(0.96 0.005 240);
 }
 
@@ -171,26 +174,29 @@ html {
 
 .bg-radial-spot {
   background:
-    radial-gradient(60% 40% at 50% 0%, oklch(0.72 0.16 264 / 0.18), transparent 70%),
-    radial-gradient(40% 30% at 90% 10%, oklch(0.74 0.14 232 / 0.12), transparent 70%);
+    radial-gradient(70% 44% at 76% 2%, rgb(0 200 83 / 0.28), transparent 68%),
+    radial-gradient(44% 34% at 5% 88%, rgb(0 200 83 / 0.22), transparent 72%),
+    radial-gradient(36% 30% at 58% 8%, oklch(1 0 0 / 0.12), transparent 64%);
 }
 
 .glass {
-  background: linear-gradient(180deg, oklch(1 0 0 / 0.04), oklch(1 0 0 / 0.015));
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid oklch(1 0 0 / 0.08);
-}
-
-.glass-strong {
   background: linear-gradient(180deg, oklch(1 0 0 / 0.07), oklch(1 0 0 / 0.025));
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid oklch(1 0 0 / 0.1);
 }
 
+.glass-strong {
+  background:
+    linear-gradient(135deg, oklch(1 0 0 / 0.1), oklch(1 0 0 / 0.025)),
+    linear-gradient(180deg, rgb(0 200 83 / 0.08), transparent 58%);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid oklch(1 0 0 / 0.12);
+}
+
 .text-gradient-brand {
-  background: linear-gradient(180deg, oklch(0.99 0 0), oklch(0.78 0.04 250));
+  background: linear-gradient(180deg, oklch(0.99 0 0), var(--brand-green-soft));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -198,8 +204,8 @@ html {
 
 .ring-glow {
   box-shadow:
-    0 0 0 1px oklch(0.72 0.16 264 / 0.3),
-    0 8px 24px -8px oklch(0.72 0.16 264 / 0.5);
+    0 0 0 1px rgb(0 200 83 / 0.35),
+    0 8px 28px -8px rgb(0 200 83 / 0.52);
 }
 
 .shimmer {
@@ -256,7 +262,7 @@ html {
 
 /* Selection */
 ::selection {
-  background: oklch(0.72 0.16 264 / 0.35);
+  background: rgb(0 200 83 / 0.35);
   color: oklch(1 0 0);
 }
 

@@ -115,7 +115,7 @@ export default function BillingPage() {
             data={ingestSeries}
             xKey="day"
             series={[
-              { key: "uploads", label: "Files", color: "oklch(0.72 0.18 264)" },
+              { key: "uploads", label: "Files", color: "rgb(0 200 83)" },
               { key: "encrypted", label: "Encrypted", color: "oklch(0.78 0.17 158)" },
             ]}
             height={220}

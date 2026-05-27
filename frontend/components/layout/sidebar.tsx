@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ChevronsUpDown, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navGroups, navItems } from "@/lib/nav";
-import { AegisLogo } from "./logo";
+import { ProjectZLogo } from "./logo";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { orgInfo } from "@/lib/data";
@@ -15,14 +15,15 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex h-svh w-[244px] shrink-0 flex-col border-r border-sidebar-border bg-sidebar">
-      <div className="flex h-14 items-center justify-between border-b border-sidebar-border px-4">
-        <AegisLogo />
+    <aside className="hidden h-svh w-[244px] shrink-0 p-3 md:flex">
+      <div className="glass flex min-h-0 flex-1 flex-col rounded-lg bg-sidebar shadow-[0_24px_80px_-42px_oklch(0_0_0/0.85)]">
+      <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-4">
+        <ProjectZLogo />
       </div>
 
       <button
         type="button"
-        className="mx-3 mt-3 flex items-center justify-between rounded-lg border border-sidebar-border bg-sidebar-accent/40 px-3 py-2 text-left transition-colors hover:bg-sidebar-accent"
+        className="mx-3 mt-3 flex items-center justify-between rounded-lg border border-sidebar-border bg-sidebar-accent/55 px-3 py-2 text-left transition-colors hover:bg-sidebar-accent"
       >
         <div className="flex min-w-0 items-center gap-2.5">
           <Avatar className="h-7 w-7">
@@ -94,19 +95,20 @@ export function Sidebar() {
       </nav>
 
       <div className="border-t border-sidebar-border p-3">
-        <div className="rounded-lg border border-sidebar-border bg-gradient-to-br from-[oklch(0.22_0.04_264)] to-[oklch(0.18_0.02_252)] p-3">
+        <div className="rounded-lg border border-sidebar-border bg-gradient-to-br from-[oklch(0.2_0.06_166/0.85)] to-[oklch(0.14_0.018_172/0.9)] p-3">
           <div className="flex items-center gap-2">
             <div className="grid h-7 w-7 place-items-center rounded-md bg-primary/15 text-primary">
               <Plus className="h-3.5 w-3.5" />
             </div>
             <div>
-              <div className="text-[12px] font-medium">Quick ingest</div>
+              <div className="text-[12px] font-medium">New insight</div>
               <div className="text-[10px] text-muted-foreground">
-                ⌘ + I to drop files
+                Drop files to analyze
               </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </aside>
   );

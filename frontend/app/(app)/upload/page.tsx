@@ -177,7 +177,7 @@ export default function UploadPage() {
               className={cn(
                 "relative flex flex-col items-center justify-center px-6 py-14 transition-colors",
                 isDragging
-                  ? "bg-[color:oklch(0.72_0.16_264/0.08)]"
+                  ? "bg-[color:rgb(0_200_83/0.08)]"
                   : "bg-transparent"
               )}
             >
@@ -192,7 +192,7 @@ export default function UploadPage() {
               </div>
               <div className="relative mt-4 text-center">
                 <h3 className="text-base font-semibold tracking-tight">
-                  Drop files to ingest into AEGIS
+                  Drop files to ingest into Project Z.
                 </h3>
                 <p className="mt-1 max-w-md text-[12.5px] text-muted-foreground">
                   AI scans content, infers metadata, applies policies, encrypts when required,
@@ -289,7 +289,7 @@ export default function UploadPage() {
                             <div className="mt-0.5 truncate text-[10.5px] text-muted-foreground">
                               <span className="line-through opacity-60">{f.name}</span>
                               <span className="mx-1.5 opacity-50">→</span>
-                              <span className="text-[color:oklch(0.86_0.13_264)]">renamed</span>
+                              <span className="text-[color:rgb(0_200_83)]">renamed</span>
                             </div>
                           )}
                         </div>
@@ -374,7 +374,7 @@ export default function UploadPage() {
                 {"{ticker}_{publisher}_{report_type}_{year_quarter}_{lang}_{date}.{ext}"}
               </code>
               <div className="text-[10.5px] text-muted-foreground">
-                Used by the AEGIS LLM to construct deterministic, regex-validatable filenames.
+                Project Z uses these fields to construct deterministic, regex-validatable filenames.
               </div>
             </div>
           </CardContent>

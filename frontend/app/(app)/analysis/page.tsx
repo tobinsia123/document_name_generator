@@ -107,7 +107,7 @@ export default function AnalysisPage() {
                   <div className="mt-1 truncate text-[11px] text-muted-foreground">
                     Originally{" "}
                     <span className="line-through opacity-60">{active.originalName}</span>{" "}
-                    · renamed by AEGIS
+                    · renamed by Project Z
                   </div>
                 )}
               </div>
@@ -195,7 +195,7 @@ export default function AnalysisPage() {
           <CardHeader>
             <CardTitle>Inferred metadata</CardTitle>
             <CardDescription>
-              The AEGIS LLM extracts and normalizes structured fields with confidence.
+              Project Z extracts and normalizes structured fields with confidence.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -434,7 +434,7 @@ function FieldCell({
             confidence >= 0.95
               ? "text-[color:oklch(0.84_0.15_158)]"
               : confidence >= 0.85
-              ? "text-[color:oklch(0.86_0.13_264)]"
+              ? "text-[color:rgb(0_200_83)]"
               : "text-[color:oklch(0.86_0.16_78)]"
           )}
         >

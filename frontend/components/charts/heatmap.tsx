@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -9,6 +10,13 @@ export function RiskHeatmap({
 }: {
   data: { hour: number; day: number; value: number }[];
 }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <div className="h-[190px] rounded-md bg-white/[0.02]" />;
+  }
+
   return (
     <TooltipProvider delayDuration={50}>
       <div className="space-y-1.5">
@@ -35,7 +43,7 @@ export function RiskHeatmap({
                       <div
                         className="h-5 flex-1 rounded-[3px] transition-transform hover:scale-110"
                         style={{
-                          background: `oklch(${0.22 + intensity * 0.45} ${
+                          backgroundColor: `oklch(${0.22 + intensity * 0.45} ${
                             0.04 + intensity * 0.18
                           } ${264 - intensity * 30})`,
                           boxShadow: `inset 0 0 0 1px oklch(1 0 0 / ${
@@ -63,7 +71,7 @@ export function RiskHeatmap({
                 key={v}
                 className="h-2.5 w-5 rounded-[2px]"
                 style={{
-                  background: `oklch(${0.22 + v * 0.45} ${0.04 + v * 0.18} ${
+                  backgroundColor: `oklch(${0.22 + v * 0.45} ${0.04 + v * 0.18} ${
                     264 - v * 30
                   })`,
                 }}

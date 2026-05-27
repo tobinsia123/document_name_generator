@@ -49,12 +49,12 @@ export const pageMeta: Record<
   { title: string; description: string }
 > = {
   "/dashboard": {
-    title: "Governance Overview",
-    description: "Real-time posture across files, policies, and compliance frameworks.",
+    title: "Market Insights",
+    description: "Real-time signal across documents, naming, risk, and market-ready outputs.",
   },
   "/upload": {
     title: "Upload Center",
-    description: "Ingest files into AEGIS. AI analysis, renaming, and policy enforcement run automatically.",
+    description: "Ingest files into Project Z. AI analysis, renaming, and policy enforcement run automatically.",
   },
   "/analysis": {
     title: "AI Analysis",

@@ -25,9 +25,9 @@ const typeMeta: Record<
   { label: string; icon: typeof Cloud; gradient: string }
 > = {
   vault: {
-    label: "AEGIS Vault",
+    label: "Project Z Vault",
     icon: ShieldCheck,
-    gradient: "from-[oklch(0.72_0.16_264/0.18)] to-transparent",
+    gradient: "from-[rgb(0_200_83/0.2)] to-transparent",
   },
   filecoin: {
     label: "Filecoin",

@@ -578,7 +578,7 @@ export const apiKeys: ApiKey[] = [
 export const storageBackends: StorageBackend[] = [
   {
     id: "sb_vault",
-    name: "AEGIS Vault (primary)",
+    name: "Project Z Vault (primary)",
     type: "vault",
     region: "us-east-1",
     capacity: 50_000_000_000_000, // 50 TB

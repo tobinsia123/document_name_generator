@@ -146,11 +146,11 @@ export default function ApiKeysPage() {
         <CardContent>
           <pre className="overflow-auto rounded-lg border border-border bg-background/40 p-4 text-[11.5px] leading-relaxed">
             <code className="font-mono text-foreground/90">
-{`import { Aegis } from "@aegis/sdk";
+{`import { ProjectZ } from "@project-z/sdk";
 
-const aegis = new Aegis({ apiKey: process.env.AEGIS_KEY });
+const projectZ = new ProjectZ({ apiKey: process.env.PROJECT_Z_KEY });
 
-const result = await aegis.files.ingest({
+const result = await projectZ.files.ingest({
   source: "./contracts/",
   policies: ["SSN-Auto-Encrypt", "PHI-Tokenization"],
   storage: "vault",
