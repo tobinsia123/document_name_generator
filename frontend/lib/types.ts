@@ -242,3 +242,43 @@ export interface RunOptions {
   encryption_passphrase?: string;
   remove_plaintext_archive?: boolean;
 }
+
+export type ReviewStatus = "approved" | "flagged";
+
+export interface ReviewRecord {
+  status: ReviewStatus;
+  note: string | null;
+  updated_at: string;
+}
+
+export type ReviewsMap = Record<string, ReviewRecord>;
+
+export interface DashboardKpis {
+  files_processed: number;
+  archives_created: number;
+  encrypted_archives: number;
+  groups: number;
+  needs_review: number;
+  approved: number;
+  flagged: number;
+  total_bytes: number;
+}
+
+export interface DashboardSummary {
+  manifest_path: string | null;
+  manifest_created_at: string | null;
+  ticker: string | null;
+  input_path: string | null;
+  kpis: DashboardKpis;
+  doc_type_counts: Record<string, number>;
+  recent_jobs: Array<{
+    job_id: string;
+    status: JobRecord["status"];
+    created_at: string;
+    completed_at: string | null;
+    current_stage: string | null;
+    summary: JobManifest["summary"] | null;
+    ticker: string | null;
+  }>;
+  active_jobs: number;
+}

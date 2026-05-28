@@ -1,162 +1,159 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Check, Edit3, Flag, FileSearch, Search } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Check,
+  ExternalLink,
+  FileSearch,
+  Flag,
+  RefreshCcw,
+  Search,
+  X,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { useBackendStatus } from "@/lib/backend-status";
+import {
+  flattenManifest,
+  getManifest,
+  getReviews,
+  openInOS,
+  setReview as setReviewRemote,
+} from "@/lib/api";
 import { files } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import type { JobManifest, ReviewsMap } from "@/lib/types";
 
-type Confidence = "High" | "Medium" | "Low";
-type Sensitivity = "Low" | "Medium" | "High";
-type ReviewStatus = "pending" | "approved" | "flagged";
+type ReviewStatus = "approved" | "flagged" | "pending";
 type Filter =
   | "All Files"
-  | "Needs Review"
-  | "High Confidence"
-  | "Low Confidence"
-  | "Sensitive"
+  | "Pending"
   | "Approved"
-  | "Flagged";
-
-type FileRecord = (typeof files)[number];
-
-interface MetadataDraft {
-  suggestedName: string;
-  reportType: string;
-  ticker: string;
-  publisher: string;
-}
-
-function confidenceFor(file: FileRecord): Confidence {
-  if (file.status === "failed" || !file.renamedTo) return "Low";
-  if (file.sensitivityScore >= 85 || !file.ticker || !file.publisher) return "Medium";
-  return "High";
-}
-
-function sensitivityFor(file: FileRecord): Sensitivity {
-  if (file.sensitivityScore >= 75) return "High";
-  if (file.sensitivityScore >= 35) return "Medium";
-  return "Low";
-}
-
-function confidenceVariant(value: Confidence) {
-  if (value === "High") return "success" as const;
-  if (value === "Medium") return "primary" as const;
-  return "warning" as const;
-}
-
-function sensitivityVariant(value: Sensitivity) {
-  if (value === "High") return "destructive" as const;
-  if (value === "Medium") return "warning" as const;
-  return "info" as const;
-}
-
-function initialDraft(file: FileRecord): MetadataDraft {
-  return {
-    suggestedName: file.renamedTo ?? "",
-    reportType: file.reportType ?? "",
-    ticker: file.ticker ?? "",
-    publisher: file.publisher ?? "",
-  };
-}
+  | "Flagged"
+  | "Has Archive"
+  | "Encrypted";
 
 const filters: Filter[] = [
   "All Files",
-  "Needs Review",
-  "High Confidence",
-  "Low Confidence",
-  "Sensitive",
+  "Pending",
   "Approved",
   "Flagged",
+  "Has Archive",
+  "Encrypted",
 ];
 
+type LiveRow = ReturnType<typeof flattenManifest>[number];
+
+function ConfidenceBadge({ row }: { row: LiveRow }) {
+  const missing =
+    !row.ticker || !row.docType || !row.yearQuarter || !row.publicationDate;
+  if (missing) return <Badge variant="warning">Medium</Badge>;
+  return <Badge variant="success">High</Badge>;
+}
+
 export default function ReviewPage() {
+  const { mode } = useBackendStatus();
+  const isLive = mode === "live";
+
+  if (!isLive) return <DemoReview />;
+  return <LiveReview />;
+}
+
+/* -------------------- LIVE -------------------- */
+
+function LiveReview() {
+  const [manifest, setManifest] = useState<JobManifest | null>(null);
+  const [reviews, setReviews] = useState<ReviewsMap>({});
   const [activeFilter, setActiveFilter] = useState<Filter>("All Files");
   const [query, setQuery] = useState("");
-  const [statuses, setStatuses] = useState<Record<string, ReviewStatus>>({});
-  const [metadata, setMetadata] = useState<Record<string, MetadataDraft>>({});
-  const [editingId, setEditingId] = useState<string | null>(null);
-  const [draft, setDraft] = useState<MetadataDraft | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [busyKey, setBusyKey] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const refresh = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [m, r] = await Promise.all([getManifest(), getReviews()]);
+      setManifest(m?.manifest ?? null);
+      setReviews(r ?? {});
+      if (!m) setError("No manifest found. Run a job first.");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to load review data");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void refresh();
+  }, [refresh]);
 
   const rows = useMemo(
-    () =>
-      files.map((file) => {
-        const fileMetadata = metadata[file.id] ?? initialDraft(file);
-        const confidence = confidenceFor(file);
-        const sensitivity = sensitivityFor(file);
-        const status = statuses[file.id] ?? "pending";
-        return { file, metadata: fileMetadata, confidence, sensitivity, status };
-      }),
-    [metadata, statuses]
+    () => (manifest ? flattenManifest(manifest) : []),
+    [manifest]
   );
 
-  const filteredRows = rows.filter((row) => {
-    const text = [
-      row.file.originalName,
-      row.metadata.suggestedName,
-      row.metadata.reportType,
-      row.metadata.ticker,
-      row.metadata.publisher,
+  const enriched: Array<LiveRow & { status: ReviewStatus; note: string | null }> =
+    rows.map((row) => {
+      const review = reviews[row.renamed];
+      const status: ReviewStatus = (review?.status as ReviewStatus | undefined) ?? "pending";
+      return { ...row, status, note: review?.note ?? null };
+    });
+
+  const filteredRows = enriched.filter((row) => {
+    const haystack = [
+      row.original,
+      row.renamed,
+      row.ticker,
+      row.publisher,
+      row.docType,
+      row.yearQuarter,
+      row.publicationDate,
     ]
       .join(" ")
       .toLowerCase();
-    const matchesQuery = text.includes(query.toLowerCase());
-    const matchesFilter =
-      activeFilter === "All Files" ||
-      (activeFilter === "Needs Review" && row.confidence !== "High") ||
-      (activeFilter === "High Confidence" && row.confidence === "High") ||
-      (activeFilter === "Low Confidence" && row.confidence === "Low") ||
-      (activeFilter === "Sensitive" && row.sensitivity === "High") ||
-      (activeFilter === "Approved" && row.status === "approved") ||
-      (activeFilter === "Flagged" && row.status === "flagged");
-    return matchesQuery && matchesFilter;
+    if (query && !haystack.includes(query.toLowerCase())) return false;
+    if (activeFilter === "All Files") return true;
+    if (activeFilter === "Pending") return row.status === "pending";
+    if (activeFilter === "Approved") return row.status === "approved";
+    if (activeFilter === "Flagged") return row.status === "flagged";
+    if (activeFilter === "Has Archive") return Boolean(row.archive?.archive_path);
+    if (activeFilter === "Encrypted") return row.encrypted;
+    return true;
   });
 
   const summary = [
+    { label: "Total Files", value: rows.length.toString(), note: "In manifest" },
     {
-      label: "Ready to Approve",
-      value: rows.filter((row) => row.confidence === "High" && row.status !== "approved").length,
+      label: "Pending Review",
+      value: enriched.filter((r) => r.status === "pending").length.toString(),
+      note: "No decision yet",
     },
     {
-      label: "Needs Review",
-      value: rows.filter((row) => row.confidence !== "High").length,
+      label: "Approved",
+      value: enriched.filter((r) => r.status === "approved").length.toString(),
+      note: "Locked in",
     },
     {
       label: "Flagged",
-      value: rows.filter((row) => row.status === "flagged").length,
-    },
-    {
-      label: "High Sensitivity",
-      value: rows.filter((row) => row.sensitivity === "High").length,
+      value: enriched.filter((r) => r.status === "flagged").length.toString(),
+      note: "Needs attention",
     },
   ];
 
-  const editingRow = editingId ? rows.find((row) => row.file.id === editingId) : null;
-
-  function openEditor(fileId: string) {
-    const row = rows.find((item) => item.file.id === fileId);
-    if (!row) return;
-    setEditingId(fileId);
-    setDraft(row.metadata);
-  }
-
-  function saveDraft() {
-    if (!editingId || !draft) return;
-    setMetadata((prev) => ({ ...prev, [editingId]: draft }));
-    setEditingId(null);
-    setDraft(null);
+  async function setRow(row: LiveRow, status: "approved" | "flagged" | null) {
+    setBusyKey(row.renamed);
+    try {
+      const next = await setReviewRemote(row.renamed, status);
+      setReviews(next);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to save review");
+    } finally {
+      setBusyKey(null);
+    }
   }
 
   return (
@@ -165,10 +162,13 @@ export default function ReviewPage() {
         {summary.map((item) => (
           <Card key={item.label} className="bg-white">
             <CardContent className="p-5">
-              <p className="text-xs font-medium text-muted-foreground">{item.label}</p>
+              <p className="text-xs font-medium text-muted-foreground">
+                {item.label}
+              </p>
               <p className="mt-3 text-3xl font-semibold tracking-normal text-[oklch(0.2_0.045_260)]">
                 {item.value}
               </p>
+              <p className="mt-2 text-xs text-muted-foreground">{item.note}</p>
             </CardContent>
           </Card>
         ))}
@@ -180,24 +180,46 @@ export default function ReviewPage() {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <FileSearch className="h-4 w-4 text-primary" />
-                Review suggested metadata before export.
+                Review renamed documents
               </CardTitle>
               <CardDescription>
-                Search, filter, approve, edit, or flag document metadata before export.
+                {manifest
+                  ? `${manifest.ticker} · job ${manifest.job_id.slice(0, 8)} · ${rows.length} files`
+                  : "Loading manifest…"}
               </CardDescription>
             </div>
-            <div className="relative w-full xl:max-w-sm">
-              <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search files, tickers, publishers..."
-                className="h-10 bg-background/70 pl-9"
-              />
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => void refresh()}
+                disabled={loading}
+              >
+                <RefreshCcw
+                  className={cn("h-3.5 w-3.5", loading && "animate-spin")}
+                />
+                Refresh
+              </Button>
+              <div className="relative w-full xl:max-w-sm">
+                <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search filename, ticker, publisher…"
+                  className="h-10 bg-background/70 pl-9"
+                />
+              </div>
             </div>
           </div>
         </CardHeader>
         <CardContent>
+          {error && (
+            <div className="mb-4 rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive">
+              {error}
+            </div>
+          )}
+
           <div className="mb-5 flex flex-wrap gap-2">
             {filters.map((filter) => (
               <button
@@ -216,178 +238,283 @@ export default function ReviewPage() {
             ))}
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-border/70">
-            <table className="w-full min-w-[1120px] border-separate border-spacing-0 text-left text-sm">
-              <thead className="bg-[oklch(0.98_0.01_245)]">
-                <tr className="text-xs text-muted-foreground">
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Original File</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Suggested Name</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Document Type</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Ticker</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Publisher</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Confidence</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Sensitivity</th>
-                  <th className="border-b border-border/70 px-4 py-3 font-medium">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredRows.map((row) => (
-                  <tr
-                    key={row.file.id}
-                    className={cn(
-                      "align-middle transition-colors",
-                      row.confidence === "Low" && "bg-[oklch(0.98_0.02_78)]",
-                      row.confidence !== "Low" && row.sensitivity === "High" && "bg-[oklch(0.985_0.012_26)]",
-                      row.confidence !== "Low" && row.sensitivity !== "High" && "hover:bg-[oklch(0.98_0.008_245)]"
-                    )}
-                  >
-                    <td className="max-w-[220px] border-b border-border/50 px-4 py-4">
-                      <div className="truncate font-medium text-foreground">
-                        {row.file.originalName}
-                      </div>
-                      {row.status !== "pending" && (
-                        <Badge
-                          variant={row.status === "approved" ? "success" : "warning"}
-                          size="sm"
-                          className="mt-2"
-                        >
-                          {row.status}
-                        </Badge>
-                      )}
-                    </td>
-                    <td className="max-w-[320px] border-b border-border/50 px-4 py-4">
-                      <div className="truncate rounded-md bg-white/70 px-2 py-1 font-mono text-xs text-[oklch(0.32_0.07_260)]">
-                        {row.metadata.suggestedName || "Needs metadata before naming"}
-                      </div>
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      {row.metadata.reportType || "Unclassified"}
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      {row.metadata.ticker || "N/A"}
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      {row.metadata.publisher || "Unknown"}
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      <Badge variant={confidenceVariant(row.confidence)}>
-                        {row.confidence}
-                      </Badge>
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      <Badge variant={sensitivityVariant(row.sensitivity)}>
-                        {row.sensitivity}
-                      </Badge>
-                    </td>
-                    <td className="border-b border-border/50 px-4 py-4">
-                      <div className="flex items-center gap-2">
-                        <Button
-                          type="button"
-                          size="xs"
-                          variant={row.status === "approved" ? "secondary" : "outline"}
-                          onClick={() =>
-                            setStatuses((prev) => ({ ...prev, [row.file.id]: "approved" }))
-                          }
-                        >
-                          <Check className="h-3.5 w-3.5" />
-                          Approve
-                        </Button>
-                        <Button type="button" size="xs" variant="ghost" onClick={() => openEditor(row.file.id)}>
-                          <Edit3 className="h-3.5 w-3.5" />
-                          Edit
-                        </Button>
-                        <Button
-                          type="button"
-                          size="xs"
-                          variant={row.status === "flagged" ? "secondary" : "ghost"}
-                          onClick={() =>
-                            setStatuses((prev) => ({ ...prev, [row.file.id]: "flagged" }))
-                          }
-                        >
-                          <Flag className="h-3.5 w-3.5" />
-                          Flag
-                        </Button>
-                      </div>
-                    </td>
+          {rows.length === 0 ? (
+            <div className="rounded-xl border border-dashed border-border/70 py-12 text-center text-sm text-muted-foreground">
+              No files in manifest. Run a job from the Upload page first.
+            </div>
+          ) : (
+            <div className="overflow-x-auto rounded-xl border border-border/70">
+              <table className="w-full min-w-[1080px] border-separate border-spacing-0 text-left text-sm">
+                <thead className="bg-[oklch(0.98_0.01_245)]">
+                  <tr className="text-xs text-muted-foreground">
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Original
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Renamed
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Type
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Period
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Confidence
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Archive
+                    </th>
+                    <th className="border-b border-border/70 px-4 py-3 font-medium">
+                      Action
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {filteredRows.map((row) => {
+                    const isBusy = busyKey === row.renamed;
+                    return (
+                      <tr
+                        key={row.id}
+                        className={cn(
+                          "align-middle transition-colors",
+                          row.status === "approved" && "bg-[oklch(0.985_0.018_158)]",
+                          row.status === "flagged" && "bg-[oklch(0.98_0.025_78)]"
+                        )}
+                      >
+                        <td className="max-w-[240px] border-b border-border/50 px-4 py-3.5">
+                          <div className="truncate text-xs text-muted-foreground" title={row.original}>
+                            {row.original}
+                          </div>
+                          <div className="mt-1 text-xs font-medium text-foreground">
+                            {row.ticker || "—"} · {row.publisher || "—"}
+                          </div>
+                        </td>
+                        <td className="max-w-[300px] border-b border-border/50 px-4 py-3.5">
+                          <button
+                            type="button"
+                            onClick={() => void openInOS(row.new_path)}
+                            title={`Reveal ${row.new_path} in Finder`}
+                            className="group flex items-center gap-1.5 text-left"
+                          >
+                            <span className="truncate rounded-md bg-white/70 px-2 py-1 font-mono text-[11px] text-[oklch(0.32_0.07_260)] group-hover:bg-white">
+                              {row.renamed}
+                            </span>
+                            <ExternalLink className="h-3 w-3 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
+                          </button>
+                        </td>
+                        <td className="border-b border-border/50 px-4 py-3.5 text-xs">
+                          {row.docType.replace(/_/g, " ") || "—"}
+                        </td>
+                        <td className="border-b border-border/50 px-4 py-3.5 text-xs">
+                          {row.yearQuarter}
+                          {row.publicationDate ? ` · ${row.publicationDate}` : ""}
+                        </td>
+                        <td className="border-b border-border/50 px-4 py-3.5">
+                          <ConfidenceBadge row={row} />
+                        </td>
+                        <td className="border-b border-border/50 px-4 py-3.5">
+                          {row.archive ? (
+                            <Badge
+                              variant={row.encrypted ? "primary" : "muted"}
+                              size="sm"
+                            >
+                              {row.encrypted ? "Encrypted" : "Plain"}
+                            </Badge>
+                          ) : (
+                            <Badge variant="muted" size="sm">
+                              —
+                            </Badge>
+                          )}
+                        </td>
+                        <td className="border-b border-border/50 px-4 py-3.5">
+                          <div className="flex items-center gap-1.5">
+                            <Button
+                              type="button"
+                              size="xs"
+                              variant={row.status === "approved" ? "secondary" : "outline"}
+                              disabled={isBusy}
+                              onClick={() =>
+                                void setRow(
+                                  row,
+                                  row.status === "approved" ? null : "approved"
+                                )
+                              }
+                              title={row.status === "approved" ? "Unapprove" : "Approve"}
+                            >
+                              <Check className="h-3.5 w-3.5" />
+                              {row.status === "approved" ? "Approved" : "Approve"}
+                            </Button>
+                            <Button
+                              type="button"
+                              size="xs"
+                              variant={row.status === "flagged" ? "secondary" : "ghost"}
+                              disabled={isBusy}
+                              onClick={() =>
+                                void setRow(
+                                  row,
+                                  row.status === "flagged" ? null : "flagged"
+                                )
+                              }
+                              title={row.status === "flagged" ? "Unflag" : "Flag"}
+                            >
+                              <Flag className="h-3.5 w-3.5" />
+                              {row.status === "flagged" ? "Flagged" : "Flag"}
+                            </Button>
+                            {row.status !== "pending" && (
+                              <Button
+                                type="button"
+                                size="xs"
+                                variant="ghost"
+                                disabled={isBusy}
+                                onClick={() => void setRow(row, null)}
+                                title="Clear decision"
+                              >
+                                <X className="h-3.5 w-3.5" />
+                              </Button>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-          {filteredRows.length === 0 && (
+          {rows.length > 0 && filteredRows.length === 0 && (
             <div className="rounded-xl border border-dashed border-border/70 py-10 text-center text-sm text-muted-foreground">
               No files match the current filter.
             </div>
           )}
         </CardContent>
       </Card>
-
-      <Dialog open={Boolean(editingId)} onOpenChange={(open) => !open && setEditingId(null)}>
-        <DialogContent className="max-w-2xl bg-white">
-          <DialogHeader>
-            <DialogTitle>Edit metadata</DialogTitle>
-            <DialogDescription>
-              Update suggested metadata for {editingRow?.file.originalName}. This is a UI-level
-              review edit and does not change source files.
-            </DialogDescription>
-          </DialogHeader>
-          {draft && (
-            <div className="grid gap-4">
-              <EditField
-                label="Suggested Name"
-                value={draft.suggestedName}
-                onChange={(value) => setDraft((prev) => prev && { ...prev, suggestedName: value })}
-              />
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <EditField
-                  label="Document Type"
-                  value={draft.reportType}
-                  onChange={(value) => setDraft((prev) => prev && { ...prev, reportType: value })}
-                />
-                <EditField
-                  label="Ticker"
-                  value={draft.ticker}
-                  onChange={(value) => setDraft((prev) => prev && { ...prev, ticker: value })}
-                />
-                <EditField
-                  label="Publisher"
-                  value={draft.publisher}
-                  onChange={(value) => setDraft((prev) => prev && { ...prev, publisher: value })}
-                />
-              </div>
-            </div>
-          )}
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setEditingId(null)}>
-              Cancel
-            </Button>
-            <Button
-              onClick={saveDraft}
-              className="bg-[oklch(0.46_0.18_282)] text-white hover:bg-[oklch(0.42_0.18_282)]"
-            >
-              Save Metadata
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }
 
-function EditField({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-}) {
+/* -------------------- DEMO (backend offline) -------------------- */
+
+function DemoReview() {
+  const [activeFilter, setActiveFilter] = useState<Filter>("All Files");
+  const [query, setQuery] = useState("");
+  const [statuses, setStatuses] = useState<Record<string, ReviewStatus>>({});
+
+  const rows = files.map((file) => ({ file, status: statuses[file.id] ?? "pending" }));
+  const filtered = rows.filter((row) => {
+    const haystack = [row.file.originalName, row.file.renamedTo, row.file.ticker]
+      .join(" ")
+      .toLowerCase();
+    if (query && !haystack.includes(query.toLowerCase())) return false;
+    if (activeFilter === "Pending") return row.status === "pending";
+    if (activeFilter === "Approved") return row.status === "approved";
+    if (activeFilter === "Flagged") return row.status === "flagged";
+    return true;
+  });
+
   return (
-    <div className="space-y-1.5">
-      <Label className="text-xs text-muted-foreground">{label}</Label>
-      <Input value={value} onChange={(event) => onChange(event.target.value)} />
+    <div className="space-y-6">
+      <div className="rounded-2xl border border-[oklch(0.76_0.18_78/0.45)] bg-[oklch(0.99_0.04_78)] p-4 text-sm text-[oklch(0.36_0.16_78)]">
+        <div className="font-medium">Backend offline — showing demo files.</div>
+        <p className="mt-1 text-xs text-[oklch(0.46_0.16_78)]">
+          Start Flask (
+          <code className="rounded bg-[oklch(0.96_0.04_78)] px-1">python web_app.py</code> in{" "}
+          <code>raw_data/AMAZON</code>) and run a job to see real review data.
+        </p>
+      </div>
+
+      <Card className="bg-white">
+        <CardHeader>
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2">
+                <FileSearch className="h-4 w-4 text-primary" />
+                Demo review queue
+              </CardTitle>
+              <CardDescription>UI-only state — does not persist.</CardDescription>
+            </div>
+            <div className="relative w-full xl:max-w-sm">
+              <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Search files…"
+                className="h-10 bg-background/70 pl-9"
+              />
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="mb-5 flex flex-wrap gap-2">
+            {(["All Files", "Pending", "Approved", "Flagged"] as Filter[]).map((f) => (
+              <button
+                key={f}
+                type="button"
+                onClick={() => setActiveFilter(f)}
+                className={cn(
+                  "rounded-lg border px-3 py-2 text-xs font-medium transition",
+                  activeFilter === f
+                    ? "border-[oklch(0.5_0.16_280)] bg-[oklch(0.96_0.024_278)] text-[oklch(0.34_0.12_280)]"
+                    : "border-border bg-white text-muted-foreground hover:border-[oklch(0.62_0.12_270)] hover:text-foreground"
+                )}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          <div className="space-y-2">
+            {filtered.map((row) => (
+              <div
+                key={row.file.id}
+                className={cn(
+                  "flex items-center justify-between gap-4 rounded-xl border border-border/70 bg-white px-4 py-3",
+                  row.status === "approved" && "bg-[oklch(0.985_0.018_158)]",
+                  row.status === "flagged" && "bg-[oklch(0.98_0.025_78)]"
+                )}
+              >
+                <div className="min-w-0">
+                  <div className="truncate text-xs text-muted-foreground">
+                    {row.file.originalName}
+                  </div>
+                  <div className="mt-1 truncate font-mono text-xs text-[oklch(0.32_0.07_260)]">
+                    {row.file.renamedTo ?? "no proposed name"}
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Button
+                    size="xs"
+                    variant={row.status === "approved" ? "secondary" : "outline"}
+                    onClick={() =>
+                      setStatuses((prev) => ({
+                        ...prev,
+                        [row.file.id]: prev[row.file.id] === "approved" ? "pending" : "approved",
+                      }))
+                    }
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                    Approve
+                  </Button>
+                  <Button
+                    size="xs"
+                    variant={row.status === "flagged" ? "secondary" : "ghost"}
+                    onClick={() =>
+                      setStatuses((prev) => ({
+                        ...prev,
+                        [row.file.id]: prev[row.file.id] === "flagged" ? "pending" : "flagged",
+                      }))
+                    }
+                  >
+                    <Flag className="h-3.5 w-3.5" />
+                    Flag
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import {
   UploadCloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HomeLiveRail } from "./_home/live-rail";
 
 const workflowSteps = [
   {
@@ -116,6 +117,10 @@ export default function Home() {
           <div className="pointer-events-none absolute -bottom-20 right-[-40px] select-none text-[150px] font-black leading-none tracking-normal text-white/[0.075] sm:text-[210px] lg:text-[260px]">
             ROBOVAULT
           </div>
+        </div>
+
+        <div className="relative z-10 mx-auto mt-6 max-w-[1400px]">
+          <HomeLiveRail />
         </div>
       </section>
 

@@ -14,8 +14,11 @@
 import type {
   BackendConfig,
   BrowseResult,
+  DashboardSummary,
   JobManifest,
   JobRecord,
+  ReviewStatus,
+  ReviewsMap,
   RunOptions,
 } from "./types";
 
@@ -183,6 +186,70 @@ export async function rollback(manifestPath: string): Promise<{ removed: string[
     }
   );
   return { removed: body.removed };
+}
+
+/* ---------- new endpoints: download, open, dashboard, reviews ---------- */
+
+/** Best-effort URL to download a file via the backend. */
+export function fileDownloadUrl(serverPath: string): string {
+  return `${AEGIS_API_BASE}/api/file?path=${encodeURIComponent(serverPath)}&download=1`;
+}
+
+/** Triggers a browser download of any file the backend can serve. */
+export function downloadFile(serverPath: string, filename?: string) {
+  if (typeof window === "undefined") return;
+  const a = document.createElement("a");
+  a.href = fileDownloadUrl(serverPath);
+  if (filename) a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+/** Ask the backend to reveal a path in the host OS file manager. */
+export async function openInOS(serverPath: string): Promise<boolean> {
+  try {
+    await request<ApiEnvelope<unknown>>(`/api/open`, {
+      method: "POST",
+      body: JSON.stringify({ path: serverPath }),
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function getDashboard(): Promise<DashboardSummary | null> {
+  const body = await safe(
+    request<ApiEnvelope<unknown> & DashboardSummary>(`/api/dashboard`, {
+      method: "GET",
+    })
+  );
+  return body ? (body as unknown as DashboardSummary) : null;
+}
+
+export async function getReviews(): Promise<ReviewsMap | null> {
+  const body = await safe(
+    request<ApiEnvelope<unknown> & { reviews: ReviewsMap }>(`/api/reviews`, {
+      method: "GET",
+    })
+  );
+  return body ? body.reviews : null;
+}
+
+export async function setReview(
+  key: string,
+  status: ReviewStatus | null,
+  note?: string | null
+): Promise<ReviewsMap> {
+  const body = await request<ApiEnvelope<unknown> & { reviews: ReviewsMap }>(
+    `/api/reviews`,
+    {
+      method: "POST",
+      body: JSON.stringify({ key, status, note: note ?? null }),
+    }
+  );
+  return body.reviews;
 }
 
 /* ---------- helpers used across pages ---------- */

@@ -10,12 +10,14 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
+import sys
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_file
 
 try:
     from flask_cors import CORS  # type: ignore
@@ -34,8 +36,10 @@ from document_title_generator import (
 APP_DIR = Path(__file__).resolve().parent
 WORKSPACE = APP_DIR / "ui_workspace"
 SAFE_BROWSE_ROOTS = [APP_DIR.resolve(), WORKSPACE.resolve(), Path.home().resolve()]
+REVIEWS_PATH = WORKSPACE / "reviews.json"  # persisted approve/flag/edit state, keyed by renamed filename
 JOB_STORE: dict = {}
 JOB_LOCK = threading.Lock()
+REVIEWS_LOCK = threading.Lock()
 
 app = Flask(
     __name__,
@@ -80,6 +84,52 @@ def _safe_resolve(path_text: str) -> Path:
         except ValueError:
             continue
     raise ValueError("Path is outside allowed roots")
+
+
+def _remap_to_workspace(basename: str) -> Path | None:
+    """Look for `basename` in WORKSPACE (renamed/, archives/, recursive)."""
+    if not basename:
+        return None
+    workspace_resolved = WORKSPACE.resolve()
+    if not workspace_resolved.exists():
+        return None
+    for sub in ("renamed", "archives"):
+        candidate = (workspace_resolved / sub / basename).resolve()
+        try:
+            candidate.relative_to(workspace_resolved)
+        except ValueError:
+            continue
+        if candidate.exists() and candidate.is_file():
+            return candidate
+    for child in workspace_resolved.rglob(basename):
+        if child.is_file():
+            return child
+    return None
+
+
+def _resolve_or_remap(path_text: str) -> Path:
+    """Resolve a path, with a basename-based fallback into the local workspace.
+
+    Useful when a manifest was generated on a different machine: the absolute
+    path won't exist locally, but the same filename may be present under
+    `WORKSPACE/renamed/` or `WORKSPACE/archives/`. We try the basename
+    fallback both when the path is outside safe roots and when it resolves
+    inside roots but does not exist.
+    """
+    basename = Path(path_text).name
+    try:
+        primary = _safe_resolve(path_text)
+    except ValueError:
+        remapped = _remap_to_workspace(basename)
+        if remapped is not None:
+            return remapped
+        raise
+    if primary.exists():
+        return primary
+    remapped = _remap_to_workspace(basename)
+    if remapped is not None:
+        return remapped
+    return primary  # caller will surface "not found"
 
 
 def _build_job_config(data: dict, progress_callback=None) -> JobConfig:
@@ -349,6 +399,211 @@ def api_rollback():
         return jsonify({"ok": False, "error": str(e)}), 400
     except Exception as e:
         return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.get("/api/file")
+def api_file_download():
+    """Stream a file from disk, restricted to SAFE_BROWSE_ROOTS."""
+    path_text = (request.args.get("path") or "").strip()
+    if not path_text:
+        return jsonify({"ok": False, "error": "path is required"}), 400
+    try:
+        target = _resolve_or_remap(path_text)
+    except ValueError:
+        # Outside safe roots and no remap match -> treat as not found
+        return jsonify({"ok": False, "error": "File not found"}), 404
+    if not target.exists() or not target.is_file():
+        return jsonify({"ok": False, "error": "File not found", "tried": str(target)}), 404
+    as_attachment = (request.args.get("download") or "").lower() not in {"0", "false", ""}
+    return send_file(
+        target,
+        as_attachment=as_attachment,
+        download_name=target.name,
+    )
+
+
+@app.post("/api/open")
+def api_open_in_os():
+    """Open a path in the host OS file manager (best-effort, local-only)."""
+    data = request.get_json(force=True) or {}
+    path_text = (data.get("path") or "").strip()
+    if not path_text:
+        return jsonify({"ok": False, "error": "path is required"}), 400
+    try:
+        target = _resolve_or_remap(path_text)
+    except ValueError:
+        return jsonify({"ok": False, "error": "Path not found"}), 404
+    if not target.exists():
+        return jsonify({"ok": False, "error": "Path does not exist", "tried": str(target)}), 404
+
+    try:
+        if sys.platform == "darwin":
+            subprocess.Popen(["open", "-R" if target.is_file() else "-a", "Finder", str(target)])
+        elif sys.platform.startswith("win"):
+            if target.is_file():
+                subprocess.Popen(["explorer", "/select,", str(target)])
+            else:
+                os.startfile(str(target))  # type: ignore[attr-defined]
+        else:
+            subprocess.Popen(["xdg-open", str(target.parent if target.is_file() else target)])
+    except Exception as e:  # pragma: no cover
+        return jsonify({"ok": False, "error": str(e)}), 500
+    return jsonify({"ok": True, "opened": str(target)})
+
+
+@app.get("/api/dashboard")
+def api_dashboard():
+    """KPI summary derived from the default workspace manifest + in-memory jobs."""
+    manifest_path = WORKSPACE / "job_manifest.json"
+    manifest: dict | None = None
+    if manifest_path.exists():
+        try:
+            with manifest_path.open("r", encoding="utf-8") as fh:
+                manifest = json.load(fh)
+        except (json.JSONDecodeError, OSError):
+            manifest = None
+
+    files_count = 0
+    archives_count = 0
+    encrypted_count = 0
+    groups_count = 0
+    needs_review_count = 0
+    total_bytes = 0
+    doc_type_counts: dict[str, int] = {}
+    if manifest:
+        qf = manifest.get("quickfinder_groups") or {}
+        groups_count = len(qf)
+        for group_key, group in qf.items():
+            grp_files = group.get("files") or []
+            files_count += len(grp_files)
+            arch = group.get("archive") or {}
+            if arch.get("archive_path") or arch.get("encrypted_archive_path"):
+                archives_count += 1
+            if arch.get("encrypted_archive_path"):
+                encrypted_count += 1
+            # Best-effort: file size from disk if we can find it
+            for f in grp_files:
+                p = Path(f.get("new_path") or "")
+                if p.exists() and p.is_file():
+                    try:
+                        total_bytes += p.stat().st_size
+                    except OSError:
+                        pass
+                # Derive doc type from group key like AMZN_earnings_call_2024Q3
+                parts = group_key.split("_")
+                if len(parts) >= 3:
+                    doc_type = "_".join(parts[1:-1]).upper() if parts[-1][:4].isdigit() else "_".join(parts[1:]).upper()
+                    doc_type_counts[doc_type] = doc_type_counts.get(doc_type, 0) + 1
+
+        # "Needs review" = files with no archive or whose archive failed/missing
+        for group_key, group in qf.items():
+            arch = group.get("archive") or {}
+            status = (arch.get("status") or "").lower()
+            if status and status != "success":
+                needs_review_count += len(group.get("files") or [])
+
+    # Load persisted reviews (overlay onto review counts)
+    reviews = _load_reviews()
+    flagged_count = sum(1 for r in reviews.values() if r.get("status") == "flagged")
+    approved_count = sum(1 for r in reviews.values() if r.get("status") == "approved")
+
+    with JOB_LOCK:
+        all_jobs = list(JOB_STORE.values())
+    all_jobs.sort(key=lambda j: j.get("created_at") or "", reverse=True)
+    recent_jobs = [
+        {
+            "job_id": j["job_id"],
+            "status": j["status"],
+            "created_at": j["created_at"],
+            "completed_at": j["completed_at"],
+            "current_stage": j.get("current_stage"),
+            "summary": j.get("summary"),
+            "ticker": (j.get("manifest") or {}).get("ticker") if j.get("manifest") else None,
+        }
+        for j in all_jobs[:10]
+    ]
+
+    return jsonify(
+        {
+            "ok": True,
+            "manifest_path": str(manifest_path) if manifest_path.exists() else None,
+            "manifest_created_at": manifest.get("created_at") if manifest else None,
+            "ticker": manifest.get("ticker") if manifest else None,
+            "input_path": manifest.get("input_path") if manifest else None,
+            "kpis": {
+                "files_processed": files_count,
+                "archives_created": archives_count,
+                "encrypted_archives": encrypted_count,
+                "groups": groups_count,
+                "needs_review": needs_review_count + flagged_count,
+                "approved": approved_count,
+                "flagged": flagged_count,
+                "total_bytes": total_bytes,
+            },
+            "doc_type_counts": doc_type_counts,
+            "recent_jobs": recent_jobs,
+            "active_jobs": sum(1 for j in all_jobs if j["status"] in {"queued", "running"}),
+        }
+    )
+
+
+# ---------- Review state persistence ----------
+
+def _load_reviews() -> dict:
+    with REVIEWS_LOCK:
+        if not REVIEWS_PATH.exists():
+            return {}
+        try:
+            with REVIEWS_PATH.open("r", encoding="utf-8") as fh:
+                data = json.load(fh)
+            if not isinstance(data, dict):
+                return {}
+            return data
+        except (json.JSONDecodeError, OSError):
+            return {}
+
+
+def _save_reviews(reviews: dict) -> None:
+    with REVIEWS_LOCK:
+        REVIEWS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        tmp = REVIEWS_PATH.with_suffix(".json.tmp")
+        with tmp.open("w", encoding="utf-8") as fh:
+            json.dump(reviews, fh, indent=2)
+        tmp.replace(REVIEWS_PATH)
+
+
+@app.get("/api/reviews")
+def api_reviews_get():
+    return jsonify({"ok": True, "reviews": _load_reviews()})
+
+
+@app.post("/api/reviews")
+def api_reviews_set():
+    """Set or clear the review status for a single file (keyed by renamed filename).
+
+    Body: { "key": "<renamed_filename>", "status": "approved"|"flagged"|null,
+            "note": "..." (optional) }
+    """
+    data = request.get_json(force=True) or {}
+    key = (data.get("key") or "").strip()
+    if not key:
+        return jsonify({"ok": False, "error": "key is required"}), 400
+    status = data.get("status")
+    if status not in ("approved", "flagged", None):
+        return jsonify({"ok": False, "error": "status must be approved|flagged|null"}), 400
+    note = (data.get("note") or "").strip() or None
+
+    reviews = _load_reviews()
+    if status is None:
+        reviews.pop(key, None)
+    else:
+        reviews[key] = {
+            "status": status,
+            "note": note,
+            "updated_at": _iso_now(),
+        }
+    _save_reviews(reviews)
+    return jsonify({"ok": True, "reviews": reviews})
 
 
 def _pick_port(preferred: int) -> int:
