@@ -86,12 +86,8 @@ export default function Home() {
           <div className="relative z-10 flex flex-1 items-center py-20">
             <div className="max-w-4xl">
               <h1 className="max-w-5xl text-5xl font-semibold leading-[0.98] tracking-normal text-white sm:text-6xl lg:text-7xl">
-                Secure, organize, and retrieve financial research documents.
+                From messy files to market insights
               </h1>
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-                RoboVault turns messy analyst reports, earnings transcripts, and SEC filings
-                into standardized, searchable, and secure document sets.
-              </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
                 <Button
                   asChild
