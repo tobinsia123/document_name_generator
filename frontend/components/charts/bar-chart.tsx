@@ -23,7 +23,7 @@ export function ComplianceBars({ data, height = 220 }: Props) {
   if (!mounted)
     return (
       <div
-        className="shimmer rounded-md bg-white/[0.02]"
+        className="shimmer rounded-md bg-accent/30"
         style={{ width: "100%", height }}
       />
     );
@@ -59,7 +59,7 @@ export function ComplianceBars({ data, height = 220 }: Props) {
                 d.value >= 95
                   ? "oklch(0.78 0.17 158)"
                   : d.value >= 85
-                  ? "oklch(0.72 0.18 264)"
+                  ? "oklch(0.34 0.115 262)"
                   : d.value >= 75
                   ? "oklch(0.86 0.16 78)"
                   : "oklch(0.78 0.22 22)";

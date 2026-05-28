@@ -23,7 +23,7 @@ export function EncryptionBadge({ state }: { state: EncryptionState }) {
     },
     "client-managed": {
       label: "Client-managed",
-      cls: "border-[color:oklch(0.72_0.16_264/0.35)] bg-[color:oklch(0.72_0.16_264/0.1)] text-[color:oklch(0.86_0.13_264)]",
+      cls: "border-[color:oklch(0.34_0.115_262/0.28)] bg-[color:oklch(0.78_0.06_226/0.18)] text-[color:oklch(0.34_0.115_262)]",
       Icon: ShieldCheck,
     },
   };

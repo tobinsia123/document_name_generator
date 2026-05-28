@@ -1,0 +1,22 @@
+<svg width="680" height="180" viewBox="0 0 680 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">RoboVault</title>
+  <desc id="desc">RoboVault robot shield lock wordmark</desc>
+  <g transform="translate(20 18)">
+    <path d="M66 7h18v22H66V7Z" fill="#AFC0CB"/>
+    <circle cx="75" cy="6" r="6" fill="#AFC0CB"/>
+    <rect x="22" y="34" width="106" height="62" rx="20" fill="#AFC0CB"/>
+    <rect x="37" y="50" width="76" height="31" rx="10" fill="white"/>
+    <circle cx="58" cy="66" r="8" fill="#151922"/>
+    <circle cx="92" cy="66" r="8" fill="#151922"/>
+    <rect x="7" y="58" width="10" height="31" rx="3" fill="#AFC0CB"/>
+    <rect x="133" y="58" width="10" height="31" rx="3" fill="#AFC0CB"/>
+    <path d="M25 101L75 91l50 10v19c0 39-24 73-50 83-26-10-50-44-50-83v-19Z" fill="#AFC0CB"/>
+    <path d="M75 91l50 10v19c0 39-24 73-50 83V91Z" fill="#151922"/>
+    <path d="M25 111l50-10 50 10" stroke="white" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="75" cy="141" r="26" fill="white"/>
+    <circle cx="75" cy="134" r="10" fill="#151922"/>
+    <path d="M70 142h10l7 27H63l7-27Z" fill="#151922"/>
+  </g>
+  <text x="205" y="116" font-family="Inter, Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="0" fill="#151922">Robo</text>
+  <text x="418" y="116" font-family="Inter, Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="0" fill="#AFC0CB">Vault</text>
+</svg>

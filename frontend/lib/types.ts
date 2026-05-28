@@ -26,7 +26,7 @@ export interface DetectedEntity {
   count: number;
 }
 
-export interface AegisFile {
+export interface RoboVaultFile {
   id: string;
   originalName: string;
   renamedTo?: string;

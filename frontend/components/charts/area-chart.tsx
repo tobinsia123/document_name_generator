@@ -30,7 +30,7 @@ export function AreaSeriesChart({ data, xKey, series, height = 240 }: Props) {
   if (!mounted)
     return (
       <div
-        className="shimmer rounded-md bg-white/[0.02]"
+        className="shimmer rounded-md bg-accent/30"
         style={{ width: "100%", height }}
       />
     );

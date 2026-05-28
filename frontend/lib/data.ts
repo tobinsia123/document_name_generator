@@ -1,5 +1,5 @@
 import type {
-  AegisFile,
+  RoboVaultFile,
   ApiKey,
   AuditEvent,
   Policy,
@@ -28,7 +28,7 @@ function makeRng(seed: number) {
 
 /* ---------- Files ---------- */
 
-export const files: AegisFile[] = [
+export const files: RoboVaultFile[] = [
   {
     id: "f_01HX",
     originalName: "Q3-investor-deck-FINAL_v7.pdf",
@@ -288,7 +288,7 @@ export const auditEvents: AuditEvent[] = [
     timestamp: ago(1000 * 60 * 24),
     actor: "Dr. Helen Cho",
     action: "key.rotate",
-    resource: "kms-key-prod/aegis-vault-2",
+    resource: "kms-key-prod/robovault-primary-2",
     outcome: "success",
     ip: "10.0.4.42",
     hash: "0x012ac1981b9c",
@@ -578,7 +578,7 @@ export const apiKeys: ApiKey[] = [
 export const storageBackends: StorageBackend[] = [
   {
     id: "sb_vault",
-    name: "AEGIS Vault (primary)",
+    name: "RoboVault (primary)",
     type: "vault",
     region: "us-east-1",
     capacity: 50_000_000_000_000, // 50 TB
@@ -715,7 +715,7 @@ export const threatFeed = [
 ];
 
 export const orgInfo = {
-  name: "Atlas Capital",
+  name: "RoboVault Demo",
   plan: "Enterprise",
   usersTotal: 248,
   filesGoverned: 412_881,

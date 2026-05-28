@@ -115,7 +115,7 @@ export default function BillingPage() {
             data={ingestSeries}
             xKey="day"
             series={[
-              { key: "uploads", label: "Files", color: "oklch(0.72 0.18 264)" },
+              { key: "uploads", label: "Files", color: "oklch(0.34 0.115 262)" },
               { key: "encrypted", label: "Encrypted", color: "oklch(0.78 0.17 158)" },
             ]}
             height={220}
@@ -194,7 +194,7 @@ export default function BillingPage() {
             {invoices.map((inv) => (
               <div
                 key={inv.id}
-                className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-3 px-4 py-2.5 text-[12.5px] hover:bg-white/[0.025]"
+                className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-3 px-4 py-2.5 text-[12.5px] hover:bg-accent/40"
               >
                 <div className="font-mono">{inv.id}</div>
                 <div className="text-muted-foreground">{inv.date}</div>

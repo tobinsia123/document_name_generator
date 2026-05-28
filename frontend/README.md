@@ -1,9 +1,9 @@
-# AEGIS — AI Enterprise File Governance Platform
+# RoboVault — AI File Governance Platform
 
 > AI-powered file governance, sensitivity analysis, encryption, and compliance automation.
 > Built for banks, healthcare, legal, government, and Fortune 500 compliance teams.
 
-This is the production-grade **frontend** for AEGIS. It pairs with the Python rename
+This is the production-grade **frontend** for RoboVault. It pairs with the Python rename
 pipeline at `../raw_data/AMAZON/` to deliver a full enterprise governance experience.
 
 ## Stack
@@ -47,7 +47,7 @@ frontend/
 └── lib/
     ├── data.ts                    # Realistic enterprise mock data (deterministic)
     ├── nav.ts                     # Navigation manifest + page metadata
-    ├── types.ts                   # Domain types (AegisFile, AuditEvent, Policy, …)
+    ├── types.ts                   # Domain types (RoboVaultFile, AuditEvent, Policy, …)
     └── utils.ts                   # cn(), formatBytes, formatRelative
 ```
 
@@ -181,4 +181,4 @@ reachable, so the dashboard is always presentable.
 
 ## License
 
-Proprietary — internal demo for the AEGIS prototype.
+Proprietary — internal demo for the RoboVault prototype.

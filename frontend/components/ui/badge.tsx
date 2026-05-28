@@ -11,14 +11,14 @@ const badgeVariants = cva(
           "border-border bg-secondary text-secondary-foreground",
         outline: "border-border text-muted-foreground",
         success:
-          "border-[color:oklch(0.74_0.17_158/0.3)] bg-[color:oklch(0.74_0.17_158/0.12)] text-[color:oklch(0.84_0.15_158)]",
+          "border-[color:oklch(0.58_0.14_158/0.28)] bg-[color:oklch(0.74_0.17_158/0.12)] text-[color:oklch(0.42_0.12_158)]",
         warning:
-          "border-[color:oklch(0.82_0.17_78/0.3)] bg-[color:oklch(0.82_0.17_78/0.12)] text-[color:oklch(0.9_0.15_78)]",
+          "border-[color:oklch(0.68_0.15_78/0.3)] bg-[color:oklch(0.82_0.17_78/0.14)] text-[color:oklch(0.48_0.12_78)]",
         destructive:
-          "border-[color:oklch(0.7_0.22_22/0.35)] bg-[color:oklch(0.7_0.22_22/0.12)] text-[color:oklch(0.85_0.18_22)]",
-        info: "border-[color:oklch(0.74_0.14_232/0.3)] bg-[color:oklch(0.74_0.14_232/0.12)] text-[color:oklch(0.86_0.12_232)]",
+          "border-[color:oklch(0.62_0.2_22/0.32)] bg-[color:oklch(0.7_0.22_22/0.11)] text-[color:oklch(0.5_0.17_22)]",
+        info: "border-[color:oklch(0.58_0.09_232/0.28)] bg-[color:oklch(0.78_0.06_226/0.18)] text-[color:oklch(0.4_0.08_232)]",
         primary:
-          "border-[color:oklch(0.72_0.16_264/0.35)] bg-[color:oklch(0.72_0.16_264/0.14)] text-[color:oklch(0.86_0.13_264)]",
+          "border-[color:oklch(0.34_0.115_262/0.28)] bg-[color:oklch(0.78_0.06_226/0.18)] text-[color:oklch(0.34_0.115_262)]",
         muted: "border-border bg-muted/40 text-muted-foreground",
       },
       size: {

@@ -67,8 +67,8 @@ export default function PoliciesPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.02 }}
                   className={cn(
-                    "group flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-white/[0.025]",
-                    p.id === activeId && "bg-white/[0.04]"
+                    "group flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-accent/40",
+                    p.id === activeId && "bg-accent/50"
                   )}
                 >
                   <div

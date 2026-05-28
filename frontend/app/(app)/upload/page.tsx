@@ -185,7 +185,7 @@ export default function UploadPage() {
               </CardTitle>
               <CardDescription>
                 {isLive
-                  ? "Point AEGIS at a local folder. Files are renamed in place, copied to your output, and (optionally) sealed into encrypted archives."
+                  ? "Point RoboVault at a local folder. Files are renamed in place, copied to your output, and (optionally) sealed into encrypted archives."
                   : "Backend offline. Showing the demo replay below — real jobs will run once you start the Flask backend."}
               </CardDescription>
             </div>
@@ -391,7 +391,7 @@ export default function UploadPage() {
       <DirectoryPickerDialog
         open={Boolean(picker)}
         kind={picker?.kind ?? "dir"}
-        startPath={picker ? opts[picker.field] : ""}
+        startPath={picker ? String(opts[picker.field] ?? "") : ""}
         onClose={() => setPicker(null)}
         onChoose={(path) => {
           if (!picker) return;
