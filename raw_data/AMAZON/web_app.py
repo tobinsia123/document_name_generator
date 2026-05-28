@@ -25,10 +25,12 @@ except ImportError:  # pragma: no cover - optional dep, keeps backward compat
     CORS = None  # type: ignore
 
 from document_title_generator import (
+    AESGCM,
     DEFAULT_GROUP_BY,
     DEFAULT_TICKER,
     GROUP_BY_FIELDS,
     JobConfig,
+    decrypt_file_with_passphrase,
     rollback_from_manifest,
     run_job,
 )
@@ -604,6 +606,178 @@ def api_reviews_set():
         }
     _save_reviews(reviews)
     return jsonify({"ok": True, "reviews": reviews})
+
+
+# ---------- Encryption (live archive sealing) ----------
+
+
+def _load_workspace_manifest() -> dict | None:
+    manifest_path = WORKSPACE / "job_manifest.json"
+    if not manifest_path.exists():
+        return None
+    try:
+        with manifest_path.open("r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def _encryption_archives_from_manifest(manifest: dict | None) -> list[dict]:
+    if not manifest:
+        return []
+    rows: list[dict] = []
+    for group_key, group in (manifest.get("quickfinder_groups") or {}).items():
+        arch = group.get("archive") or {}
+        enc_path = arch.get("encrypted_archive_path")
+        if not enc_path:
+            continue
+        plain_path = arch.get("archive_path")
+        rows.append(
+            {
+                "group_key": group_key,
+                "file_count": group.get("file_count") or len(group.get("files") or []),
+                "encrypted_path": enc_path,
+                "encrypted_checksum_sha256": arch.get("encrypted_checksum_sha256"),
+                "encryption_algorithm": arch.get("encryption_algorithm") or "AES-256-GCM",
+                "archive_path": plain_path,
+                "has_plaintext_archive": bool(
+                    plain_path and Path(plain_path).exists()
+                ),
+                "status": arch.get("status"),
+            }
+        )
+    return rows
+
+
+@app.get("/api/encryption")
+def api_encryption_summary():
+    """Encryption posture derived from the workspace manifest."""
+    manifest = _load_workspace_manifest()
+    archives = _encryption_archives_from_manifest(manifest)
+    total_groups = len((manifest or {}).get("quickfinder_groups") or {})
+    opts = (manifest or {}).get("processing_options") or {}
+    encrypted_bytes = 0
+    for row in archives:
+        try:
+            p = _resolve_or_remap(row["encrypted_path"])
+            if p.exists() and p.is_file():
+                encrypted_bytes += p.stat().st_size
+        except ValueError:
+            pass
+
+    return jsonify(
+        {
+            "ok": True,
+            "cryptography_available": AESGCM is not None,
+            "manifest_path": str(WORKSPACE / "job_manifest.json")
+            if (WORKSPACE / "job_manifest.json").exists()
+            else None,
+            "job_encrypt_enabled": bool(opts.get("encrypt_archives")),
+            "summary": {
+                "encrypted_archives": len(archives),
+                "total_archives": total_groups,
+                "encrypted_bytes": encrypted_bytes,
+                "algorithm": "AES-256-GCM",
+                "kdf": "PBKDF2-HMAC-SHA256",
+                "iterations": 200_000,
+            },
+            "archives": archives,
+        }
+    )
+
+
+@app.post("/api/encryption/verify")
+def api_encryption_verify():
+    """Verify a passphrase can decrypt an encrypted archive (no file written to disk)."""
+    data = request.get_json(force=True) or {}
+    path_text = (data.get("path") or "").strip()
+    passphrase = (data.get("passphrase") or "").strip()
+    if not path_text:
+        return jsonify({"ok": False, "error": "path is required"}), 400
+    if not passphrase:
+        return jsonify({"ok": False, "error": "passphrase is required"}), 400
+    if AESGCM is None:
+        return jsonify(
+            {
+                "ok": False,
+                "error": "cryptography package not installed on the server",
+            }
+        ), 500
+
+    try:
+        target = _resolve_or_remap(path_text)
+    except ValueError:
+        return jsonify({"ok": False, "error": "Encrypted file not found"}), 404
+    if not target.exists() or not target.is_file():
+        return jsonify({"ok": False, "error": "Encrypted file not found"}), 404
+
+    # Decrypt to a temp file under WORKSPACE, then delete immediately.
+    DECRYPT_DIR = WORKSPACE / ".decrypt_verify"
+    DECRYPT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = DECRYPT_DIR / f"verify_{uuid4().hex}"
+    try:
+        meta = decrypt_file_with_passphrase(target, passphrase, out_path)
+        if out_path.exists():
+            out_path.unlink()
+        return jsonify(
+            {
+                "ok": True,
+                "verified": True,
+                "source_name": meta.get("source_name"),
+                "algorithm": meta.get("algorithm"),
+                "bytes": meta.get("bytes"),
+            }
+        )
+    except ValueError as e:
+        return jsonify({"ok": False, "error": str(e), "verified": False}), 400
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+
+@app.post("/api/encryption/decrypt")
+def api_encryption_decrypt():
+    """Decrypt an encrypted archive and stream the plaintext file to the client."""
+    data = request.get_json(force=True) or {}
+    path_text = (data.get("path") or "").strip()
+    passphrase = (data.get("passphrase") or "").strip()
+    if not path_text:
+        return jsonify({"ok": False, "error": "path is required"}), 400
+    if not passphrase:
+        return jsonify({"ok": False, "error": "passphrase is required"}), 400
+    if AESGCM is None:
+        return jsonify(
+            {
+                "ok": False,
+                "error": "cryptography package not installed on the server",
+            }
+        ), 500
+
+    try:
+        target = _resolve_or_remap(path_text)
+    except ValueError:
+        return jsonify({"ok": False, "error": "Encrypted file not found"}), 404
+    if not target.exists() or not target.is_file():
+        return jsonify({"ok": False, "error": "Encrypted file not found"}), 404
+
+    DECRYPT_DIR = WORKSPACE / "decrypted"
+    DECRYPT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = DECRYPT_DIR / f"{uuid4().hex}_{target.stem}"
+    if out_path.name.endswith(".enc"):
+        out_path = out_path.with_name(out_path.name[:-4])
+
+    try:
+        meta = decrypt_file_with_passphrase(target, passphrase, out_path)
+    except ValueError as e:
+        return jsonify({"ok": False, "error": str(e)}), 400
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+    download_name = meta.get("source_name") or out_path.name
+    return send_file(
+        out_path,
+        as_attachment=True,
+        download_name=download_name,
+    )
 
 
 def _pick_port(preferred: int) -> int:

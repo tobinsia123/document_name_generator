@@ -264,6 +264,40 @@ export interface DashboardKpis {
   total_bytes: number;
 }
 
+export interface EncryptionArchive {
+  group_key: string;
+  file_count: number;
+  encrypted_path: string;
+  encrypted_checksum_sha256?: string;
+  encryption_algorithm: string;
+  archive_path?: string;
+  has_plaintext_archive: boolean;
+  status?: string;
+}
+
+export interface EncryptionSummary {
+  cryptography_available: boolean;
+  manifest_path: string | null;
+  job_encrypt_enabled: boolean;
+  summary: {
+    encrypted_archives: number;
+    total_archives: number;
+    encrypted_bytes: number;
+    algorithm: string;
+    kdf: string;
+    iterations: number;
+  };
+  archives: EncryptionArchive[];
+}
+
+export interface EncryptionVerifyResult {
+  verified: boolean;
+  source_name?: string;
+  algorithm?: string;
+  bytes?: number;
+  error?: string;
+}
+
 export interface DashboardSummary {
   manifest_path: string | null;
   manifest_created_at: string | null;

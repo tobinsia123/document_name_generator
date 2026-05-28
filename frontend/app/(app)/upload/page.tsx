@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -568,8 +569,27 @@ function ManifestSummary({
 }) {
   const summary = manifest.summary;
   const groups = Object.entries(manifest.quickfinder_groups);
+  const encryptedCount = groups.filter(
+    ([, g]) => g.archive?.encrypted_archive_path
+  ).length;
+
   return (
     <div className="space-y-3">
+      {encryptedCount > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[oklch(0.58_0.14_158/0.35)] bg-[oklch(0.97_0.02_158)] px-3 py-2 text-xs text-[oklch(0.28_0.12_158)]">
+          <span>
+            <Lock className="mr-1 inline h-3 w-3" />
+            {encryptedCount} encrypted archive{encryptedCount === 1 ? "" : "s"} sealed with
+            AES-256-GCM
+          </span>
+          <Link
+            href="/encryption"
+            className="font-medium text-[oklch(0.32_0.14_158)] underline hover:text-[oklch(0.22_0.12_158)]"
+          >
+            Verify & decrypt →
+          </Link>
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
         <Stat label="Files" value={String(summary.total_processed)} />
         <Stat label="Successful" value={String(summary.successful)} accent="success" />

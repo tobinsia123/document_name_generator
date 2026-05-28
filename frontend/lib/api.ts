@@ -15,6 +15,8 @@ import type {
   BackendConfig,
   BrowseResult,
   DashboardSummary,
+  EncryptionSummary,
+  EncryptionVerifyResult,
   JobManifest,
   JobRecord,
   ReviewStatus,
@@ -250,6 +252,76 @@ export async function setReview(
     }
   );
   return body.reviews;
+}
+
+/* ---------- encryption ---------- */
+
+export async function getEncryptionSummary(): Promise<EncryptionSummary | null> {
+  const body = await safe(
+    request<ApiEnvelope<unknown> & EncryptionSummary>(`/api/encryption`, {
+      method: "GET",
+    })
+  );
+  return body ? (body as unknown as EncryptionSummary) : null;
+}
+
+export async function verifyEncryptionPassphrase(
+  path: string,
+  passphrase: string
+): Promise<EncryptionVerifyResult> {
+  try {
+    const body = await request<
+      ApiEnvelope<unknown> & EncryptionVerifyResult & { verified?: boolean }
+    >(`/api/encryption/verify`, {
+      method: "POST",
+      body: JSON.stringify({ path, passphrase }),
+    });
+    return {
+      verified: Boolean(body.verified),
+      source_name: body.source_name,
+      algorithm: body.algorithm,
+      bytes: body.bytes,
+    };
+  } catch (e) {
+    return {
+      verified: false,
+      error: e instanceof Error ? e.message : "Verification failed",
+    };
+  }
+}
+
+/** Decrypt an encrypted archive and trigger a browser download of the plaintext. */
+export async function decryptAndDownload(path: string, passphrase: string): Promise<void> {
+  if (typeof window === "undefined") return;
+  const res = await fetch(`${AEGIS_API_BASE}/api/encryption/decrypt`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ path, passphrase }),
+  });
+  if (!res.ok) {
+    let message = `Decrypt failed (${res.status})`;
+    try {
+      const body = (await res.json()) as { error?: string };
+      if (body.error) message = body.error;
+    } catch {
+      /* ignore */
+    }
+    throw new Error(message);
+  }
+  const blob = await res.blob();
+  const cd = res.headers.get("Content-Disposition") ?? "";
+  const match = /filename\*?=(?:UTF-8''|")?([^";]+)/i.exec(cd);
+  const filename = match
+    ? decodeURIComponent(match[1].replace(/"/g, ""))
+    : path.split("/").pop()?.replace(/\.enc$/, "") ?? "decrypted.bin";
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 /* ---------- helpers used across pages ---------- */

@@ -198,6 +198,79 @@ def encrypt_file_with_passphrase(
     }
 
 
+def decrypt_file_with_passphrase(
+    encrypted_path: Path,
+    passphrase: str,
+    destination_path: Optional[Path] = None,
+) -> Dict[str, Any]:
+    """
+    Decrypt a file produced by encrypt_file_with_passphrase.
+
+    Returns metadata including the output path and original source name from
+    the embedded header.
+    """
+    if not passphrase:
+        raise ValueError("Passphrase is required to decrypt")
+    if AESGCM is None or PBKDF2HMAC is None or hashes is None:
+        raise ImportError(
+            "cryptography is required for decryption. Install with: pip install cryptography"
+        )
+
+    data = encrypted_path.read_bytes()
+    magic = b"DRENC1"
+    if len(data) < len(magic) + 4:
+        raise ValueError("File is too small to be a RoboVault encrypted archive")
+    if data[: len(magic)] != magic:
+        raise ValueError("Unrecognized encryption format (expected DRENC1 header)")
+
+    header_len = int.from_bytes(data[len(magic) : len(magic) + 4], "big")
+    header_start = len(magic) + 4
+    header_end = header_start + header_len
+    if header_end > len(data):
+        raise ValueError("Corrupt encrypted file: header extends past end of file")
+
+    header = json.loads(data[header_start:header_end].decode("utf-8"))
+    ciphertext = data[header_end:]
+
+    salt = base64.b64decode(header["salt_b64"])
+    nonce = base64.b64decode(header["nonce_b64"])
+    iterations = int(header.get("iterations") or PBKDF2_ITERATIONS)
+
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=iterations,
+    )
+    key = kdf.derive(passphrase.encode("utf-8"))
+
+    try:
+        plaintext = AESGCM(key).decrypt(nonce, ciphertext, None)
+    except Exception as exc:
+        raise ValueError("Decryption failed — wrong passphrase or corrupt file") from exc
+
+    source_name = header.get("source_name") or encrypted_path.stem
+    if destination_path is None:
+        # Strip trailing .enc from names like foo.tar.zst.enc -> foo.tar.zst
+        name = encrypted_path.name
+        if name.endswith(".enc"):
+            name = name[:-4]
+        destination_path = encrypted_path.parent / name
+
+    destination_path.parent.mkdir(parents=True, exist_ok=True)
+    destination_path.write_bytes(plaintext)
+
+    return {
+        "decrypted_path": str(destination_path),
+        "source_name": source_name,
+        "algorithm": header.get("algorithm", "AES-256-GCM"),
+        "kdf": header.get("kdf", "PBKDF2-HMAC-SHA256"),
+        "iterations": iterations,
+        "bytes": len(plaintext),
+        "status": "Success",
+    }
+
+
 # =============================================================================
 # PUBLISHER MAPPINGS
 # =============================================================================
