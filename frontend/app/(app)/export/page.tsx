@@ -21,6 +21,7 @@ import { Progress } from "@/components/ui/progress";
 import { useBackendStatus } from "@/lib/backend-status";
 import {
   downloadFile,
+  downloadMacosOpener,
   flattenManifest,
   getManifest,
   openInOS,
@@ -253,6 +254,49 @@ function LiveExport() {
               </Card>
             ))}
           </section>
+
+          {totalEncrypted > 0 && (
+            <Card className="border-[oklch(0.58_0.14_158/0.35)] bg-[oklch(0.98_0.02_158)]">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-[oklch(0.28_0.12_158)]">
+                  <LockKeyhole className="h-4 w-4" />
+                  Open .enc files on your Mac
+                </CardTitle>
+                <CardDescription>
+                  macOS does not natively understand RoboVault&apos;s DRENC1 format. Install the
+                  free opener once — then double-click any downloaded{" "}
+                  <code className="text-xs">.tar.zst.enc</code> and enter the same passphrase you
+                  used on Upload.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <ol className="list-decimal space-y-1 pl-4 text-xs leading-5 text-muted-foreground">
+                  <li>Download and unzip RoboVault Opener</li>
+                  <li>Move the app to Applications</li>
+                  <li>
+                    Run{" "}
+                    <code className="rounded bg-white/80 px-1 font-mono text-[10px]">
+                      ./tools/install-macos-opener.sh
+                    </code>{" "}
+                    in <code className="font-mono text-[10px]">raw_data/AMAZON</code> (or use Open
+                    With → Always)
+                  </li>
+                  <li>Double-click your .enc file — passphrase prompt appears</li>
+                </ol>
+                <Button
+                  type="button"
+                  className="shrink-0 rounded-lg bg-[oklch(0.46_0.18_282)] text-white hover:bg-[oklch(0.42_0.18_282)]"
+                  onClick={() => {
+                    downloadMacosOpener();
+                    toast.success("Downloading RoboVault Opener for macOS…");
+                  }}
+                >
+                  <Download className="h-4 w-4" />
+                  Download macOS opener
+                </Button>
+              </CardContent>
+            </Card>
+          )}
 
           <Card className="bg-white">
             <CardHeader>

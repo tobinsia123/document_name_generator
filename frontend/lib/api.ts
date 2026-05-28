@@ -197,6 +197,17 @@ export function fileDownloadUrl(serverPath: string): string {
   return `${AEGIS_API_BASE}/api/file?path=${encodeURIComponent(serverPath)}&download=1`;
 }
 
+/** Download the macOS RoboVault Opener (.app zip) for double-click .enc decryption. */
+export function downloadMacosOpener() {
+  if (typeof window === "undefined") return;
+  const a = document.createElement("a");
+  a.href = `${AEGIS_API_BASE}/api/opener/macos`;
+  a.download = "RoboVault-Opener-macOS.zip";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 /** Triggers a browser download of any file the backend can serve. */
 export function downloadFile(serverPath: string, filename?: string) {
   if (typeof window === "undefined") return;
@@ -290,7 +301,7 @@ export async function verifyEncryptionPassphrase(
   }
 }
 
-/** Decrypt an encrypted archive and trigger a browser download of the plaintext. */
+/** Decrypt an encrypted archive and download extracted documents (ZIP of PDFs). */
 export async function decryptAndDownload(path: string, passphrase: string): Promise<void> {
   if (typeof window === "undefined") return;
   const res = await fetch(`${AEGIS_API_BASE}/api/encryption/decrypt`, {

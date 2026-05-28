@@ -269,7 +269,13 @@ export default function UploadPage() {
                 label="Archive groups (.tar.zst)"
                 hint="Bundle each Quickfinder group into a compressed archive in the output folder."
                 checked={opts.archive}
-                onChange={(v) => setOpts((o) => ({ ...o, archive: v }))}
+                onChange={(v) =>
+                  setOpts((o) => ({
+                    ...o,
+                    archive: v,
+                    ...(v ? {} : { encrypt_archives: false, encryption_passphrase: "" }),
+                  }))
+                }
                 disabled={!isLive}
                 icon={ShieldCheck}
               />
@@ -277,8 +283,15 @@ export default function UploadPage() {
                 label="Encrypt archives (AES-256-GCM)"
                 hint="Requires archive option. Wraps each archive with passphrase-derived key."
                 checked={opts.encrypt_archives}
-                onChange={(v) => setOpts((o) => ({ ...o, encrypt_archives: v }))}
-                disabled={!isLive || !opts.archive}
+                onChange={(v) =>
+                  setOpts((o) => ({
+                    ...o,
+                    encrypt_archives: v,
+                    archive: v ? true : o.archive,
+                    encryption_passphrase: v ? o.encryption_passphrase : "",
+                  }))
+                }
+                disabled={!isLive}
                 icon={Lock}
               />
               <ToggleRow

@@ -1,0 +1,56 @@
+#!/bin/bash
+# RoboVault Opener - prompts for passphrase and decrypts .enc files (DRENC1).
+set -uo pipefail
+
+APP_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+RESOURCES="${APP_ROOT}/Contents/Resources"
+LOG="${HOME}/Library/Logs/RoboVault-opener.log"
+
+# Finder does not load .zshrc / conda init; extend PATH for GUI launches.
+export PATH="${HOME}/miniconda3/bin:${HOME}/anaconda3/bin:${HOME}/mambaforge/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:${PATH:-}"
+
+log() {
+  printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" >>"${LOG}"
+}
+
+alert() {
+  /usr/bin/osascript -e "display alert \"RoboVault Opener\" message \"$(printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g')\" as critical" >/dev/null 2>&1 || true
+}
+
+OPENER_PYTHON_PATH_FILE="${RESOURCES}/python_path.txt"
+# shellcheck source=/dev/null
+source "${RESOURCES}/opener_pick_python.sh" 2>/dev/null || {
+  pick_python_with_crypto() {
+    local cmd
+    for cmd in "${ROBOVAULT_PYTHON:-}" "$(tr -d '\r\n' < "${RESOURCES}/python_path.txt" 2>/dev/null)" \
+      "${HOME}/miniconda3/bin/python3" "$(command -v python3 2>/dev/null)" /usr/bin/python3; do
+      [[ -n "${cmd}" && -x "${cmd}" ]] || continue
+      if "${cmd}" -c "import cryptography" >/dev/null 2>&1; then
+        printf '%s\n' "${cmd}"
+        return 0
+      fi
+    done
+    return 1
+  }
+}
+
+PY="$(pick_python_with_crypto)" || {
+  log "No Python with cryptography found (PATH=${PATH})"
+  alert "RoboVault Opener could not find Python with the cryptography package.
+
+From Terminal (in the same environment where you run web_app.py), run:
+
+  cd $(dirname \"${RESOURCES}\")/../..
+  ./tools/install-macos-opener.sh
+
+Or install cryptography for system Python:
+  /usr/bin/python3 -m pip install --user cryptography
+
+Logs: ${LOG}"
+  exit 1
+}
+
+export PYTHONPATH="${RESOURCES}:${PYTHONPATH:-}"
+log "Launching with ${PY} args=$*"
+
+exec "${PY}" "${RESOURCES}/open_enc.py" "$@"

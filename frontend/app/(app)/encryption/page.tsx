@@ -25,6 +25,7 @@ import { useBackendStatus } from "@/lib/backend-status";
 import {
   decryptAndDownload,
   downloadFile,
+  downloadMacosOpener,
   getEncryptionSummary,
   openInOS,
   verifyEncryptionPassphrase,
@@ -118,7 +119,7 @@ function LiveEncryption() {
     setDecrypting(row.encrypted_path);
     try {
       await decryptAndDownload(row.encrypted_path, passphrase);
-      toast.success(`Downloaded decrypted ${row.group_key}`);
+      toast.success(`Downloaded documents for ${row.group_key} (ZIP of PDFs)`);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Decrypt failed");
     } finally {
@@ -318,13 +319,32 @@ function LiveEncryption() {
               <code className="text-xs">.tar.zst.enc</code> file remains, with an embedded DRENC1
               header (salt, nonce, algorithm metadata).
             </p>
+            <p>
+              On macOS, install <strong className="text-foreground">RoboVault Opener</strong> once
+              so double-clicking a downloaded <code className="text-xs">.enc</code> prompts for the
+              same passphrase (instead of using this web page).
+            </p>
             <Separator />
-            <Button asChild variant="outline" className="w-full">
-              <Link href="/upload">
-                <UploadCloud className="h-4 w-4" />
-                Run a new encrypted job
-              </Link>
-            </Button>
+            <div className="flex flex-col gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={() => {
+                  downloadMacosOpener();
+                  toast.success("Downloading RoboVault Opener for macOS…");
+                }}
+              >
+                <Download className="h-4 w-4" />
+                Download macOS opener (.app)
+              </Button>
+              <Button asChild variant="outline" className="w-full">
+                <Link href="/upload">
+                  <UploadCloud className="h-4 w-4" />
+                  Run a new encrypted job
+                </Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>

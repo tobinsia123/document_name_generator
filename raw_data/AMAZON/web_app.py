@@ -8,11 +8,14 @@ Open: http://127.0.0.1:5001  (or set PORT=...)
 
 from __future__ import annotations
 
+import io
 import json
 import os
+import shutil
 import subprocess
 import sys
 import threading
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
@@ -772,11 +775,145 @@ def api_encryption_decrypt():
     except Exception as e:
         return jsonify({"ok": False, "error": str(e)}), 500
 
-    download_name = meta.get("source_name") or out_path.name
+    decrypted = Path(meta["decrypted_path"])
+    stem = decrypted.name.replace(".tar.zst", "") if decrypted.name.endswith(".tar.zst") else decrypted.stem
+
+    # Extract PDFs/documents from the group archive instead of shipping .tar.zst.
+    if decrypted.name.endswith(".tar.zst"):
+        try:
+            from archive_utils import extract_tar_zst_archive
+
+            extract_root = DECRYPT_DIR / f"{uuid4().hex}_documents"
+            _folder, documents = extract_tar_zst_archive(decrypted, extract_root)
+            if documents:
+                zip_buf = io.BytesIO()
+                with zipfile.ZipFile(zip_buf, "w", zipfile.ZIP_DEFLATED) as zf:
+                    for doc in documents:
+                        zf.write(doc, doc.name)
+                zip_buf.seek(0)
+                return send_file(
+                    zip_buf,
+                    mimetype="application/zip",
+                    as_attachment=True,
+                    download_name=f"{stem}_documents.zip",
+                )
+        except Exception as e:
+            return jsonify(
+                {
+                    "ok": False,
+                    "error": f"Decrypted archive but extraction failed: {e}",
+                }
+            ), 500
+
+    download_name = meta.get("source_name") or decrypted.name
     return send_file(
-        out_path,
+        decrypted,
         as_attachment=True,
         download_name=download_name,
+    )
+
+
+def _python_has_cryptography(python_exe: str) -> bool:
+    try:
+        subprocess.run(
+            [python_exe, "-c", "import cryptography"],
+            check=True,
+            capture_output=True,
+            timeout=15,
+        )
+        return True
+    except (subprocess.SubprocessError, OSError):
+        return False
+
+
+def _find_python_for_opener() -> str | None:
+    """Pick an interpreter with cryptography (prefer the running Flask process)."""
+    home = Path.home()
+    candidates: list[str] = [
+        sys.executable,
+        os.environ.get("ROBOVAULT_PYTHON", "") or "",
+        shutil.which("python3") or "",
+        str(home / "miniconda3" / "bin" / "python3"),
+        str(home / "anaconda3" / "bin" / "python3"),
+        str(home / "mambaforge" / "bin" / "python3"),
+        "/opt/homebrew/bin/python3",
+        "/usr/local/bin/python3",
+        "/usr/bin/python3",
+    ]
+    conda = os.environ.get("CONDA_PREFIX")
+    if conda:
+        candidates.insert(1, str(Path(conda) / "bin" / "python3"))
+
+    seen: set[str] = set()
+    for cmd in candidates:
+        if not cmd or cmd in seen:
+            continue
+        seen.add(cmd)
+        if Path(cmd).is_file() and _python_has_cryptography(cmd):
+            return cmd
+    return None
+
+
+def _sync_opener_app_bundle() -> Path:
+    """Refresh Python scripts inside the bundled macOS opener."""
+    app_path = APP_DIR / "tools" / "RoboVault-Opener.app"
+    resources = app_path / "Contents" / "Resources"
+    macos_bin = app_path / "Contents" / "MacOS" / "robovault-opener"
+    resources.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(APP_DIR / "open_enc.py", resources / "open_enc.py")
+    shutil.copy2(APP_DIR / "drenc_crypto.py", resources / "drenc_crypto.py")
+    shutil.copy2(APP_DIR / "archive_utils.py", resources / "archive_utils.py")
+    shutil.copy2(APP_DIR / "tools" / "opener_pick_python.sh", resources / "opener_pick_python.sh")
+    py = _find_python_for_opener()
+    if py:
+        (resources / "python_path.txt").write_text(py + "\n", encoding="utf-8")
+        (APP_DIR / ".opener_python_path").write_text(py + "\n", encoding="utf-8")
+    if macos_bin.exists():
+        macos_bin.chmod(0o755)
+    (resources / "opener_pick_python.sh").chmod(0o755)
+    return app_path
+
+
+@app.get("/api/opener/macos")
+def api_opener_macos_download():
+    """
+    Zip of RoboVault Opener.app for macOS.
+
+    After install, double-clicking a .enc file prompts for the same passphrase
+    used when the archive was sealed on Upload.
+    """
+    app_path = _sync_opener_app_bundle()
+    if not app_path.is_dir():
+        return jsonify({"ok": False, "error": "Opener app bundle not found"}), 404
+
+    readme = """RoboVault Opener (macOS)
+==========================
+
+1. Unzip this file.
+2. Drag "RoboVault Opener.app" into your Applications folder.
+3. Run once from Terminal (registers .enc handler):
+     cd raw_data/AMAZON && ./tools/install-macos-opener.sh
+   Or: right-click any .enc -> Open With -> RoboVault Opener -> Always Open With.
+4. Requires Python 3 + cryptography:
+     pip install cryptography
+5. Double-click a downloaded .tar.zst.enc file - enter the passphrase
+   you set on the Upload page when the job ran.
+
+The decrypted .tar.zst is saved next to the .enc file and opened automatically.
+"""
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for path in app_path.rglob("*"):
+            if path.is_file():
+                arcname = Path("RoboVault Opener.app") / path.relative_to(app_path)
+                zf.write(path, arcname)
+        zf.writestr("README.txt", readme)
+    buf.seek(0)
+    return send_file(
+        buf,
+        mimetype="application/zip",
+        as_attachment=True,
+        download_name="RoboVault-Opener-macOS.zip",
     )
 
 
