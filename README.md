@@ -1,160 +1,220 @@
-# Project Z
+# RoboVault
 
-A document metadata extraction and renaming system for financial research files.
+A document metadata extraction, renaming, and secure delivery system for financial research files.
+
+RoboVault standardizes messy analyst reports, earnings transcripts, and SEC filings into a consistent filename schema, groups them for Quickfinder-style retrieval, and optionally seals them as encrypted archives. The repo includes a **Python processing pipeline** (CLI + Flask API) and a **Next.js enterprise UI** that runs jobs locally against your filesystem.
 
 ## Overview
 
-Project Z standardizes messy financial research documents into a consistent filename schema. It extracts metadata from filenames, folder paths, and document contents, then produces renamed copies, manifests, grouped archives, and optional database records. The project is designed for research, finance, compliance, and data operations teams that need traceable document organization across analyst reports, earnings call transcripts, and SEC filings. It matters because inconsistent document names make downstream search, audit, ingestion, and retrieval workflows harder to trust.
+Source documents are analyzed without mutating raw inputs. The pipeline infers metadata from filenames, folder paths, and document text, then produces renamed copies, JSON job manifests, grouped `.tar.zst` archives, and optional **AES-256-GCM** encrypted outputs (DRENC1 envelope). The web UI shows live job progress, review decisions, export downloads, and an encryption manager for passphrase verify/decrypt workflows.
 
 ## Key Features
 
-- Renames files into a structured format: `{ticker}_{publisher}_{report_type}_{year_quarter}_{language}_{publication_date}.{ext}`.
-- Supports analyst reports, earnings call transcripts, SEC filings, PDFs, DOCX files, and plain text files.
-- Extracts metadata from filenames first, then falls back to document text when needed.
-- Generates JSON job manifests with original filenames, inferred metadata, output paths, and job summaries.
-- Copies renamed files without mutating the raw source dataset.
-- Groups files by configurable Quickfinder metadata fields.
-- Creates `.tar.zst` archives and optional AES-256-GCM encrypted archive outputs.
-- Provides CLI, Flask web UI, optional Neon PostgreSQL indexing, and a Next.js frontend prototype.
-
-## Demo / Screenshots
-
-Add a demo GIF, screenshots, hosted link, or video walkthrough here once available.
-
-- Demo GIF: `[link or /docs/demo.gif]`
-- Screenshots: `[link or /docs/screenshots/]`
-- Hosted app: `[deployment URL]`
-- Walkthrough: `[video URL]`
+- **Standardized naming:** `{ticker}_{publisher}_{report_type}_{year_quarter}_{language}_{publication_date}.{ext}`
+- **Supported inputs:** PDF, DOCX, TXT; analyst reports, earnings transcripts, SEC filings
+- **Safe processing:** raw files preserved; renamed copies written to a workspace; rollback via manifest
+- **Grouping & archives:** Quickfinder groups → compressed `.tar.zst` bundles per group
+- **Encryption:** optional passphrase-sealed `.tar.zst.enc` files (PBKDF2 + AES-256-GCM, DRENC1 header)
+- **Decryption & delivery:** web decrypt (ZIP of PDFs) or macOS **RoboVault Opener** for double-click `.enc` unlock + PDF extract
+- **Interfaces:** CLI (`document_title_generator.py`, `pipeline.py`), Flask API (`web_app.py`), Next.js UI (`frontend/`)
 
 ## Tech Stack
 
-- **Frontend:** Next.js 15, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Recharts
-- **Backend:** Python, Flask, argparse-based CLI
-- **Database:** Neon PostgreSQL, optional metadata-only indexing
-- **AI/ML:** Rule-based metadata extraction today, with extension points for model-assisted inference
-- **Infrastructure/Deployment:** Local filesystem processing, Vercel-compatible frontend, optional Neon cloud database
-- **Tooling:** npm, pip, ESLint, TypeScript, pdfplumber, python-docx, zstandard, cryptography
+| Layer | Stack |
+| ----- | ----- |
+| **Frontend** | Next.js 15, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Framer Motion, Recharts |
+| **Backend** | Python 3, Flask, flask-cors, pdfplumber, python-docx, zstandard, cryptography |
+| **Database** | Optional Neon PostgreSQL metadata indexing (`database.py`) |
+| **Deployment** | Local filesystem jobs; Vercel for frontend static/SSR; Flask must run separately for live mode |
 
-## System Architecture / Workflow
+## System Workflow
 
-1. Collect raw financial documents from source folders such as `analyst_reports`, `earnings_call_transcripts`, and `sec_filings`.
-2. Extract text from supported files and infer metadata from filenames, folder context, and document content.
-3. Generate standardized filenames while preserving original files and writing a JSON manifest.
-4. Copy renamed files into an output workspace and group them by configurable metadata fields.
-5. Optionally create compressed archives, encrypt archive outputs, and sync metadata to Neon PostgreSQL.
+1. **Ingest** — point the pipeline at a folder of source PDFs/docs (e.g. `sec_filings/`).
+2. **Rename** — infer ticker, publisher, type, period, language, date; copy renamed files to output.
+3. **Group** — cluster by Quickfinder fields (ticker, doc category, year/quarter, etc.).
+4. **Archive** — bundle each group into `.tar.zst` (zstd compression).
+5. **Encrypt** *(optional)* — seal archives with a user passphrase; plaintext archives removed by default.
+6. **Manifest** — write `job_manifest.json` with paths, checksums, and archive metadata.
+7. **Review / Export** — approve or flag files in the UI; download manifests, `.enc` archives, or decrypted document ZIPs.
 
 ## Repository Structure
 
 ```text
 .
-├── README.md                         # Project overview and setup guide
-├── frontend/                         # Next.js dashboard and enterprise UI prototype
-│   ├── app/                          # App Router pages and layouts
-│   ├── components/                   # UI, layout, chart, and shared components
-│   ├── lib/                          # Domain types, navigation, mock data, utilities
-│   └── package.json                  # Frontend dependencies and scripts
-└── raw_data/AMAZON/                  # Python pipeline and sample AMZN document dataset
-    ├── document_title_generator.py   # Core metadata extraction, renaming, archive logic
-    ├── pipeline.py                   # One-command DB sync, rename, copy, archive flow
-    ├── database.py                   # Optional Neon PostgreSQL schema and persistence
-    ├── web_app.py                    # Local Flask UI for running rename jobs
-    ├── requirements.txt              # Python dependencies
-    ├── analyst_reports/              # Raw analyst report PDFs
-    ├── earnings_call_transcripts/    # Raw earnings transcript PDFs
-    ├── sec_filings/                  # Raw SEC filing PDFs
-    ├── name*/                        # Example renamed outputs
-    └── templates/, static/           # Flask UI assets
+├── README.md
+├── frontend/                         # RoboVault Next.js UI
+│   ├── app/                          # Home, Dashboard, Upload, Review, Export, Encryption, …
+│   ├── components/                   # App shell, charts, shared UI
+│   ├── lib/                          # API client, types, backend status (live/demo)
+│   └── public/                       # Logo assets (e.g. new_logo_part2.png)
+└── raw_data/AMAZON/                  # Python pipeline + sample AMZN dataset
+    ├── document_title_generator.py   # Core rename, group, archive, encrypt logic
+    ├── drenc_crypto.py               # DRENC1 encrypt/decrypt helpers
+    ├── archive_utils.py              # Extract .tar.zst → individual PDFs
+    ├── open_enc.py                   # Desktop opener (passphrase prompt + PDF extract)
+    ├── web_app.py                    # Flask REST API for the Next.js UI
+    ├── pipeline.py                   # CLI: DB sync + rename + copy + archive
+    ├── database.py                   # Optional Neon PostgreSQL
+    ├── requirements.txt
+    ├── tools/
+    │   ├── RoboVault-Opener.app/     # macOS .enc file handler (bundle)
+    │   ├── install-macos-opener.sh  # Register opener + pin Python path
+    │   └── README-OPENER.md
+    ├── sec_filings/                   # Sample SEC inputs
+    └── ui_workspace/                  # Renamed files, archives, manifests (runtime)
 ```
 
-## Installation & Setup
+## Installation
 
-1. Clone the repository.
+### 1. Clone and install Python deps
 
 ```bash
 git clone [repository-url]
-cd document_name_generator
-```
-
-2. Install Python dependencies.
-
-```bash
-cd raw_data/AMAZON
+cd document_name_generator/raw_data/AMAZON
 python -m venv .venv
-source .venv/bin/activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-3. Configure environment variables if using Neon PostgreSQL.
+Optional Neon DB:
 
 ```bash
 cp .env.example .env
 # Set DATABASE_URL in raw_data/AMAZON/.env
 ```
 
-4. Install frontend dependencies.
+### 2. Install frontend deps
 
 ```bash
 cd ../../frontend
 npm install
 ```
 
-5. Run locally.
+## Run Locally (Live Mode)
+
+Live mode requires **both** processes. The UI pill shows **LIVE** when Flask responds at `/api/config`.
 
 ```bash
-# Python pipeline
-cd ../raw_data/AMAZON
-python pipeline.py ./analyst_reports --ticker AMZN --dry-run --no-db
+# Terminal 1 — Flask API (default port 5001)
+cd raw_data/AMAZON
+python web_app.py
 
-# Frontend prototype
-cd ../../frontend
+# Terminal 2 — Next.js
+cd frontend
 npm run dev
+# open http://localhost:3000
+```
+
+Optional frontend override (`frontend/.env.local`):
+
+```env
+NEXT_PUBLIC_AEGIS_API=http://127.0.0.1:5001
+```
+
+Flask CORS (when frontend is not on localhost):
+
+```env
+AEGIS_CORS_ORIGINS=http://localhost:3000,https://your-app.vercel.app
 ```
 
 ## Usage
 
-1. Place source documents in a folder or use the included AMZN sample folders.
-2. Run a dry run to review inferred names before writing outputs.
+### CLI dry run
 
 ```bash
-python document_title_generator.py ./analyst_reports --recursive --dry-run --copy-to ./ui_workspace/renamed
+cd raw_data/AMAZON
+python document_title_generator.py ./sec_filings --recursive --dry-run --copy-to ./ui_workspace/renamed
 ```
 
-3. Run the full pipeline when the preview looks correct.
+### Full pipeline job (CLI)
 
 ```bash
-python pipeline.py ./analyst_reports --ticker AMZN --no-db
+python pipeline.py ./sec_filings --ticker AMZN --no-db
 ```
 
-4. Launch the Flask job runner for a local browser workflow.
+### Web UI job (recommended)
+
+1. Open **Upload** → set input/output paths, ticker, toggles (recursive, archive, encrypt).
+2. Enter an encryption passphrase if **Encrypt archives** is enabled.
+3. **Run pipeline** — watch rename → group → copy → archive → encrypt → manifest.
+4. **Review** — approve/flag files (persisted via `/api/reviews`).
+5. **Export** — download manifest, `.enc` archives, or open workspace in Finder.
+6. **Encryption** (`/encryption`) — verify passphrase and download decrypted PDF ZIPs.
+
+### Encrypted archives on macOS
+
+`.enc` files use a custom format; macOS does not open them natively.
 
 ```bash
-python web_app.py
+cd raw_data/AMAZON
+./tools/install-macos-opener.sh
 ```
 
-5. Open the Next.js frontend at `http://localhost:3000` after running `npm run dev`.
+Or download **RoboVault Opener** from Export/Encryption in the UI. Double-click a `.tar.zst.enc` file, enter the Upload passphrase, and PDFs are extracted and opened.
 
-## Core Technical Challenges / Engineering Decisions
+CLI alternative:
 
-- **Heterogeneous source quality:** Analyst reports often include useful metadata in filenames, while SEC filings may use opaque IDs. The pipeline combines filename parsing, folder context, and content extraction instead of depending on a single source.
-- **Safety-first file handling:** Raw documents are preserved, renamed files are copied to a workspace, and each job writes a manifest for review and rollback workflows.
-- **Deterministic extraction over model dependency:** The current implementation uses rule-based inference for predictable local execution. Model-assisted extraction can be added later for ambiguous documents without changing the filename contract.
-- **Operational traceability:** Job manifests, SHA-256 checksums, optional database records, and archive metadata make the pipeline easier to audit and debug.
-- **Prototype-to-product UI path:** The Flask UI supports local job execution, while the Next.js app demonstrates how the workflow could be presented in an enterprise governance product.
+```bash
+python open_enc.py /path/to/AMZN_sec_filing_2020Q1.tar.zst.enc
+```
+
+See `raw_data/AMAZON/tools/README-OPENER.md` for details.
+
+## Frontend: Live vs Demo
+
+| Mode | When | Behavior |
+| ---- | ---- | -------- |
+| **LIVE** | Flask reachable from the browser | Real manifests, jobs, downloads, encryption APIs |
+| **DEMO** | Backend offline or wrong API URL | Mock/sample data on some pages; job actions disabled |
+
+**Vercel note:** deploying only the Next.js app to Vercel shows **DEMO** unless you also host the Flask API at a public HTTPS URL and set `NEXT_PUBLIC_AEGIS_API` in Vercel environment variables (with matching `AEGIS_CORS_ORIGINS` on the server). For full pipeline access, run both apps locally.
+
+### Pages wired to the Flask backend
+
+| Route | API |
+| ----- | --- |
+| `/` (Home) | Live status rail, dashboard KPIs when backend up |
+| `/upload` | `/api/config`, `/api/browse`, `/api/run-async`, `/api/jobs/:id` |
+| `/dashboard` | `/api/dashboard` |
+| `/review` | `/api/manifest`, `/api/reviews` |
+| `/export` | `/api/manifest`, `/api/file`, `/api/rollback` |
+| `/encryption` | `/api/encryption`, verify, decrypt |
+| `/files`, `/analysis` | `/api/manifest`, file download/open |
+
+Other routes (compliance, policies, billing, team, etc.) use demo data for product storytelling.
+
+## Flask API (summary)
+
+| Endpoint | Purpose |
+| -------- | ------- |
+| `GET /api/config` | Defaults, ticker, grouping fields |
+| `POST /api/run-async` | Start background rename job |
+| `GET /api/jobs/:id` | Job status + events |
+| `GET /api/manifest` | Latest `job_manifest.json` |
+| `GET /api/dashboard` | KPI summary for dashboard |
+| `GET/POST /api/reviews` | Persist approve/flag per file |
+| `GET /api/encryption` | Encrypted archive posture |
+| `POST /api/encryption/verify` | Test passphrase |
+| `POST /api/encryption/decrypt` | Decrypt → ZIP of PDFs |
+| `GET /api/opener/macos` | Download RoboVault Opener.app zip |
+| `GET /api/file` | Download file from allowed paths |
+
+## Core Engineering Notes
+
+- **Heterogeneous sources:** filename rules + folder context + PDF/DOCX text extraction.
+- **Deterministic naming:** rule-based inference for predictable local runs (LLM hooks optional).
+- **Traceability:** SHA-256 checksums on archives and encrypted outputs; manifest is source of truth.
+- **Encryption model:** passphrase never stored server-side; key derived per file via PBKDF2 (200k iterations).
 
 ## Future Improvements
 
-- Add automated tests for metadata extraction, archive creation, rollback, and edge-case filenames.
-- Add a review queue for low-confidence metadata before files are copied.
-- Support additional tickers, publishers, languages, and document categories through configuration files.
-- Add confidence scores and provenance fields for each inferred metadata value.
-- Replace mock frontend data with API-backed pipeline and database state.
-- Add Docker or Docker Compose for reproducible local setup.
-- Add CI checks for Python linting, TypeScript type checks, and frontend builds.
-- Add hosted demo deployment and sanitized sample outputs.
+- Hosted Flask backend for Vercel/production demos
+- Automated tests for metadata extraction, encryption round-trip, rollback
+- Entity-level PII/PHI detection for `/analysis`
+- Docker Compose for one-command local setup
+- CI for Python + TypeScript + frontend build
 
 ## Contributors
-
-Project Z was created by:
 
 - Tobin Sia
 - Raymond Ruchen
@@ -163,4 +223,4 @@ Project Z was created by:
 
 ## License
 
-This project is currently unlicensed; add a `LICENSE` file before external distribution.
+Proprietary — add a `LICENSE` file before external distribution.

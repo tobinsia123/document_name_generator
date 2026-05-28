@@ -53,7 +53,7 @@ export default function Home() {
         <div className="relative mx-auto flex min-h-[720px] max-w-[1400px] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-black/20 px-6 py-7 shadow-[0_28px_80px_-36px_oklch(0.1_0.08_260/0.9)] backdrop-blur sm:px-10 lg:px-14">
           <header className="flex items-center gap-5">
             <Link href="/" className="mr-auto flex items-center" aria-label="RoboVault home">
-              <RoboVaultLogo onDark className="h-10" />
+              <RoboVaultLogo onDark className="h-14" />
             </Link>
             <nav className="hidden items-center gap-8 text-sm font-medium text-white/78 md:flex">
               <Link href="/" className="transition hover:text-white">
