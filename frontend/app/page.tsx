@@ -8,6 +8,7 @@ import {
   UploadCloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RoboVaultLogo } from "@/components/layout/logo";
 import { HomeLiveRail } from "./_home/live-rail";
 
 const workflowSteps = [
@@ -51,12 +52,8 @@ export default function Home() {
         <div className="absolute -right-20 top-24 h-[520px] w-[720px] rounded-full border border-white/10 bg-[linear-gradient(120deg,transparent,oklch(0.62_0.23_250/0.24),transparent)] blur-sm" />
         <div className="relative mx-auto flex min-h-[720px] max-w-[1400px] flex-col overflow-hidden rounded-[28px] border border-white/10 bg-black/20 px-6 py-7 shadow-[0_28px_80px_-36px_oklch(0.1_0.08_260/0.9)] backdrop-blur sm:px-10 lg:px-14">
           <header className="flex items-center gap-5">
-            <Link href="/" className="mr-auto flex items-center">
-              <img
-                src="/robovault-logo.svg"
-                alt="RoboVault"
-                className="h-12 w-auto max-w-[210px] brightness-0 invert"
-              />
+            <Link href="/" className="mr-auto flex items-center" aria-label="RoboVault home">
+              <RoboVaultLogo onDark className="h-10" />
             </Link>
             <nav className="hidden items-center gap-8 text-sm font-medium text-white/78 md:flex">
               <Link href="/" className="transition hover:text-white">
@@ -75,12 +72,6 @@ export default function Home() {
                 Export
               </Link>
             </nav>
-            <Button
-              asChild
-              className="hidden bg-[oklch(0.62_0.22_286)] text-white shadow-[0_0_32px_oklch(0.62_0.22_286/0.52)] hover:bg-[oklch(0.58_0.22_286)] sm:inline-flex"
-            >
-              <Link href="/upload">Start New Job</Link>
-            </Button>
           </header>
 
           <div className="relative z-10 flex flex-1 items-center py-20">
@@ -110,8 +101,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute -bottom-20 right-[-40px] select-none text-[150px] font-black leading-none tracking-normal text-white/[0.075] sm:text-[210px] lg:text-[260px]">
-            ROBOVAULT
+          <div className="pointer-events-none absolute inset-x-0 bottom-1 flex justify-center select-none sm:bottom-2 lg:bottom-3">
+            <span className="text-[150px] font-black leading-none tracking-normal text-white/[0.075] sm:text-[150px] lg:text-[200px]">
+              ROBOVAULT
+            </span>
           </div>
         </div>
 

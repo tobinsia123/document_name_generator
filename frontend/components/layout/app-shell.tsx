@@ -64,7 +64,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_0%,oklch(0.58_0.22_280/0.22),transparent_34%),radial-gradient(circle_at_82%_20%,oklch(0.64_0.2_235/0.22),transparent_30%)]" />
           <div className="relative mx-auto flex h-16 max-w-[1480px] items-center gap-4 px-4 md:px-6">
             <Link href="/" className="mr-2 flex min-w-0 items-center" aria-label="RoboVault home">
-              <RoboVaultLogo className="h-9 max-w-[178px] brightness-0 invert" />
+              <RoboVaultLogo onDark />
             </Link>
 
             <nav className="hidden items-center gap-1 lg:flex">
