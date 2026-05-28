@@ -17,15 +17,6 @@ Project Z standardizes messy financial research documents into a consistent file
 - Creates `.tar.zst` archives and optional AES-256-GCM encrypted archive outputs.
 - Provides CLI, Flask web UI, optional Neon PostgreSQL indexing, and a Next.js frontend prototype.
 
-## Demo / Screenshots
-
-Add a demo GIF, screenshots, hosted link, or video walkthrough here once available.
-
-- Demo GIF: `[link or /docs/demo.gif]`
-- Screenshots: `[link or /docs/screenshots/]`
-- Hosted app: `[deployment URL]`
-- Walkthrough: `[video URL]`
-
 ## Tech Stack
 
 - **Frontend:** Next.js 15, React 19, TypeScript, Tailwind CSS v4, shadcn/ui, Recharts
