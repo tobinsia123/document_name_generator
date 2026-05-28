@@ -1,8 +1,25 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+function fixed(value: number, digits = 4) {
+  return value.toFixed(digits);
+}
+
+function heatStyle(value: number): CSSProperties {
+  const lightness = 0.22 + value * 0.45;
+  const chroma = 0.04 + value * 0.18;
+  const hue = 264 - value * 30;
+  const ring = 0.03 + value * 0.05;
+
+  return {
+    "--heat-bg": `oklch(${fixed(lightness)} ${fixed(chroma)} ${fixed(hue, 2)})`,
+    "--heat-ring": `oklch(1 0 0 / ${fixed(ring)})`,
+  } as CSSProperties;
+}
 
 export function RiskHeatmap({
   data,
@@ -33,15 +50,8 @@ export function RiskHeatmap({
                   <Tooltip key={hi}>
                     <TooltipTrigger asChild>
                       <div
-                        className="h-5 flex-1 rounded-[3px] transition-transform hover:scale-110"
-                        style={{
-                          background: `oklch(${0.22 + intensity * 0.45} ${
-                            0.04 + intensity * 0.18
-                          } ${264 - intensity * 30})`,
-                          boxShadow: `inset 0 0 0 1px oklch(1 0 0 / ${
-                            0.03 + intensity * 0.05
-                          })`,
-                        }}
+                        className="heatmap-cell h-5 flex-1 rounded-[3px] transition-transform hover:scale-110"
+                        style={heatStyle(intensity)}
                       />
                     </TooltipTrigger>
                     <TooltipContent>
@@ -61,12 +71,8 @@ export function RiskHeatmap({
             {[0.05, 0.2, 0.4, 0.6, 0.8, 1].map((v) => (
               <div
                 key={v}
-                className="h-2.5 w-5 rounded-[2px]"
-                style={{
-                  background: `oklch(${0.22 + v * 0.45} ${0.04 + v * 0.18} ${
-                    264 - v * 30
-                  })`,
-                }}
+                className="heatmap-swatch h-2.5 w-5 rounded-[2px]"
+                style={heatStyle(v)}
               />
             ))}
           </div>

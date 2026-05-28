@@ -64,7 +64,7 @@ export default function TeamPage() {
                 initial={{ opacity: 0, x: -4 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.02 }}
-                className="grid grid-cols-[1fr_auto_auto_auto_auto_auto] items-center gap-3 px-4 py-2.5 text-[12.5px] hover:bg-white/[0.025]"
+                className="grid grid-cols-[1fr_auto_auto_auto_auto_auto] items-center gap-3 px-4 py-2.5 text-[12.5px] hover:bg-accent/40"
               >
                 <div className="flex items-center gap-3">
                   <Avatar className="h-8 w-8">

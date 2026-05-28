@@ -1,60 +1,53 @@
 import {
-  Activity,
-  Boxes,
-  CreditCard,
-  FileSearch,
-  FolderLock,
+  Archive,
+  ClipboardCheck,
   Gauge,
-  KeyRound,
-  ShieldCheck,
-  Server,
-  Settings,
-  ScrollText,
+  Home,
   Upload,
-  Users,
   type LucideIcon,
-  Sparkles,
 } from "lucide-react";
 
 export interface NavItem {
   label: string;
   href: string;
   icon: LucideIcon;
-  group: "Operate" | "Govern" | "Org";
+  group: "Workspace";
   badge?: string;
 }
 
 export const navItems: NavItem[] = [
-  { label: "Dashboard", href: "/dashboard", icon: Gauge, group: "Operate" },
-  { label: "Upload Center", href: "/upload", icon: Upload, group: "Operate" },
-  { label: "AI Analysis", href: "/analysis", icon: Sparkles, group: "Operate", badge: "LIVE" },
-  { label: "File Explorer", href: "/files", icon: FolderLock, group: "Operate" },
-
-  { label: "Compliance", href: "/compliance", icon: ShieldCheck, group: "Govern" },
-  { label: "Encryption", href: "/encryption", icon: KeyRound, group: "Govern" },
-  { label: "Policies", href: "/policies", icon: ScrollText, group: "Govern" },
-  { label: "Audit Logs", href: "/audit", icon: Activity, group: "Govern" },
-
-  { label: "Storage", href: "/storage", icon: Server, group: "Org" },
-  { label: "Team", href: "/team", icon: Users, group: "Org" },
-  { label: "API Keys", href: "/api-keys", icon: Boxes, group: "Org" },
-  { label: "Billing", href: "/billing", icon: CreditCard, group: "Org" },
-  { label: "Settings", href: "/settings", icon: Settings, group: "Org" },
+  { label: "Home", href: "/", icon: Home, group: "Workspace" },
+  { label: "Dashboard", href: "/dashboard", icon: Gauge, group: "Workspace" },
+  { label: "Upload", href: "/upload", icon: Upload, group: "Workspace" },
+  { label: "Review", href: "/review", icon: ClipboardCheck, group: "Workspace" },
+  { label: "Export", href: "/export", icon: Archive, group: "Workspace" },
 ];
 
-export const navGroups: NavItem["group"][] = ["Operate", "Govern", "Org"];
+export const navGroups: NavItem["group"][] = ["Workspace"];
 
 export const pageMeta: Record<
   string,
   { title: string; description: string }
 > = {
+  "/": {
+    title: "Home",
+    description: "RoboVault landing page and workflow overview.",
+  },
   "/dashboard": {
-    title: "Governance Overview",
-    description: "Real-time posture across files, policies, and compliance frameworks.",
+    title: "Dashboard",
+    description: "A practical overview of document jobs, processing volume, and review needs.",
   },
   "/upload": {
-    title: "Upload Center",
-    description: "Ingest files into AEGIS. AI analysis, renaming, and policy enforcement run automatically.",
+    title: "Upload",
+    description: "Drop financial research files into RoboVault for metadata extraction and renaming.",
+  },
+  "/review": {
+    title: "Review",
+    description: "Review suggested metadata before export.",
+  },
+  "/export": {
+    title: "Export",
+    description: "Create clean renamed copies, manifests, archives, and database records.",
   },
   "/analysis": {
     title: "AI Analysis",

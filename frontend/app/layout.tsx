@@ -15,9 +15,9 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AEGIS — AI File Governance Platform",
+  title: "RoboVault — Financial Research Document Vault",
   description:
-    "AI-powered enterprise file governance, sensitivity analysis, encryption, and compliance automation.",
+    "Document metadata extraction, renaming, secure storage, and retrieval for financial research teams.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${jetbrains.variable} font-sans antialiased`}>
         {children}
       </body>

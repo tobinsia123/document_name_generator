@@ -39,7 +39,7 @@ export function CommandPalette({
           <div className="flex items-center gap-2 border-b border-border px-3 py-2.5">
             <Search className="h-4 w-4 text-muted-foreground" />
             <Command.Input
-              placeholder="Search pages, files, audit events, policies…"
+              placeholder="Search pages, documents, jobs, and metadata..."
               className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/70"
             />
             <kbd className="rounded border border-border bg-background/60 px-1.5 py-0.5 text-[10px] tracking-wider text-muted-foreground">
@@ -84,7 +84,7 @@ export function CommandPalette({
                   key={f.id}
                   value={`file ${f.renamedTo ?? f.originalName} ${f.id}`}
                   onSelect={() => {
-                    router.push("/files");
+                    router.push("/review");
                     onOpenChange(false);
                   }}
                   className="flex items-center gap-2 rounded-md px-2 py-1.5 text-[12px] data-[selected=true]:bg-accent"

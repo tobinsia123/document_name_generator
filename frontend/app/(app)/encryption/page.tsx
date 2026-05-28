@@ -59,7 +59,7 @@ const keys = [
   },
   {
     id: "kms-bring-your-own",
-    label: "Customer-managed (Atlas Capital)",
+    label: "Customer-managed (RoboVault Demo)",
     algo: "AES-256-GCM",
     rotated: "—",
     next: "external",
@@ -237,7 +237,7 @@ export default function EncryptionPage() {
           <CardContent className="space-y-3">
             {[
               { t: "Rotation completed", who: "system", target: "kms-prod-vault-2", time: "12m ago", ok: true },
-              { t: "BYOK validated", who: "Maya Patel", target: "Atlas KMS root", time: "2h ago", ok: true },
+              { t: "BYOK validated", who: "Maya Patel", target: "RoboVault KMS root", time: "2h ago", ok: true },
               { t: "Decryption denied", who: "Jon Reyes", target: "patient_records_export.csv", time: "4h ago", ok: false },
               { t: "Key created", who: "Maya Patel", target: "kms-staging-archive", time: "1d ago", ok: true },
               { t: "Rotation scheduled", who: "system", target: "kms-prod-archive", time: "1d ago", ok: true },

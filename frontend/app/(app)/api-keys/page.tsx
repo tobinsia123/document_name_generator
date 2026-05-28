@@ -52,7 +52,7 @@ export default function ApiKeysPage() {
                 initial={{ opacity: 0, x: -4 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.03 }}
-                className="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-3 px-4 py-3 text-[12.5px] hover:bg-white/[0.025]"
+                className="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-3 px-4 py-3 text-[12.5px] hover:bg-accent/40"
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
@@ -146,11 +146,11 @@ export default function ApiKeysPage() {
         <CardContent>
           <pre className="overflow-auto rounded-lg border border-border bg-background/40 p-4 text-[11.5px] leading-relaxed">
             <code className="font-mono text-foreground/90">
-{`import { Aegis } from "@aegis/sdk";
+{`import { RoboVault } from "@robovault/sdk";
 
-const aegis = new Aegis({ apiKey: process.env.AEGIS_KEY });
+const robovault = new RoboVault({ apiKey: process.env.ROBOVAULT_KEY });
 
-const result = await aegis.files.ingest({
+const result = await robovault.files.ingest({
   source: "./contracts/",
   policies: ["SSN-Auto-Encrypt", "PHI-Tokenization"],
   storage: "vault",

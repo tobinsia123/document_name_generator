@@ -47,7 +47,7 @@ export default function SettingsPage() {
                 <div className="space-y-1.5">
                   <div className="text-[13px] font-medium">Maya Patel</div>
                   <div className="text-[11px] text-muted-foreground">
-                    maya@acme.io · Owner · Atlas Capital
+                    maya@robovault.io · Owner · RoboVault Demo
                   </div>
                   <div className="flex gap-2">
                     <Button variant="outline" size="xs">
@@ -81,8 +81,8 @@ export default function SettingsPage() {
             </CardHeader>
             <CardContent className="space-y-5">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <FormField label="Legal name" defaultValue="Atlas Capital Holdings, Inc." />
-                <FormField label="Display name" defaultValue="Atlas Capital" />
+                <FormField label="Legal name" defaultValue="RoboVault Demo, Inc." />
+                <FormField label="Display name" defaultValue="RoboVault Demo" />
                 <FormField label="Domain" defaultValue="atlascapital.io" />
                 <FormField label="Industry" defaultValue="Financial Services" />
               </div>

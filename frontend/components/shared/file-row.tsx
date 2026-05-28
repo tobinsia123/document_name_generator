@@ -2,7 +2,7 @@
 
 import { File, FileSpreadsheet, FileText, FileImage, FileCode } from "lucide-react";
 import { motion } from "framer-motion";
-import type { AegisFile } from "@/lib/types";
+import type { RoboVaultFile } from "@/lib/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { SensitivityPill } from "./sensitivity-pill";
@@ -19,7 +19,7 @@ function FileIcon({ mime }: { mime: string }) {
   if (mime.includes("image"))
     return <FileImage className={cn(cls, "text-[color:oklch(0.86_0.16_78)]")} />;
   if (mime.includes("plain") || mime.includes("env"))
-    return <FileCode className={cn(cls, "text-[color:oklch(0.86_0.13_264)]")} />;
+    return <FileCode className={cn(cls, "text-[color:oklch(0.34_0.115_262)]")} />;
   if (mime.includes("word"))
     return <FileText className={cn(cls, "text-[color:oklch(0.86_0.12_232)]")} />;
   return <File className={cls} />;
@@ -31,7 +31,7 @@ export function FileRow({
   onToggle,
   index,
 }: {
-  file: AegisFile;
+  file: RoboVaultFile;
   selected?: boolean;
   onToggle?: () => void;
   index?: number;
@@ -42,8 +42,8 @@ export function FileRow({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay: (index ?? 0) * 0.02 }}
       className={cn(
-        "group grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-border/60 px-4 py-2.5 transition-colors hover:bg-white/[0.025]",
-        selected && "bg-white/[0.04]"
+        "group grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b border-border/60 px-4 py-2.5 transition-colors hover:bg-accent/40",
+        selected && "bg-accent/50"
       )}
     >
       <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export function FileRow({
           <div className="mt-0.5 truncate text-[10.5px] text-muted-foreground">
             <span className="line-through opacity-60">{file.originalName}</span>
             <span className="mx-1.5 opacity-50">→</span>
-            <span className="text-[color:oklch(0.86_0.13_264)]">renamed</span>
+            <span className="text-[color:oklch(0.34_0.115_262)]">renamed</span>
           </div>
         )}
         <div className="mt-1 flex flex-wrap items-center gap-1.5">

@@ -68,8 +68,8 @@ export default function AnalysisPage() {
                 <button
                   onClick={() => setActiveId(f.id)}
                   className={cn(
-                    "group flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors hover:bg-white/[0.025]",
-                    f.id === activeId && "bg-white/[0.04]"
+                    "group flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors hover:bg-accent/40",
+                    f.id === activeId && "bg-accent/50"
                   )}
                 >
                   <ScoreRing score={f.sensitivityScore} />
@@ -107,7 +107,7 @@ export default function AnalysisPage() {
                   <div className="mt-1 truncate text-[11px] text-muted-foreground">
                     Originally{" "}
                     <span className="line-through opacity-60">{active.originalName}</span>{" "}
-                    · renamed by AEGIS
+                    · renamed by RoboVault
                   </div>
                 )}
               </div>
@@ -195,7 +195,7 @@ export default function AnalysisPage() {
           <CardHeader>
             <CardTitle>Inferred metadata</CardTitle>
             <CardDescription>
-              The AEGIS LLM extracts and normalizes structured fields with confidence.
+              The RoboVault LLM extracts and normalizes structured fields with confidence.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -434,7 +434,7 @@ function FieldCell({
             confidence >= 0.95
               ? "text-[color:oklch(0.84_0.15_158)]"
               : confidence >= 0.85
-              ? "text-[color:oklch(0.86_0.13_264)]"
+              ? "text-[color:oklch(0.34_0.115_262)]"
               : "text-[color:oklch(0.86_0.16_78)]"
           )}
         >

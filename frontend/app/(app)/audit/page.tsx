@@ -103,7 +103,7 @@ export default function AuditPage() {
                 initial={{ opacity: 0, x: -4 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.02 }}
-                className="group relative grid grid-cols-[24px_1fr_auto] items-start gap-3 px-4 py-3 transition-colors hover:bg-white/[0.025]"
+                className="group relative grid grid-cols-[24px_1fr_auto] items-start gap-3 px-4 py-3 transition-colors hover:bg-accent/40"
               >
                 <div className="relative flex flex-col items-center">
                   <div
